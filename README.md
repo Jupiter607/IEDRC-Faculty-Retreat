@@ -12,9 +12,19 @@ A self-paced, single-file interactive workshop site for the **Inland Empire / De
 
 ```
 SAC-Workshop/
-├── index.html   ← The entire participant site (single file, no build step)
-└── README.md    ← You are here
+├── index.html         ← The entire participant site (single file, no build step)
+├── data/              ← Synthetic practice data for each of the 5 modules
+│   ├── README.md
+│   ├── module-1-starter-system-prompt.txt
+│   ├── module-2-sample-catalog-descriptions.txt
+│   ├── module-3-onet-task-exports.txt
+│   ├── module-4-sample-SLOs.txt
+│   ├── module-5-AI-output-with-errors.txt
+│   └── iedrc-workshop-practice-data.zip
+└── README.md          ← You are here
 ```
+
+The `data/` folder contains plain-text practice files so any participant can complete every module — even without an existing COR, an O*NET account, or their own SLO list. Each module card on the live site has a one-click download button for its matching file, and the Quick Start section has a banner to grab all five at once as a zip. See `data/README.md` for details.
 
 ---
 

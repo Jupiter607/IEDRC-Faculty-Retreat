@@ -1,0 +1,145 @@
+================================================================
+  MODULE 4 — SAMPLE STUDENT LEARNING OUTCOMES
+  Practice file for the IEDRC Faculty Retreat
+================================================================
+
+If you don't have an SLO ready from one of your existing
+courses, copy any of the SLOs below into the [PASTE YOUR SLO
+TEXT HERE] placeholder in the Module 4 Rubric Generator prompt.
+
+Each SLO is paired with a recommended assessment type so you
+can drop it straight into the prompt and run it. The assessment
+types are also choices you can swap in the prompt's [portfolio
+/ demonstration / case study / oral presentation] field.
+
+These SLOs follow the IEDRC-aligned format:
+  "Upon successful completion of this course, students will
+   be able to..." + measurable Bloom's verb + observable
+   behavior + workforce-relevant context.
+
+----------------------------------------------------------------
+  HEALTH — NURS 101: Fundamentals of Nursing Practice
+----------------------------------------------------------------
+
+SLO 1
+"Upon successful completion of this course, students will be
+able to demonstrate the proper administration of medication
+following the Six Rights of Medication Administration in a
+simulated patient care environment."
+   → Suggested assessment: hands-on demonstration (skills lab)
+   → Student level: First semester
+   → Career pathway: ADN-prepared registered nurse
+
+SLO 2
+"Upon successful completion of this course, students will be
+able to document patient assessment findings, vital signs, and
+nursing interventions in an electronic health record system
+using SBAR communication structure."
+   → Suggested assessment: portfolio (3 simulated charting
+     entries, with reflection)
+   → Student level: First semester
+   → Career pathway: Acute-care RN, ambulatory RN
+
+----------------------------------------------------------------
+  BUSINESS — BUS 101: Introduction to Business
+----------------------------------------------------------------
+
+SLO 3
+"Upon successful completion of this course, students will be
+able to evaluate the strengths, weaknesses, opportunities, and
+threats (SWOT) of a small or medium-sized business and
+recommend three data-supported strategic actions."
+   → Suggested assessment: written case study
+   → Student level: First semester / transfer-prep
+   → Career pathway: Business analyst, operations associate,
+     entrepreneurship
+
+SLO 4
+"Upon successful completion of this course, students will be
+able to construct and deliver a five-minute investor pitch for
+a viable business concept that integrates principles of
+marketing, finance, and ethical/sustainable operations."
+   → Suggested assessment: oral presentation
+   → Student level: First semester
+   → Career pathway: Entrepreneurship, marketing,
+     small-business management
+
+----------------------------------------------------------------
+  CONSTRUCTION — ELEC 100: Introduction to Electrical Theory
+----------------------------------------------------------------
+
+SLO 5
+"Upon successful completion of this course, students will be
+able to safely test, diagnose, and repair a residential branch
+circuit using a digital multimeter while following current
+National Electrical Code (NEC) and OSHA personal-protective-
+equipment requirements."
+   → Suggested assessment: hands-on demonstration (lab
+     practical with grading rubric)
+   → Student level: First-year apprenticeship-prep
+   → Career pathway: Apprentice electrician, residential
+     wireman, EV charger installer
+
+SLO 6
+"Upon successful completion of this course, students will be
+able to interpret an electrical schematic to plan the layout
+of a residential service panel and produce a labeled diagram
+identifying conductors, breakers, grounds, and code-compliant
+wire-sizing."
+   → Suggested assessment: portfolio (annotated schematic +
+     written rationale)
+   → Student level: First-year
+   → Career pathway: Residential electrician, solar PV
+     installer
+
+----------------------------------------------------------------
+  ICT — CIS 130: Introduction to Networking
+----------------------------------------------------------------
+
+SLO 7
+"Upon successful completion of this course, students will be
+able to design, configure, and test a small-business local
+area network (LAN) that segregates user, guest, and IoT
+traffic into separate VLANs and applies basic Zero-Trust
+access controls."
+   → Suggested assessment: hands-on demonstration (Packet
+     Tracer or Cisco lab) + brief written rationale
+   → Student level: Second-semester / Network+ prep
+   → Career pathway: Help desk, junior network technician,
+     systems administrator
+
+SLO 8
+"Upon successful completion of this course, students will be
+able to diagnose and resolve a multi-layer network failure
+using ping, traceroute, ipconfig, and packet-capture tools,
+and document each troubleshooting step in a service-ticket
+format suitable for a small-business help desk."
+   → Suggested assessment: case study (provided incident
+     scenario) + ticket-style write-up
+   → Student level: Second-semester
+   → Career pathway: Tier-1 support, junior sysadmin
+
+----------------------------------------------------------------
+  HOW TO USE THIS FILE WITH THE MODULE 4 PROMPT
+================================================================
+
+1. Pick the SLO closest to your discipline (or any of them).
+2. Copy the quoted SLO text (without the quotation marks).
+3. Paste it into the [PASTE YOUR SLO TEXT HERE] placeholder
+   in the Module 4 Rubric Generator prompt.
+4. Use the "Suggested assessment" line as the value for the
+   [portfolio / demonstration / case study / oral
+   presentation] placeholder.
+5. Use the "Student level" and "Career pathway" lines for the
+   [Student level] and [Context] placeholders.
+6. Run the prompt and you should get back:
+     - 1 assessment task description (3-5 sentences)
+     - 1 four-level analytic rubric (Markdown table)
+     - 1 alignment note showing how each criterion maps to
+       the SLO
+
+ADVANCED CHALLENGE: After the AI returns the rubric, follow up
+with: "Now rewrite this rubric in plain language that a
+first-semester student can understand and use to self-assess
+their work before submitting." That gives you a student-facing
+companion in the same conversation.

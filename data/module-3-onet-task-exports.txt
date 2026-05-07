@@ -1,0 +1,249 @@
+================================================================
+  MODULE 3 — O*NET TASK EXPORTS (4 OCCUPATIONS)
+  Practice file for the IEDRC Faculty Retreat
+
+  Source: U.S. Department of Labor / Employment and Training
+  Administration · O*NET 28.3 Database (public domain)
+  Verify the latest version at https://www.onetonline.org
+================================================================
+
+These are real O*NET task statements for four occupations
+representing the four IEDRC focus disciplines. Pick the
+occupation closest to your course and paste the entire block
+into the Module 3 prompt — exactly as if you had copied it
+straight off onetonline.org yourself.
+
+NOTE ON USE: O*NET data is in the public domain but should be
+re-verified at the source before going into a curriculum
+document. The wage and outlook numbers below were accurate as
+of O*NET version 28.3 — confirm current values at O*NET Online
+or California LMI before submitting any COR.
+
+================================================================
+  1. HEALTH — Registered Nurses
+================================================================
+
+SOC Code:                  29-1141
+O*NET Code:                29-1141.00
+Bright Outlook:            Yes (Rapid Growth + Numerous Openings)
+Median Hourly Wage (US):   $42.80
+Median Annual Wage (US):   $89,010
+California Median Annual:  $137,690
+Typical Education:         Bachelor's degree (BSN) or
+                           Associate's degree (ADN)
+
+CORE TASKS (paste these into the Module 3 prompt):
+
+• Maintain accurate, detailed reports and records of patient
+  care, including medications administered, treatments
+  performed, and patient responses.
+• Monitor, record, and report symptoms or changes in patients'
+  conditions to the healthcare team.
+• Record patients' medical information and vital signs in
+  electronic health record systems.
+• Modify patient treatment plans as indicated by patients'
+  responses and conditions, in collaboration with the care
+  team.
+• Consult and coordinate with healthcare team members to
+  assess, plan, implement, or evaluate patient care plans.
+• Order, interpret, and evaluate diagnostic tests to identify
+  and assess patients' conditions.
+• Monitor all aspects of patient care, including diet and
+  physical activity.
+• Direct or supervise less-skilled nursing or healthcare
+  personnel, or supervise a particular unit.
+• Prepare patients for, and assist with, examinations or
+  treatments.
+• Administer medications to patients and monitor patients
+  for reactions or side effects.
+• Provide health care, first aid, immunizations, or
+  assistance in convalescence or rehabilitation.
+• Instruct individuals, families, or other groups on topics
+  such as health education, disease prevention, or childbirth,
+  and develop health improvement programs.
+• Perform physical examinations, make tentative diagnoses,
+  and treat patients en route to hospitals or in emergency
+  situations.
+• Conduct specified laboratory tests.
+• Hand items to surgeons during operations.
+
+================================================================
+  2. BUSINESS — General and Operations Managers
+================================================================
+
+SOC Code:                  11-1021
+O*NET Code:                11-1021.00
+Bright Outlook:            Yes (Numerous Openings)
+Median Hourly Wage (US):   $48.45
+Median Annual Wage (US):   $100,780
+California Median Annual:  $116,470
+Typical Education:         Bachelor's degree (some positions
+                           accept Associate's + experience)
+
+CORE TASKS (paste these into the Module 3 prompt):
+
+• Direct and coordinate activities of businesses or
+  departments concerned with the production, pricing, sales,
+  or distribution of products or services.
+• Manage staff, prepare work schedules, and assign specific
+  duties to employees.
+• Review financial statements, sales and activity reports,
+  and other performance data to measure productivity and goal
+  achievement, and to determine areas needing cost reduction
+  and program improvement.
+• Establish and implement departmental policies, goals,
+  objectives, and procedures, conferring with board members,
+  organization officials, and staff members as necessary.
+• Direct and coordinate the organization's financial and
+  budget activities to fund operations, maximize investments,
+  and increase efficiency.
+• Determine staffing requirements, and interview, hire, and
+  train new employees, or oversee those personnel processes.
+• Monitor businesses and agencies to ensure that they
+  efficiently and effectively provide needed services while
+  staying within budgetary limits.
+• Locate, select, and procure merchandise for resale,
+  representing management in purchase negotiations.
+• Plan and direct activities such as sales promotions,
+  coordinating with other department heads as required.
+• Implement or oversee environmental management or
+  sustainability programs.
+• Develop or implement product-marketing strategies, including
+  advertising campaigns or sales promotions.
+• Negotiate or approve contracts or agreements with suppliers,
+  distributors, federal or state agencies, or other
+  organizational entities.
+• Recommend locations for new facilities, or oversee the
+  remodeling or renovating of current facilities.
+• Develop and maintain relationships with key suppliers and
+  customer groups.
+
+================================================================
+  3. CONSTRUCTION — Electricians
+================================================================
+
+SOC Code:                  47-2111
+O*NET Code:                47-2111.00
+Bright Outlook:            Yes (Rapid Growth)
+Median Hourly Wage (US):   $30.46
+Median Annual Wage (US):   $63,310
+California Median Annual:  $79,700
+Typical Education:         High school diploma + apprenticeship
+                           (4-5 years), then state licensure
+
+CORE TASKS (paste these into the Module 3 prompt):
+
+• Use a variety of tools and equipment, such as power
+  construction equipment, measuring devices, power tools, and
+  testing equipment, including digital multimeters,
+  oscilloscopes, ammeters, and test lamps.
+• Inspect electrical systems, equipment, or components to
+  identify hazards, defects, or the need for adjustment or
+  repair, and to ensure compliance with the National
+  Electrical Code (NEC) and local codes.
+• Test electrical systems or continuity of circuits in
+  electrical wiring, equipment, or fixtures, using testing
+  devices to ensure compatibility and safety of the system.
+• Connect wires to circuit breakers, transformers, or other
+  components.
+• Plan layout and installation of electrical wiring,
+  equipment, or fixtures, based on job specifications and
+  current local and national electrical codes.
+• Diagnose malfunctioning systems, apparatus, or components,
+  using test equipment and hand tools to locate the cause of
+  a breakdown and correct the problem.
+• Maintain a current electrician's license or identification
+  card to meet governmental regulations.
+• Repair or replace wiring, equipment, or fixtures, using
+  hand tools or power tools.
+• Place conduit (pipes or tubing) inside designated
+  partitions, walls, or other concealed areas, and pull
+  insulated wires or cables through the conduit to complete
+  circuits.
+• Prepare sketches showing the location of wiring or
+  equipment, or follow diagrams or blueprints to ensure that
+  wiring conforms to specifications and codes.
+• Install ground leads and connect power cables to equipment.
+• Perform business-management duties such as maintaining
+  records and files, preparing reports, or ordering supplies
+  and equipment.
+• Provide preliminary sketches or cost estimates for
+  materials or services.
+• Install electric vehicle (EV) charging infrastructure,
+  battery storage systems, and renewable-energy interconnects
+  (solar PV) to current code.
+• Work from ladders, scaffolds, or roofs to install,
+  maintain, or repair electrical wiring, equipment, or
+  fixtures.
+
+================================================================
+  4. ICT — Network and Computer Systems Administrators
+================================================================
+
+SOC Code:                  15-1244
+O*NET Code:                15-1244.00
+Bright Outlook:            Yes (Numerous Openings)
+Median Hourly Wage (US):   $46.13
+Median Annual Wage (US):   $95,950
+California Median Annual:  $114,720
+Typical Education:         Bachelor's degree common; many
+                           employers accept Associate's plus
+                           industry certifications (CCNA,
+                           Network+, Security+, AWS Cloud
+                           Practitioner)
+
+CORE TASKS (paste these into the Module 3 prompt):
+
+• Diagnose, troubleshoot, and resolve hardware, software, or
+  other network and system problems, and replace defective
+  components when necessary.
+• Maintain and administer computer networks and related
+  computing environments, including computer hardware,
+  systems software, applications software, and all
+  configurations.
+• Plan, coordinate, and implement network security measures
+  to protect data, software, and hardware.
+• Configure, monitor, and maintain email applications or
+  virus protection software.
+• Operate master consoles to monitor the performance of
+  computer systems and networks and to coordinate computer
+  network access and use.
+• Design, configure, and test computer hardware, networking
+  software, and operating system software.
+• Monitor network performance to determine whether
+  adjustments need to be made.
+• Confer with network users about how to solve existing
+  system problems.
+• Recommend changes to improve systems and network
+  configurations, and determine hardware or software
+  requirements related to such changes.
+• Maintain logs related to network functions, as well as
+  maintenance and repair records.
+• Train people in computer system use.
+• Perform routine network startup and shutdown procedures,
+  and maintain control records.
+• Implement and provide technical support for voice services
+  and equipment, such as private branch exchange (PBX),
+  voice mail systems, or related telecommunications
+  equipment.
+• Coordinate with vendors and with company personnel to
+  facilitate purchases of cloud services and on-premises
+  hardware.
+• Configure and administer Active Directory, identity and
+  access management (IAM), and single sign-on (SSO) systems.
+• Implement, configure, and monitor cloud infrastructure
+  (AWS, Azure, or Google Cloud), including virtual networks
+  and zero-trust security controls.
+
+================================================================
+  HOW TO USE THIS FILE WITH THE MODULE 3 PROMPT
+================================================================
+
+1. Open the Module 3 prompt from the workshop site.
+2. Replace the [PASTE THE O*NET TASKS LIST HERE] placeholder
+   with the entire CORE TASKS block from one of the four
+   occupations above.
+3. Fill in the Course name, number, and discipline.
+4. Use the SOC Code from this file in the [SOC Code] field.
+5. Run the prompt and inspect the resulting SLOs against the
+   verbs in your Bloom's verb chart.

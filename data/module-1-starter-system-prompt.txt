@@ -1,0 +1,131 @@
+================================================================
+  MODULE 1 — STARTER SYSTEM PROMPT + TEST QUESTIONS
+  Practice file for the IEDRC Faculty Retreat
+================================================================
+
+This file gives you (1) the starter system prompt as a clean,
+ready-to-paste text block AND (2) a bank of test questions to
+ask AFTER the system prompt is in place. The point of Module 1
+is to feel the difference between an AI without a system prompt
+and the same AI with one.
+
+================================================================
+  PART 1 — PASTE THIS AS YOUR VERY FIRST MESSAGE
+================================================================
+
+You are an experienced curriculum specialist at a California
+community college accredited by ACCJC. Your job is to assist
+faculty in drafting, revising, and improving curriculum
+documents including Course Outlines of Record (CORs), Student
+Learning Outcomes (SLOs), and assessment rubrics.
+
+Always follow these rules:
+• Use third-person, present-tense, professional academic
+  language for all COR text.
+• Write Student Learning Outcomes that begin with "Upon
+  successful completion of this course, students will be able
+  to..." followed by a measurable action verb from Bloom's
+  Taxonomy.
+• Never invent accreditation standards, citations, or
+  regulation numbers — flag anything you are uncertain about.
+• When I provide O*NET or labor market data, integrate it
+  directly into SLOs and course objectives.
+• Format all structured output (rubrics, outlines) as
+  Markdown tables or numbered lists.
+
+If you are asked to generate text that will go directly into a
+COR, remind me to verify it against current ACCJC standards
+and our institution's curriculum committee guidelines before
+submission.
+
+================================================================
+  PART 2 — TEST QUESTIONS TO ASK AFTER PASTING THE PROMPT
+================================================================
+
+Try at least three of these in the same conversation. Pay
+attention to whether the AI:
+   ✓ Stays in third-person, present-tense
+   ✓ Uses Bloom's verbs in any SLO it generates
+   ✓ Flags claims it is uncertain about
+   ✓ Reminds you to verify before submitting
+
+----------------------------------------------------------------
+  WARM-UP — Check the AI's Self-Awareness
+----------------------------------------------------------------
+
+  Q1.  "What are the three biggest risks of using AI to draft
+        Course Outlines of Record at a California community
+        college?"
+
+  Q2.  "What kinds of curriculum claims should I always
+        independently verify before submitting?"
+
+  Q3.  "What is the difference between an SLO, a Course
+        Objective, and a Topic Outline item?"
+
+----------------------------------------------------------------
+  PRESSURE TEST — See if the AI Holds Its Rules
+----------------------------------------------------------------
+
+  Q4.  "Write me a one-sentence SLO for an introductory
+        accounting course where students learn double-entry
+        bookkeeping."
+        → Watch for: starts with "Upon successful
+          completion...", uses a measurable verb (Apply,
+          Demonstrate, Construct), not "Know" or "Understand."
+
+  Q5.  "Quote me the ACCJC standard about Student Learning
+        Outcomes."
+        → Watch for: the AI should hesitate or flag this for
+          verification rather than confidently fabricate a
+          standard number. If it gives you a citation without
+          a [VERIFY] flag, that's a sign your system prompt
+          isn't holding — and a perfect lesson for Module 5.
+
+  Q6.  "Cite the Title 5 section that requires Student
+        Learning Outcomes for every credit course."
+        → Watch for: same caution. The actual ACCJC
+          requirement comes from the Standards (Standard
+          II.A.3 in the 2024 standards), not from a Title 5
+          section number. Many AIs will invent a section.
+
+----------------------------------------------------------------
+  DISCIPLINE WARM-UP — Pick the One That Fits You
+----------------------------------------------------------------
+
+  Q7-Health.        "Draft a one-paragraph catalog description
+                    for a fundamentals of nursing course at a
+                    California community college."
+
+  Q7-Business.      "Draft a one-paragraph catalog description
+                    for an introduction to business course
+                    that emphasizes entrepreneurship and
+                    sustainability."
+
+  Q7-Construction.  "Draft a one-paragraph catalog description
+                    for an introductory residential electrical
+                    course aligned to current NEC and OSHA
+                    requirements."
+
+  Q7-ICT.           "Draft a one-paragraph catalog description
+                    for an introduction to networking course
+                    that prepares students for the CompTIA
+                    Network+ certification."
+
+================================================================
+  WHAT TO DO WITH THE OUTPUTS
+================================================================
+
+You don't need to keep any of these — Module 1 is a feel
+exercise. The point is to internalize:
+
+  1. The same AI behaves very differently with a system
+     prompt vs. without one.
+  2. You are setting the rules. The AI follows them as long
+     as the conversation is open.
+  3. Even a well-prompted AI will sometimes invent
+     citations. Module 5 will give you the verification
+     routine to catch this.
+
+When you're ready, move on to Module 2 with a fresh chat
+window and the same system prompt at the top.

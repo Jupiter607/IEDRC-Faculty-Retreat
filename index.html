@@ -651,6 +651,132 @@
     .copy-btn:hover { background: rgba(240,105,55,0.22); border-color: var(--orange); color: #fff; }
     .copy-btn.copied { background: rgba(0,177,217,0.15); border-color: rgba(0,177,217,0.4); color: var(--cyan); }
 
+    /* Top-of-section practice-data download banner */
+    .practice-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, rgba(240,105,55,0.12), rgba(241,138,45,0.06));
+      border: 1px solid rgba(240,105,55,0.35);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      flex-wrap: wrap;
+    }
+    .practice-banner:hover {
+      border-color: var(--orange);
+      background: linear-gradient(135deg, rgba(240,105,55,0.20), rgba(241,138,45,0.10));
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(240,105,55,0.18);
+    }
+    .practice-banner-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .practice-banner-info { flex: 1; min-width: 220px; }
+    .practice-banner-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .practice-banner-info span {
+      display: block;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .practice-banner-cta { flex-shrink: 0; }
+    .practice-banner-pill {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 600;
+      font-size: 12.5px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      transition: background 0.2s;
+    }
+    .practice-banner:hover .practice-banner-pill { background: var(--orange-deep); }
+    html.light .practice-banner { background: linear-gradient(135deg, rgba(240,105,55,0.10), rgba(247,243,233,0.6)); border-color: rgba(192,91,40,0.30); }
+    html.light .practice-banner:hover { border-color: var(--orange-deep); background: linear-gradient(135deg, rgba(240,105,55,0.15), rgba(241,138,45,0.10)); }
+    html.high-contrast .practice-banner { border-width: 2px; background: rgba(255,138,76,0.10); }
+    @media (max-width: 600px) {
+      .practice-banner { padding: 14px 16px; gap: 12px; }
+      .practice-banner-info strong { font-size: 13px; }
+      .practice-banner-cta { width: 100%; }
+      .practice-banner-pill { display: block; text-align: center; }
+    }
+
+    /* Practice-data download tile inside module cards */
+    .data-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,177,217,0.07);
+      border: 1px solid rgba(0,177,217,0.25);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .data-tile:hover {
+      background: rgba(0,177,217,0.13);
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+    .data-tile-icon {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(0,177,217,0.15);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .data-tile-icon svg { display: block; }
+    .data-tile-info { flex: 1; min-width: 0; }
+    .data-tile-info strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1px;
+    }
+    .data-tile-info span {
+      display: block;
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .data-tile-arrow {
+      flex-shrink: 0;
+      color: var(--cyan);
+      font-size: 18px;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .data-tile:hover .data-tile-arrow { transform: translateY(2px); }
+    html.light .data-tile { background: rgba(0,108,170,0.06); border-color: rgba(0,108,170,0.25); }
+    html.light .data-tile:hover { background: rgba(0,108,170,0.10); border-color: #0669A7; }
+    html.light .data-tile-icon { background: rgba(0,108,170,0.12); color: #0669A7; }
+    html.light .data-tile-arrow { color: #0669A7; }
+    html.high-contrast .data-tile { border-width: 2px; border-color: var(--cyan); background: rgba(79,216,255,0.10); }
+
     .sample-text {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -1455,6 +1581,20 @@
     <h2 class="section-title">Quick Start Links</h2>
     <p class="section-lead">Open one AI tool and at least one labor market source before starting Module 3. Everything is free.</p>
   </div>
+
+  <a href="data/iedrc-workshop-practice-data.zip" download class="practice-banner reveal" aria-label="Download all five practice data files as one zip bundle">
+    <span class="practice-banner-icon" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </span>
+    <span class="practice-banner-info">
+      <strong>Don&apos;t have your own COR, SLOs, or O*NET data? Download the practice bundle.</strong>
+      <span>One zip · five plain-text files · everything you need to complete every module if you didn&apos;t bring data of your own.</span>
+    </span>
+    <span class="practice-banner-cta">
+      <span class="practice-banner-pill">Download all (.zip · 18 KB)</span>
+    </span>
+  </a>
+
   <div class="resource-grid">
     <a href="https://chatgpt.com" target="_blank" rel="noopener" class="resource-card reveal">
       <div class="resource-icon" style="background:rgba(240,105,55,0.14);color:var(--orange-light);">GPT</div>
@@ -1570,6 +1710,16 @@
           <div class="step-item"><div class="step-badge">2</div><div>Copy the starter prompt below and paste it as your very first message. This "trains" the AI's behavior for the rest of the conversation.</div></div>
           <div class="step-item"><div class="step-badge">3</div><div>Try asking: <em>"What are the biggest risks of using AI for curriculum development at a California community college?"</em> — see how the AI's self-awareness shapes its answer.</div></div>
           <div class="step-item"><div class="step-badge">4</div><div>Read the response critically. Does the AI cite specific accreditation standards correctly? If not — that's the lesson. AI knows patterns; you know your institution.</div></div>
+          <a href="data/module-1-starter-system-prompt.txt" download class="data-tile" aria-label="Download Module 1 practice data: starter system prompt and 9 test questions across four disciplines">
+            <span class="data-tile-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            <span class="data-tile-info">
+              <strong>Practice data — system prompt &amp; test questions</strong>
+              <span>9 sample questions across Health, Business, Construction, ICT — try at least three after pasting the prompt.</span>
+            </span>
+            <span class="data-tile-arrow" aria-hidden="true">↓</span>
+          </a>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Starter System Prompt</span>
@@ -1605,6 +1755,16 @@ If you are asked to generate text that will go directly into a COR, remind me to
           <div class="step-item"><div class="step-badge">3</div><div>Review the AI draft. It will suggest updated language. Ask follow-ups: <em>"Make it more concise"</em> or <em>"Add a reference to current industry standards in [your field]."</em></div></div>
           <div class="step-item"><div class="step-badge">4</div><div>For a full course objectives list, follow up: <em>"Now generate 8 course objectives for this course using parallel grammatical structure starting with infinitive verbs (to analyze, to demonstrate, etc.)."</em></div></div>
           <div class="step-item"><div class="step-badge">5</div><div>Before submitting to curriculum committee: verify all <span class="jargon" data-tip="Title 5 regulations are the California Education Code rules that govern community college curriculum, including minimum content, unit value, and transfer requirements.">Title 5</span> language, prerequisite wording, and unit hours are correct. AI sometimes gets these wrong.</div></div>
+          <a href="data/module-2-sample-catalog-descriptions.txt" download class="data-tile" aria-label="Download Module 2 practice data: four outdated catalog descriptions to revise">
+            <span class="data-tile-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            <span class="data-tile-info">
+              <strong>Practice data — 4 outdated catalog descriptions</strong>
+              <span>Health (NURS 101), Business (BUS 101), Construction (ELEC 100), ICT (CIS 130) — paste any one in place of <code>[PASTE YOUR CURRENT CATALOG DESCRIPTION HERE]</code>.</span>
+            </span>
+            <span class="data-tile-arrow" aria-hidden="true">↓</span>
+          </a>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">COR Catalog Description Prompt</span>
@@ -1642,11 +1802,21 @@ Provide the revised description, then list 3 specific changes you made and why.<
         <div class="card-capability" style="background:rgba(240,105,55,0.14);color:var(--orange-light);" data-tip="You paste raw O*NET task lists and wage data directly into the chat. The AI converts occupation data into properly-worded SLOs aligned to Bloom's Taxonomy — your job is to validate and select.">Labor Market → SLO Translation</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
-          <div class="step-item"><div class="step-badge">1</div><div>Go to <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--accent);">O*NET Online</a>. Search for an occupation your course prepares students for (e.g., "Registered Nurse," "Electrician," "Network Administrator").</div></div>
+          <div class="step-item"><div class="step-badge">1</div><div>Go to <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--orange-light);">O*NET Online</a>. Search for an occupation your course prepares students for (e.g., "Registered Nurse," "Electrician," "Network Administrator"). <em>Or skip O*NET entirely and use the practice data file below.</em></div></div>
           <div class="step-item"><div class="step-badge">2</div><div>On the O*NET summary page, copy the <strong>Tasks</strong> section (the bullet list of job duties). Also note the <strong>SOC code</strong> and the occupation's median wage.</div></div>
           <div class="step-item"><div class="step-badge">3</div><div>Paste the O*NET tasks into the chat along with the prompt below. The AI will generate SLOs directly connected to real job demands.</div></div>
           <div class="step-item"><div class="step-badge">4</div><div>Review: Are the Bloom's verbs measurable? (Analyze, Demonstrate, Evaluate — good. Know, Understand, Appreciate — too vague.) Ask the AI to revise any SLO that uses vague verbs.</div></div>
           <div class="step-item"><div class="step-badge">5</div><div>Optional: Ask for a mapping table: <em>"Create a table with three columns: SLO | O*NET Task It Addresses | Bloom's Level."</em> This is gold for program review documentation.</div></div>
+          <a href="data/module-3-onet-task-exports.txt" download class="data-tile" aria-label="Download Module 3 practice data: real O*NET task exports for four occupations across the IEDRC focus disciplines">
+            <span class="data-tile-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            <span class="data-tile-info">
+              <strong>Practice data — 4 real O*NET task exports</strong>
+              <span>Registered Nurse (29-1141), General &amp; Operations Manager (11-1021), Electrician (47-2111), Network Admin (15-1244) — full task lists, SOC codes, and CA wage data.</span>
+            </span>
+            <span class="data-tile-arrow" aria-hidden="true">↓</span>
+          </a>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">SLO Generator Prompt</span>
@@ -1695,6 +1865,16 @@ After the SLOs, provide a mapping table:
           <div class="step-item"><div class="step-badge">3</div><div>Paste the prompt below. The AI will generate both the assessment task description (what students are asked to do) and the complete rubric in one output.</div></div>
           <div class="step-item"><div class="step-badge">4</div><div>Refine: Ask the AI to <em>"Add a criterion for professional communication standards"</em> or <em>"Make the Exemplary column more specific for [YOUR FIELD]."</em></div></div>
           <div class="step-item"><div class="step-badge">5</div><div>Bonus: Ask for a <span class="jargon" data-tip="A student-facing version of the rubric, written in plain language, that students can use to self-assess their work before submitting.">student-facing version</span> of the rubric: <em>"Rewrite this rubric in plain language that a first-semester student can understand and use to self-assess."</em></div></div>
+          <a href="data/module-4-sample-SLOs.txt" download class="data-tile" aria-label="Download Module 4 practice data: eight ready-to-use SLOs across four disciplines, paired with suggested assessment types">
+            <span class="data-tile-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            <span class="data-tile-info">
+              <strong>Practice data — 8 ready-to-use SLOs</strong>
+              <span>Two SLOs per discipline (Health, Business, Construction, ICT), each paired with a suggested assessment type — drop into <code>[PASTE YOUR SLO TEXT HERE]</code>.</span>
+            </span>
+            <span class="data-tile-arrow" aria-hidden="true">↓</span>
+          </a>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Rubric Generator Prompt</span>
@@ -1740,7 +1920,17 @@ For each criterion, identify which part of the SLO it measures.</pre>
           <div class="step-item"><div class="step-badge">1</div><div><strong>Step 1 — Ask for a self-audit.</strong> After the AI produces any COR text, immediately follow up with: <em>"Review your response. List any specific claims, regulation numbers, or standards you cited that I should independently verify before submitting to a curriculum committee."</em></div></div>
           <div class="step-item"><div class="step-badge">2</div><div><strong>Step 2 — Check Bloom's verbs.</strong> Copy any SLOs and paste this prompt: <em>"Review these SLOs. Flag any that use non-measurable verbs (understand, know, appreciate, be aware of) and suggest replacement action verbs."</em></div></div>
           <div class="step-item"><div class="step-badge">3</div><div><strong>Step 3 — Cross-check CurricUNET.</strong> Open your institution's existing COR in <span class="jargon" data-tip="CurricUNET is the California curriculum management platform. Every COR must go through the official curriculum committee approval process — AI does not bypass that process.">CurricUNET</span>. Compare AI-suggested language to current catalog language. Verify unit values, hours, and prerequisite wording match Title 5 requirements.</div></div>
-          <div class="step-item"><div class="step-badge">4</div><div><strong>Step 4 — Verify labor market citations.</strong> If the AI references specific employment projections or wage data, verify them directly on <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--accent);">O*NET</a> or <a href="https://labormarketinfo.edd.ca.gov" target="_blank" rel="noopener" style="color:var(--accent);">CA LMI</a>. AI training data may be outdated.</div></div>
+          <div class="step-item"><div class="step-badge">4</div><div><strong>Step 4 — Verify labor market citations.</strong> If the AI references specific employment projections or wage data, verify them directly on <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--orange-light);">O*NET</a> or <a href="https://labormarketinfo.edd.ca.gov" target="_blank" rel="noopener" style="color:var(--orange-light);">CA LMI</a>. AI training data may be outdated.</div></div>
+          <a href="data/module-5-AI-output-with-errors.txt" download class="data-tile" aria-label="Download Module 5 practice file: AI-generated COR with twelve planted hallucinations and answer key">
+            <span class="data-tile-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+            <span class="data-tile-info">
+              <strong>Practice data — fake AI COR with 12 planted hallucinations</strong>
+              <span>A polished-looking solar-PV course outline with 12 deliberate errors. Run the self-audit prompt against it, then check your answers against the included key.</span>
+            </span>
+            <span class="data-tile-arrow" aria-hidden="true">↓</span>
+          </a>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Self-Audit Prompt (run after any AI output)</span>
@@ -2357,6 +2547,10 @@ Format as clean, printable forms.</pre>
     <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Set up an AI tool account</strong><span>ChatGPT, Claude, or Google AI Studio — all have free tiers</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Downloaded the practice data bundle</strong><span>So you can complete every module even without your own COR / SLOs / O*NET data on hand</span></div>
     </div>
     <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>

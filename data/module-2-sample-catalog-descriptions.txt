@@ -1,0 +1,138 @@
+================================================================
+  MODULE 2 — SAMPLE OUTDATED CATALOG DESCRIPTIONS
+  Practice file for the IEDRC Faculty Retreat
+================================================================
+
+These are FOUR fictional but realistic catalog descriptions that
+read the way many actual COR descriptions read after years of
+neglect — bloated, outdated, vague, or misaligned with current
+industry practice. Pick the one closest to your discipline (or
+any of them) and run the Module 2 prompt against it.
+
+GOAL: Use the AI to revise each into a concise, third-person,
+present-tense description under 100 words that reflects current
+industry practice.
+
+----------------------------------------------------------------
+  1. HEALTH — NURS 101: Fundamentals of Nursing Practice
+----------------------------------------------------------------
+
+This course is designed to introduce the student to the basic
+fundamentals of nursing care and to acquaint the student with
+the role of the nurse in the modern hospital setting. Topics
+will be covered such as taking vital signs, charting, the basic
+nursing process, professional ethics, communication with
+physicians, and an introduction to the various pieces of
+equipment used in patient care wards. Students will learn how
+to make beds, give bed baths, assist patients with eating, and
+take temperatures using a glass thermometer. The course also
+covers basic infection control procedures and an introduction
+to the metric system as it relates to medication dosages. Three
+hours lecture, three hours laboratory per week. NURS 101 is a
+required prerequisite for NURS 102. The student MUST receive a
+grade of C or better in this course before they can move on.
+This course meets the requirements of the Board of Registered
+Nursing.
+
+CHANGES YOU MIGHT MENTION TO THE AI:
+• Glass thermometers are no longer in use — replaced by
+  electronic and tympanic
+• Electronic Health Records (EHR) are now standard, not paper
+  charting
+• Telehealth competencies are now expected at the entry level
+• Cultural humility and trauma-informed care are now central
+• "Modern hospital setting" should be replaced with realistic
+  modern care environments (clinics, home health, telehealth)
+
+----------------------------------------------------------------
+  2. BUSINESS — BUS 101: Introduction to Business
+----------------------------------------------------------------
+
+Introduction to Business is a survey course designed to
+introduce the new business student to the world of business.
+Various topics will be discussed including but not limited to:
+the history of American business, types of business
+organizations such as sole proprietorships, partnerships, and
+corporations, basic principles of management, marketing,
+finance, accounting, human resources, and an introduction to
+international business. Students will read the textbook
+chapters and complete chapter quizzes. There will also be a
+midterm and a final exam. Lecture hours are three per week.
+This course transfers to CSU and UC and may also be taken to
+fulfill the AA degree general education requirement in Area D.
+Field trips to local businesses may be arranged at the
+discretion of the instructor.
+
+CHANGES YOU MIGHT MENTION TO THE AI:
+• "Survey of various topics" is too vague for current standards
+• AI, automation, and digital transformation are now
+  foundational topics
+• Sustainability, ESG, and stakeholder capitalism are now core
+• Remote and hybrid work models reshape "human resources"
+• Entrepreneurship and small business should be foregrounded
+• "Field trips" reads as outdated — replace with industry
+  engagement or experiential learning
+
+----------------------------------------------------------------
+  3. CONSTRUCTION — ELEC 100: Introduction to Electrical Theory
+----------------------------------------------------------------
+
+This course is intended for students who wish to enter the
+electrical trade or for those who want to learn more about how
+electricity works. It covers the basic theories of electricity
+including Ohm's Law, Kirchhoff's Law, series circuits, parallel
+circuits, and the operation of basic test equipment such as the
+analog volt-ohm meter (VOM). Students will also learn about
+basic AC and DC circuits and how transformers work. Safety in
+the electrical trade will be emphasized throughout the course.
+Students will need to purchase their own multimeter and bring
+it to class each week. Lecture/Lab combination, 6 hours per
+week. This course is the first in a series of courses leading
+to the Electrician Certificate. Students must earn a C or
+better to progress to ELEC 101. Recommended preparation:
+algebra at the high school level.
+
+CHANGES YOU MIGHT MENTION TO THE AI:
+• Analog VOMs have been almost entirely replaced by digital
+  multimeters (DMMs)
+• Renewable energy installation (solar PV, battery storage) is
+  now central to the trade
+• EV charging infrastructure is a major growth area
+• National Electrical Code (NEC) updates every 3 years —
+  description should reference "current NEC"
+• Smart home / IoT-aware electrical work is now expected at
+  entry level
+• OSHA 10 / OSHA 30 expectations should be referenced
+
+----------------------------------------------------------------
+  4. ICT — CIS 130: Introduction to Networking
+----------------------------------------------------------------
+
+This course introduces students to the field of computer
+networking. Students will learn about the OSI model, the TCP/IP
+model, and how data is transmitted across networks. Topics
+include network hardware such as hubs, switches, routers, and
+network interface cards (NICs); cabling types including
+coaxial, twisted pair, and fiber optic; and network operating
+systems such as Windows NT Server and Novell NetWare. Students
+will also be introduced to basic network troubleshooting using
+ping, tracert, and ipconfig. The course will prepare students
+for entry-level help desk and network technician positions and
+also serves as preparation for the CompTIA Network+
+certification examination. Lecture three hours, lab three
+hours per week. Prerequisite: CIS 101 or equivalent computer
+literacy course.
+
+CHANGES YOU MIGHT MENTION TO THE AI:
+• Hubs are obsolete — modern networks use switches and
+  wireless access points
+• Coaxial is no longer used in data networks (only cable
+  modem entry)
+• Windows NT Server and Novell NetWare are decades-obsolete —
+  current is Windows Server 2022, Linux, and cloud platforms
+  (Azure, AWS, GCP)
+• Cybersecurity foundations (Zero Trust, network segmentation)
+  are now expected at the introductory level
+• SDN, virtualization, and cloud networking should appear
+• CompTIA Network+ has been updated multiple times — reference
+  the current N10 series number

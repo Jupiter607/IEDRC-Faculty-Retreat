@@ -1,0 +1,312 @@
+================================================================
+  MODULE 5 — VERIFY BEFORE YOU SUBMIT
+  PRACTICE FILE: AI-GENERATED COR WITH PLANTED HALLUCINATIONS
+
+  Use this file to practice the four-step verification routine
+  from Module 5 — WITHOUT having to wait for an AI to make
+  these mistakes for you in real time.
+================================================================
+
+WHAT THIS IS:
+The text below was written deliberately to look like a polished
+AI-generated draft Course Outline of Record. It contains
+TWELVE (12) planted errors that AI systems commonly produce in
+curriculum work. Some are obvious. Some are subtle. All of
+them have actually shown up in real AI outputs we have seen.
+
+YOUR PRACTICE TASK:
+1. Read the COR draft below as if your discipline lead just
+   sent it to you for sign-off.
+2. Open ChatGPT / Claude / Gemini.
+3. Paste the system prompt from Module 1, then paste the
+   ENTIRE COR DRAFT below, then paste the Module 5 self-audit
+   prompt.
+4. See how many of the 12 errors the AI flags on its own.
+5. Then scroll to the bottom of THIS file (after the "ANSWER
+   KEY" line) to compare against the planted errors.
+
+If the AI flags fewer than 8 of the 12, you have just
+demonstrated to yourself why human verification is non-optional.
+
+================================================================
+                COR DRAFT — DO NOT SUBMIT
+                (12 planted errors — find them all)
+================================================================
+
+CALIFORNIA COMMUNITY COLLEGE
+Course Outline of Record — REVISED DRAFT
+Discipline: Construction & Energy Trades
+Department: Electrical Technology
+
+────────────────────────────────────────────────────────────────
+COURSE NUMBER:    ELEC 215
+COURSE TITLE:     Solar Photovoltaic Installation Fundamentals
+UNITS:            3.0 units
+HOURS:            36 hours lecture + 72 hours laboratory
+                  (108 total contact hours)
+PREREQUISITE:     Students should have a basic understanding of
+                  electricity and be familiar with hand tools.
+RECOMMENDED:      ELEC 100 or equivalent.
+TRANSFERS:        CSU; meets CSU GE Area B-7 (Lifelong
+                  Learning) and IGETC Area 5C.
+
+────────────────────────────────────────────────────────────────
+CATALOG DESCRIPTION
+────────────────────────────────────────────────────────────────
+This course introduces students to the field of residential
+and small-commercial solar photovoltaic (PV) installation. The
+course is aligned with current National Electrical Code (NEC)
+Article 690 (2020 edition) and meets the training requirements
+of Title 5, Section 55003.5 of the California Code of
+Regulations governing Career Technical Education curriculum
+in renewable energy. Upon completion, students will be
+prepared to take the NABCEP CertSolar entry-level certification
+examination, the recognized industry credential for solar
+installers in the state of California.
+
+────────────────────────────────────────────────────────────────
+STUDENT LEARNING OUTCOMES
+────────────────────────────────────────────────────────────────
+Upon successful completion of this course, students will be
+able to:
+
+SLO 1.   Understand the fundamental principles of
+         photovoltaic energy conversion, including the
+         photoelectric effect.
+
+SLO 2.   Know the components of a residential solar PV
+         system, including modules, inverters, racking, and
+         disconnects.
+
+SLO 3.   Appreciate the role of solar energy in California's
+         transition to a zero-carbon grid by 2030.
+
+SLO 4.   Calculate string-sizing for a residential rooftop PV
+         array using the manufacturer's voltage-temperature
+         coefficients.
+
+SLO 5.   Demonstrate the safe installation of a residential
+         rooftop PV array following NEC Article 690 and OSHA
+         29 CFR 1926.501 fall-protection requirements.
+
+────────────────────────────────────────────────────────────────
+COURSE OBJECTIVES
+────────────────────────────────────────────────────────────────
+1. To analyze the electrical characteristics of a single PV
+   module under standard test conditions.
+2. To install rooftop racking systems on composition shingle
+   roofs without compromising the roof warranty.
+3. To program a string inverter according to the
+   manufacturer's commissioning sequence.
+4. To verify that a completed PV installation passes the
+   AHJ inspection process.
+
+────────────────────────────────────────────────────────────────
+COURSE CONTENT (LECTURE)
+────────────────────────────────────────────────────────────────
+A. PV cell physics — the photoelectric effect (Albert
+   Einstein, 1905) and modern silicon-cell efficiency.
+B. System components: modules, MLPE, string inverters,
+   microinverters, AC and DC disconnects, balance-of-system.
+C. NEC Article 690 — overcurrent protection, conductor sizing
+   (per Section 690.8.B.2.a), grounding, rapid-shutdown
+   requirements.
+D. OSHA fall-protection requirements per 29 CFR 1926.501 for
+   work above 4 feet on residential rooftops.
+E. NABCEP entry-level credentialing pathway.
+F. California labor market — solar installer median wage of
+   approximately $58,400 per year statewide, with projected
+   18% job growth from 2024 to 2030 according to the
+   California Employment Development Department.
+
+────────────────────────────────────────────────────────────────
+COURSE CONTENT (LABORATORY)
+────────────────────────────────────────────────────────────────
+A. Roof-tile racking installation lab.
+B. String-inverter wiring and commissioning.
+C. Voltage and current verification using a digital
+   multimeter.
+D. AHJ-style mock inspection.
+
+────────────────────────────────────────────────────────────────
+ASSESSMENT METHODS
+────────────────────────────────────────────────────────────────
+Assessment will be based on:
+• Two written midterm examinations (40%)
+• A comprehensive final examination (25%)
+• Laboratory practical demonstration (25%)
+• Class participation and attendance (10%)
+
+────────────────────────────────────────────────────────────────
+TEXTBOOK
+────────────────────────────────────────────────────────────────
+Smith, J. & García, M. (2023). Residential Solar Installation
+for the California Trades. McGraw-Hill, 4th edition.
+ISBN: 978-0-07-549892-1.
+
+────────────────────────────────────────────────────────────────
+AUTHOR / DATE
+────────────────────────────────────────────────────────────────
+Drafted: AI-assisted draft, March 2026
+Reviewed: [PENDING — DEPARTMENT CHAIR]
+Approved: [PENDING — CURRICULUM COMMITTEE]
+
+================================================================
+  END OF COR DRAFT — STOP HERE TO PRACTICE THE SELF-AUDIT
+================================================================
+
+
+
+
+
+
+
+
+
+
+  (scroll past this whitespace only after you have run the
+   Module 5 self-audit prompt against the draft above)
+
+
+
+
+
+
+
+
+
+
+================================================================
+                      ANSWER KEY
+              The 12 planted errors, by type
+================================================================
+
+ERROR #1 — HALLUCINATED REGULATION NUMBER
+  Where:  Catalog description, "Title 5, Section 55003.5"
+  What's wrong:  Title 5 Section 55003 is the prerequisite
+  regulation. There is no Section 55003.5 governing CTE in
+  renewable energy. AI invented this section number.
+  Fix:  Strike the citation entirely or replace with the
+  correct regulation (Title 5 §55070 covers CTE programs).
+
+ERROR #2 — HALLUCINATED INDUSTRY CERTIFICATION
+  Where:  Catalog description, "NABCEP CertSolar"
+  What's wrong:  The actual NABCEP entry-level credential is
+  the "PV Associate" (formerly "Entry-Level Exam"). There is
+  no certification called "CertSolar."
+  Fix:  Replace with "NABCEP PV Associate Credential."
+
+ERROR #3 — OUTDATED NEC EDITION
+  Where:  Catalog description, "NEC Article 690 (2020 edition)"
+  What's wrong:  The NEC is updated on a 3-year cycle. The
+  2026 NEC has been adopted in California. AI's training data
+  is stale.
+  Fix:  Reference "current NEC Article 690 as adopted by
+  California."
+
+ERROR #4 — VAGUE BLOOM'S VERB ("Understand")
+  Where:  SLO 1 — "Understand the fundamental principles..."
+  What's wrong:  "Understand" is not measurable. ACCJC
+  Standard II.A.3 requires assessable outcomes.
+  Fix:  "Explain the fundamental principles..." or "Describe
+  the photoelectric effect..."
+
+ERROR #5 — VAGUE BLOOM'S VERB ("Know")
+  Where:  SLO 2 — "Know the components..."
+  Fix:  "Identify the components..." or "Describe the
+  function of the components..."
+
+ERROR #6 — VAGUE BLOOM'S VERB ("Appreciate") + UNVERIFIED
+            POLICY CLAIM
+  Where:  SLO 3 — "Appreciate the role of solar energy..."
+  What's wrong:  "Appreciate" is non-measurable AND the
+  "zero-carbon grid by 2030" claim is incorrect. SB 100
+  targets 100% zero-carbon retail electricity by 2045
+  (interim 60% renewable by 2030). AI conflated targets.
+  Fix:  Rewrite using a measurable verb and verify the
+  policy citation.
+
+ERROR #7 — UNIT / HOUR ARITHMETIC ERROR
+  Where:  Header — "3.0 units / 36 hours lecture + 72 hours
+  laboratory (108 total contact hours)"
+  What's wrong:  Per Title 5 §55002.5 contact-hour formulas,
+  3 units does not match 36+72 hours. A standard 3-unit
+  lecture-lab course is closer to 54 lecture + 54 lab (108
+  total) for equal weighting OR 36 lecture + 108 lab for
+  ASCCC heavier-lab guidance. The combination "36+72=108"
+  is closer to a 4-unit course under common formulas.
+  Fix:  Recalculate units to match hours per your local
+  unit-hour formula (commonly 18:54 for lecture and 36:54
+  for lab) or change the hours to match 3 units.
+
+ERROR #8 — PREREQUISITE STATED INFORMALLY
+  Where:  Header — "Students should have a basic
+  understanding of electricity and be familiar with hand
+  tools."
+  What's wrong:  Title 5 §55003 requires prerequisites be
+  stated as either (a) a specific course/competency that has
+  been validated through content review, OR (b) "None."
+  Loose language like "basic understanding" cannot legally
+  serve as a prerequisite.
+  Fix:  Either "Prerequisite: ELEC 100" (with Content
+  Review Form on file) or "Prerequisite: None;
+  Recommended Preparation: ELEC 100 or equivalent."
+
+ERROR #9 — INCORRECT CSU GE AREA
+  Where:  Header — "CSU GE Area B-7 (Lifelong Learning)"
+  What's wrong:  CSU GE Area B-7 does not exist. CSU GE Area
+  B has subareas B1, B2, B3, and B4. "Lifelong Learning"
+  was Area E in the old system but is being phased out under
+  Cal-GETC.
+  Fix:  Verify the actual articulated GE area on
+  ASSIST.org and update — or strike the GE claim if the
+  course is not GE-articulated.
+
+ERROR #10 — HALLUCINATED OSHA CITATION
+  Where:  SLO 5 / Course Content — "OSHA 29 CFR 1926.501
+  fall-protection requirements... for work above 4 feet"
+  What's wrong:  29 CFR 1926.501 is the correct fall
+  protection standard for construction, BUT the threshold
+  is 6 feet, not 4 feet. AI conflated the general industry
+  threshold (4 feet, 29 CFR 1910.28) with construction.
+  Fix:  Either correct to "6 feet on residential rooftops"
+  OR cite 29 CFR 1910.28 if discussing general industry.
+
+ERROR #11 — HALLUCINATED NEC SUBSECTION
+  Where:  Course Content — "Section 690.8.B.2.a"
+  What's wrong:  NEC subsection structure is letters then
+  numbers, not letters then numbers then letters. The
+  string "690.8(B)(2)(a)" is not a valid NEC subdivision in
+  any current edition. AI invented a plausible-looking
+  citation.
+  Fix:  Verify the exact subsection in the current NEC
+  (Section 690.8(B) covers overcurrent protection; the
+  subdivisions are (1), (2), and (3) only).
+
+ERROR #12 — HALLUCINATED TEXTBOOK / FABRICATED ISBN
+  Where:  Textbook — "Smith, J. & García, M. (2023).
+  Residential Solar Installation for the California Trades.
+  McGraw-Hill, 4th edition. ISBN: 978-0-07-549892-1."
+  What's wrong:  This book does not exist. Title, authors,
+  edition, and ISBN are all fabricated — a classic AI
+  hallucination. The ISBN itself is the wrong format /
+  registrant prefix for a real McGraw-Hill title.
+  Fix:  Use a real, current solar PV installation textbook.
+  Verify the ISBN at WorldCat.org or the publisher's
+  website before listing.
+
+================================================================
+                    DEBRIEF QUESTIONS
+================================================================
+
+1. Which errors did the AI catch on its own?
+2. Which errors did you have to spot manually?
+3. Which would have caused the most damage if this had been
+   submitted to your curriculum committee as-is?
+4. Which would have been hardest for a non-specialist
+   reviewer (e.g., a curriculum committee member outside
+   your discipline) to catch?
+
+The fact that this draft READS like a real, competent COR
+is exactly the danger. AI is a first-draft tool. You are
+the verifier. Always.

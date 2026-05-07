@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI as Your Curriculum Partner — SAC Spring 2026</title>
-  <meta name="description" content="A self-paced workshop for Santa Ana College faculty: use AI to draft Course Outlines of Record, generate SLOs from labor market data, and build assessments and rubrics in minutes." />
+  <title>AI as Your Curriculum Partner — IEDRC Faculty Retreat</title>
+  <meta name="description" content="A self-paced workshop for IEDRC Faculty Retreat: use AI to draft Course Outlines of Record, generate SLOs from labor market data, and build assessments and rubrics in minutes." />
   <meta name="theme-color" content="#0b0e17" />
-  <meta property="og:title" content="AI as Your Curriculum Partner — SAC Spring 2026" />
+  <meta property="og:title" content="AI as Your Curriculum Partner — IEDRC Faculty Retreat" />
   <meta property="og:description" content="Self-paced faculty workshop: COR drafting, SLOs from labor market data, rubrics in minutes. No prior AI experience needed." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
@@ -1223,7 +1223,7 @@
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-badge">
     <span style="width:6px;height:6px;background:var(--red);border-radius:50%;display:inline-block;"></span>
-    Santa Ana College — Spring 2026 · Self-Paced
+    IEDRC Faculty Retreat · Self-Paced
   </div>
   <h1>AI as Your<br /><span class="text-red">Curriculum</span> <span class="text-gold">Partner</span></h1>
   <p class="hero-sub">Stop spending evenings rewriting <span class="jargon" data-tip="Course Outline of Record — the official catalog document that defines a course's description, objectives, content, and assessment methods. Required by ACCJC for every credit course.">CORs</span>. Let AI draft, refresh, and align your course outlines, <span class="jargon" data-tip="Student Learning Outcomes — statements that describe what students will know or be able to do upon completing a course. Must be measurable and assessed.">SLOs</span>, and rubrics while you steer the expertise. No prior AI experience needed.</p>
@@ -1364,9 +1364,9 @@
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Starter System Prompt</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `You are an experienced curriculum specialist at Santa Ana College, a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.\n\nAlways follow these rules:\n• Use third-person, present-tense, professional academic language for all COR text.\n• Write Student Learning Outcomes that begin with \"Upon successful completion of this course, students will be able to...\" followed by a measurable action verb from Bloom's Taxonomy.\n• Never invent accreditation standards, citations, or regulation numbers — flag anything you are uncertain about.\n• When I provide O*NET or labor market data, integrate it directly into SLOs and course objectives.\n• Format all structured output (rubrics, outlines) as Markdown tables or numbered lists.\n\nIf you are asked to generate text that will go directly into a COR, remind me to verify it against current ACCJC standards and our institution's curriculum committee guidelines before submission.`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this, `You are an experienced curriculum specialist at a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.\n\nAlways follow these rules:\n• Use third-person, present-tense, professional academic language for all COR text.\n• Write Student Learning Outcomes that begin with \"Upon successful completion of this course, students will be able to...\" followed by a measurable action verb from Bloom's Taxonomy.\n• Never invent accreditation standards, citations, or regulation numbers — flag anything you are uncertain about.\n• When I provide O*NET or labor market data, integrate it directly into SLOs and course objectives.\n• Format all structured output (rubrics, outlines) as Markdown tables or numbered lists.\n\nIf you are asked to generate text that will go directly into a COR, remind me to verify it against current ACCJC standards and our institution's curriculum committee guidelines before submission.`)">Copy</button>
             </div>
-            <pre class="sample-text">You are an experienced curriculum specialist at Santa Ana College, a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.
+            <pre class="sample-text">You are an experienced curriculum specialist at a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.
 
 Always follow these rules:
 • Use third-person, present-tense, professional academic language for all COR text.
@@ -2011,7 +2011,7 @@ Include "GitHub/Portfolio Ready?" indicator in Exemplary column.</pre>
           <div class="prompt-how">Before using this prompt, pull the employment projections from O*NET and the regional wage data from CA LMI. Paste the key numbers in. The AI writes the narrative — you verify the data.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Write a program review labor market analysis narrative for the following program.\n\nProgram: [PROGRAM NAME]\nCollege: Santa Ana College\nRegion: Orange County / Southern California\n\nLabor market data (paste actual data — do not let the AI invent numbers):\n• O*NET occupation: [OCCUPATION NAME, SOC CODE]\n• O*NET 10-year employment growth projection: [PASTE ACTUAL %]\n• O*NET median annual wage: [PASTE ACTUAL $]\n• CA EDD/LMI projected Orange County job openings (10 yr): [PASTE OR WRITE \"I will add this\"]\n• Key employer sectors hiring in this field locally: [LIST 3-5]\n• Notable regional employers: [e.g., CHOC, St. Joseph Hospital, Hoag for Health programs]\n\nWrite a 250-300 word program review narrative that:\n• Opens with the regional employment outlook\n• Cites specific wage and growth projections (using the data I provided)\n• Connects local employer demand to the program's curriculum\n• References how the program's SLOs align to O*NET occupation tasks\n• Closes with a statement of the program's labor market relevance\n• Uses formal academic prose appropriate for an ACCJC accreditation document\n\nIMPORTANT: Only use the specific numbers I provided. Do not generate or estimate labor market statistics — flag any data gap with [NEEDS DATA].`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Write a program review labor market analysis narrative for the following program.\n\nProgram: [PROGRAM NAME]\nCollege: [YOUR COLLEGE NAME]\nRegion: [YOUR REGION]\n\nLabor market data (paste actual data — do not let the AI invent numbers):\n• O*NET occupation: [OCCUPATION NAME, SOC CODE]\n• O*NET 10-year employment growth projection: [PASTE ACTUAL %]\n• O*NET median annual wage: [PASTE ACTUAL $]\n• CA EDD/LMI projected Orange County job openings (10 yr): [PASTE OR WRITE \"I will add this\"]\n• Key employer sectors hiring in this field locally: [LIST 3-5]\n• Notable regional employers: [e.g., CHOC, St. Joseph Hospital, Hoag for Health programs]\n\nWrite a 250-300 word program review narrative that:\n• Opens with the regional employment outlook\n• Cites specific wage and growth projections (using the data I provided)\n• Connects local employer demand to the program's curriculum\n• References how the program's SLOs align to O*NET occupation tasks\n• Closes with a statement of the program's labor market relevance\n• Uses formal academic prose appropriate for an ACCJC accreditation document\n\nIMPORTANT: Only use the specific numbers I provided. Do not generate or estimate labor market statistics — flag any data gap with [NEEDS DATA].`)">Copy</button>
           </div>
           <pre class="sample-text">Program: [PROGRAM NAME]
 Region: Orange County / Southern California
@@ -2191,8 +2191,8 @@ Format as clean, printable forms.</pre>
 </main>
 
 <footer>
-  <p style="margin-bottom:0.4rem;"><strong>Santa Ana College</strong> — AI Curriculum Partner Workshop · Spring 2026</p>
-  <p>Self-paced site built for SAC faculty · Workforce &amp; Curriculum Alignment Initiative · <a href="https://www.sac.edu" style="color:var(--muted);">sac.edu</a></p>
+  <p style="margin-bottom:0.4rem;"><strong>IEDRC Faculty Retreat</strong> — AI Curriculum Partner Workshop · Spring 2026</p>
+  <p>Self-paced site for faculty · Workforce &amp; Curriculum Alignment Initiative</p>
   <p style="margin-top:0.75rem;font-size:12px;opacity:0.6;">AI-generated curriculum drafts must be reviewed and approved through your institution's official curriculum committee process before submission. This site does not replace CurricUNET or ACCJC compliance review.</p>
 </footer>
 
@@ -2332,7 +2332,7 @@ Format as clean, printable forms.</pre>
   }
 
   /* ---------- Checklist ---------- */
-  const CHECKLIST_KEY = 'sac-curriculum-checklist-v1';
+  const CHECKLIST_KEY = 'iedrc-curriculum-checklist-v1';
 
   function loadChecklist() {
     try {
@@ -2435,7 +2435,7 @@ Format as clean, printable forms.</pre>
   function setScale(pct) {
     document.documentElement.style.fontSize = (pct / 100 * 15) + 'px';
     document.querySelectorAll('.size-btn').forEach(b => b.classList.toggle('active', +b.dataset.size === pct));
-    try { localStorage.setItem('sac-text-scale', pct); } catch(e) {}
+    try { localStorage.setItem('iedrc-text-scale', pct); } catch(e) {}
   }
 
   /* ---------- Theme ---------- */
@@ -2450,7 +2450,7 @@ Format as clean, printable forms.</pre>
     if (idx === 1) icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
     else if (idx === 2) icon.innerHTML = '<circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/>';
     else icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-    try { localStorage.setItem('sac-theme', idx); } catch(e) {}
+    try { localStorage.setItem('iedrc-theme', idx); } catch(e) {}
   }
 
   function cycleTheme() {
@@ -2461,12 +2461,12 @@ Format as clean, printable forms.</pre>
   /* ---------- Init ---------- */
   (function init() {
     try {
-      const savedTheme = parseInt(localStorage.getItem('sac-theme') || '0');
+      const savedTheme = parseInt(localStorage.getItem('iedrc-theme') || '0');
       themeIdx = savedTheme;
       applyTheme(themeIdx);
     } catch(e) {}
     try {
-      const savedScale = parseInt(localStorage.getItem('sac-text-scale') || '100');
+      const savedScale = parseInt(localStorage.getItem('iedrc-text-scale') || '100');
       if (savedScale !== 100) setScale(savedScale);
     } catch(e) {}
     loadChecklist();

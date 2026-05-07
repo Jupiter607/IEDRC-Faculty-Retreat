@@ -1,6 +1,6 @@
-# AI as Your Curriculum Partner — SAC Spring 2026
+# AI as Your Curriculum Partner — IEDRC Faculty Retreat
 
-A self-paced, single-file interactive workshop site for Santa Ana College faculty.  
+A self-paced, single-file interactive workshop site for the IEDRC Faculty Retreat.  
 **Topic:** Using AI tools (ChatGPT, Claude, Gemini) to draft CORs, generate SLOs from labor market data, and build assessments and rubrics.
 
 ---
@@ -60,7 +60,7 @@ All content is in `index.html`. Key spots to edit:
 
 | What to change | Where to find it |
 |---|---|
-| Workshop date / semester | Search for `Spring 2026` |
+| Event name / date | Search for `IEDRC Faculty Retreat` and `Spring 2026` |
 | SAC colors (red/gold) | Search for `--red` and `--gold` in the `<style>` block |
 | Hero title and subtitle | Search for `AI as Your` in the `<section class="hero">` block |
 | Module content / steps | Search for `Module 01`, `Module 02`, etc. |

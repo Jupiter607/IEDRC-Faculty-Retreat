@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI as Your Curriculum Partner — IEDRC Faculty Retreat</title>
   <meta name="description" content="A self-paced workshop for IEDRC Faculty Retreat: use AI to draft Course Outlines of Record, generate SLOs from labor market data, and build assessments and rubrics in minutes." />
-  <meta name="theme-color" content="#0b0e17" />
+  <meta name="theme-color" content="#06091A" />
   <meta property="og:title" content="AI as Your Curriculum Partner — IEDRC Faculty Retreat" />
   <meta property="og:description" content="Self-paced faculty workshop: COR drafting, SLOs from labor market data, rubrics in minutes. No prior AI experience needed." />
   <meta property="og:type" content="website" />
@@ -18,17 +18,33 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: #C8102E;
-      --gold: #E5A823;
-      --accent: #00c896;
-      --purple: #7c6aff;
-      --blue: #4fc3f7;
-      --bg: #0b0e17;
-      --surface: #111520;
-      --surface2: #181d2e;
-      --border: rgba(255,255,255,0.08);
-      --text: #eef0f6;
-      --muted: #8892a4;
+      /* IEDRC brand palette — extracted from desertcolleges.org */
+      --navy: #1A2C57;          /* Primary brand navy */
+      --navy-deep: #0F1B3D;     /* Deeper navy for darkest surfaces */
+      --navy-soft: #4C5E89;     /* Muted navy for secondary text */
+      --orange: #F06937;        /* Brand sunrise orange */
+      --orange-deep: #C05B28;   /* Logo "I" deep orange */
+      --orange-light: #F18A2D;  /* Lighter orange/amber */
+      --cream: #F7F3E9;         /* Warm card background */
+      --tan: #DFD1A7;           /* Warm tan accent */
+      --cyan: #00B1D9;          /* Cyan accent */
+      --sky: #389BD9;           /* Mid blue */
+
+      /* Semantic tokens (mapped to IEDRC palette so legacy class names still work) */
+      --red: var(--orange);            /* "red" accents become brand orange */
+      --gold: var(--orange-light);     /* "gold" accents become amber */
+      --accent: var(--orange);         /* Primary action accent = brand orange */
+      --purple: var(--cyan);
+      --blue: var(--sky);
+
+      /* Dark theme surfaces — navy-tinted neutrals to feel branded */
+      --bg: #06091A;            /* Deep midnight navy */
+      --surface: #0E1530;       /* Navy surface */
+      --surface2: #14213F;      /* Elevated navy surface */
+      --border: rgba(255,255,255,0.10);
+      --text: #F2F4F9;
+      --muted: #9AA4BE;
+
       --heading: 'Syne', sans-serif;
       --body: 'DM Sans', sans-serif;
     }
@@ -50,7 +66,7 @@
       top: 0; left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, var(--red), var(--gold), var(--accent));
+      background: linear-gradient(90deg, var(--orange-deep), var(--orange), var(--orange-light));
       z-index: 300;
       transition: width 0.15s linear;
       will-change: width;
@@ -60,7 +76,7 @@
       position: sticky;
       top: 3px;
       z-index: 100;
-      background: rgba(11,14,23,0.92);
+      background: rgba(6,9,26,0.92);
       -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -79,9 +95,35 @@
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .nav-brand .dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; display: inline-block; }
+    .nav-brand .brand-mark {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-brand .brand-text {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: 2px;
+    }
+    .nav-brand .brand-text strong {
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .nav-brand .brand-text small {
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
     .nav-links {
       display: flex;
@@ -150,10 +192,43 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(229,168,35,0.06) 0%, transparent 60%),
-                  radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0,200,150,0.05) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(240,105,55,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 50% 100%, rgba(26,44,87,0.65) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 15% 60%, rgba(241,138,45,0.08) 0%, transparent 65%);
       pointer-events: none;
+    }
+    /* Sun-ray motif behind hero — IEDRC's signature visual element */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px; height: 260px;
+      background:
+        conic-gradient(from 200deg at 50% 100%,
+          transparent 0deg,
+          transparent 25deg,
+          rgba(240,105,55,0.22) 30deg,
+          transparent 38deg,
+          transparent 50deg,
+          rgba(241,138,45,0.18) 55deg,
+          transparent 63deg,
+          transparent 75deg,
+          rgba(240,105,55,0.22) 80deg,
+          transparent 88deg,
+          transparent 100deg,
+          rgba(241,138,45,0.18) 105deg,
+          transparent 113deg,
+          transparent 125deg,
+          rgba(240,105,55,0.22) 130deg,
+          transparent 138deg,
+          transparent 360deg);
+      mask: radial-gradient(circle at 50% 100%, black 0%, black 60%, transparent 75%);
+      -webkit-mask: radial-gradient(circle at 50% 100%, black 0%, black 60%, transparent 75%);
+      pointer-events: none;
+      opacity: 0.85;
     }
 
     .hero-grid {
@@ -170,9 +245,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(200,16,46,0.12);
-      border: 1px solid rgba(200,16,46,0.3);
-      color: #ff7a8a;
+      background: rgba(240,105,55,0.12);
+      border: 1px solid rgba(240,105,55,0.4);
+      color: var(--orange-light);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -182,6 +257,11 @@
       margin-bottom: 2rem;
       animation: fadeUp 0.6s ease both;
       position: relative;
+    }
+    .hero-badge .iedrc-mark {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
     }
 
     .hero h1 {
@@ -195,9 +275,9 @@
       position: relative;
     }
 
-    .hero h1 .text-red { color: var(--red); }
-    .hero h1 .text-gold { color: var(--gold); }
-    .hero h1 .text-accent { color: var(--accent); }
+    .hero h1 .text-red { color: var(--orange); }
+    .hero h1 .text-gold { color: var(--orange-light); }
+    .hero h1 .text-accent { color: var(--orange); }
 
     .hero-sub {
       font-size: 17px;
@@ -241,18 +321,20 @@
       position: relative;
     }
 
+    /* IEDRC pill-shaped CTA buttons */
     .btn-primary {
-      background: var(--red);
+      background: var(--orange);
       color: #fff;
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
-      padding: 12px 28px;
-      border-radius: 10px;
+      padding: 13px 32px;
+      border-radius: 999px;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
       display: inline-block;
+      box-shadow: 0 4px 14px rgba(240,105,55,0.25);
     }
-    .btn-primary:hover { background: #e01535; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,16,46,0.3); }
+    .btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(192,91,40,0.4); }
     .btn-primary:active { transform: translateY(0); }
 
     .btn-outline {
@@ -261,13 +343,13 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 14px;
-      padding: 12px 28px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      padding: 13px 32px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255,255,255,0.25);
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
       display: inline-block;
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.25); background: var(--surface); transform: translateY(-1px); }
+    .btn-outline:hover { border-color: var(--orange); background: rgba(240,105,55,0.08); color: #fff; transform: translateY(-1px); }
     .btn-outline:active { transform: translateY(0); }
 
     section { padding: 5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
@@ -278,7 +360,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--orange);
       margin-bottom: 0.6rem;
     }
 
@@ -363,11 +445,11 @@
       display: block;
       margin-bottom: 0.75rem;
     }
-    .path-card:nth-child(1)::before { color: var(--red); }
-    .path-card:nth-child(2)::before { color: var(--gold); }
-    .path-card:nth-child(3)::before { color: var(--accent); }
-    .path-card:nth-child(4)::before { color: var(--purple); }
-    .path-card:nth-child(5)::before { color: var(--blue); }
+    .path-card:nth-child(1)::before { color: var(--orange-deep); }
+    .path-card:nth-child(2)::before { color: var(--orange); }
+    .path-card:nth-child(3)::before { color: var(--orange-light); }
+    .path-card:nth-child(4)::before { color: var(--cyan); }
+    .path-card:nth-child(5)::before { color: var(--sky); }
 
     .path-card h3 { font-family: var(--heading); font-size: 15px; font-weight: 700; margin-bottom: 0.4rem; }
     .path-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-bottom: 0.75rem; }
@@ -451,8 +533,8 @@
       padding: 3px 9px;
       border-radius: 5px;
     }
-    .aud-faculty { background: rgba(0,200,150,0.12); color: #00c896; }
-    .aud-all { background: rgba(229,168,35,0.12); color: #ffb74d; }
+    .aud-faculty { background: rgba(240,105,55,0.14); color: var(--orange-light); }
+    .aud-all { background: rgba(0,177,217,0.14); color: var(--cyan); }
 
     .card-title {
       font-family: var(--heading);
@@ -501,7 +583,7 @@
       gap: 6px;
       -webkit-tap-highlight-color: transparent;
     }
-    .card-toggle:hover { background: rgba(0,200,150,0.07); border-color: var(--accent); }
+    .card-toggle:hover { background: rgba(240,105,55,0.08); border-color: var(--orange); color: var(--orange-light); }
 
     .card-steps {
       overflow: hidden;
@@ -565,25 +647,25 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--orange-light);
       min-width: 0;
     }
 
     .copy-btn {
-      background: rgba(229,168,35,0.12);
-      border: 1px solid rgba(229,168,35,0.25);
-      color: var(--gold);
+      background: rgba(240,105,55,0.12);
+      border: 1px solid rgba(240,105,55,0.3);
+      color: var(--orange-light);
       font-family: var(--body);
       font-size: 11px;
       font-weight: 600;
       padding: 4px 12px;
-      border-radius: 6px;
+      border-radius: 999px;
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s, color 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
-    .copy-btn:hover { background: rgba(229,168,35,0.2); border-color: rgba(229,168,35,0.4); }
-    .copy-btn.copied { background: rgba(0,200,150,0.15); border-color: rgba(0,200,150,0.3); color: var(--accent); }
+    .copy-btn:hover { background: rgba(240,105,55,0.22); border-color: var(--orange); color: #fff; }
+    .copy-btn.copied { background: rgba(0,177,217,0.15); border-color: rgba(0,177,217,0.4); color: var(--cyan); }
 
     .sample-text {
       background: var(--bg);
@@ -629,11 +711,11 @@
       -webkit-tap-highlight-color: transparent;
     }
     .filter-tab:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
-    .filter-tab.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-    .filter-tab[data-disc="health"].active { background: #ff6b9d; border-color: #ff6b9d; }
-    .filter-tab[data-disc="business"].active { background: var(--gold); border-color: var(--gold); color: #0b0e17; }
-    .filter-tab[data-disc="construction"].active { background: #ff8c00; border-color: #ff8c00; color: #0b0e17; }
-    .filter-tab[data-disc="ict"].active { background: var(--purple); border-color: var(--purple); }
+    .filter-tab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .filter-tab[data-disc="health"].active { background: var(--orange); border-color: var(--orange); }
+    .filter-tab[data-disc="business"].active { background: var(--orange-deep); border-color: var(--orange-deep); color: #fff; }
+    .filter-tab[data-disc="construction"].active { background: var(--orange-light); border-color: var(--orange-light); color: var(--navy-deep); }
+    .filter-tab[data-disc="ict"].active { background: var(--cyan); border-color: var(--cyan); color: var(--navy-deep); }
 
     .prompts-grid {
       display: grid;
@@ -668,14 +750,14 @@
       padding: 3px 9px;
       border-radius: 5px;
     }
-    .ptag-cor { background: rgba(200,16,46,0.12); color: #ff8a8a; }
-    .ptag-slo { background: rgba(0,200,150,0.12); color: #00c896; }
-    .ptag-assessment { background: rgba(124,106,255,0.15); color: #a598ff; }
-    .ptag-rubric { background: rgba(229,168,35,0.12); color: var(--gold); }
-    .ptag-health { background: rgba(255,107,157,0.12); color: #ff6b9d; }
-    .ptag-business { background: rgba(229,168,35,0.12); color: var(--gold); }
-    .ptag-construction { background: rgba(255,140,0,0.12); color: #ff8c00; }
-    .ptag-ict { background: rgba(124,106,255,0.12); color: var(--purple); }
+    .ptag-cor { background: rgba(240,105,55,0.14); color: var(--orange-light); }
+    .ptag-slo { background: rgba(0,177,217,0.14); color: var(--cyan); }
+    .ptag-assessment { background: rgba(76,94,137,0.20); color: #a8b3cf; }
+    .ptag-rubric { background: rgba(241,138,45,0.14); color: var(--orange-light); }
+    .ptag-health { background: rgba(240,105,55,0.14); color: var(--orange-light); }
+    .ptag-business { background: rgba(223,209,167,0.18); color: var(--tan); }
+    .ptag-construction { background: rgba(192,91,40,0.16); color: #f0a070; }
+    .ptag-ict { background: rgba(0,177,217,0.14); color: var(--cyan); }
     .ptag-all { background: rgba(255,255,255,0.07); color: var(--muted); }
 
     .prompt-title {
@@ -711,7 +793,7 @@
       transition: background 0.2s, border-color 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
-    .prompt-toggle:hover { background: rgba(0,200,150,0.07); border-color: var(--accent); }
+    .prompt-toggle:hover { background: rgba(240,105,55,0.08); border-color: var(--orange); color: var(--orange-light); }
 
     .prompt-content {
       overflow: hidden;
@@ -757,9 +839,9 @@
       top: 0; left: 0; right: 0;
       height: 3px;
     }
-    .warn-card.warn-red::before { background: linear-gradient(90deg, var(--red), #ff6b6b); }
-    .warn-card.warn-gold::before { background: linear-gradient(90deg, var(--gold), #ffcc70); }
-    .warn-card.warn-blue::before { background: linear-gradient(90deg, var(--blue), #81d4fa); }
+    .warn-card.warn-red::before { background: linear-gradient(90deg, var(--orange-deep), var(--orange)); }
+    .warn-card.warn-gold::before { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+    .warn-card.warn-blue::before { background: linear-gradient(90deg, var(--navy-soft), var(--cyan)); }
 
     .warn-icon {
       width: 44px; height: 44px;
@@ -770,9 +852,9 @@
       font-size: 22px;
       margin-bottom: 1rem;
     }
-    .warn-red .warn-icon { background: rgba(200,16,46,0.12); }
-    .warn-gold .warn-icon { background: rgba(229,168,35,0.12); }
-    .warn-blue .warn-icon { background: rgba(79,195,247,0.12); }
+    .warn-red .warn-icon { background: rgba(192,91,40,0.16); }
+    .warn-gold .warn-icon { background: rgba(241,138,45,0.16); }
+    .warn-blue .warn-icon { background: rgba(0,177,217,0.16); }
 
     .warn-title {
       font-family: var(--heading);
@@ -838,7 +920,7 @@
     }
     .check-row:hover { border-color: rgba(255,255,255,0.14); background: var(--surface2); }
     .check-row:active { transform: scale(0.98); }
-    .check-row.done { border-color: rgba(0,200,150,0.25); }
+    .check-row.done { border-color: rgba(240,105,55,0.4); }
     .check-row.done .check-text strong { text-decoration: line-through; color: var(--muted); }
 
     .check-box {
@@ -852,11 +934,11 @@
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       margin-top: 1px;
     }
-    .check-row.done .check-box { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+    .check-row.done .check-box { background: var(--orange); border-color: var(--orange); transform: scale(1.1); }
     .check-row.done .check-box::after {
       content: '';
       width: 5px; height: 9px;
-      border: 2px solid #0b0e17;
+      border: 2px solid #fff;
       border-top: none;
       border-left: none;
       transform: rotate(45deg) translateY(-1px);
@@ -879,12 +961,12 @@
       color: var(--muted);
     }
     .checklist-bar-track { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
-    .checklist-bar-fill { height: 100%; width: 0%; border-radius: 2px; background: var(--accent); transition: width 0.3s ease; }
+    .checklist-bar-fill { height: 100%; width: 0%; border-radius: 2px; background: linear-gradient(90deg, var(--orange-deep), var(--orange), var(--orange-light)); transition: width 0.3s ease; }
     .checklist-count { font-weight: 600; font-family: var(--heading); color: var(--accent); white-space: nowrap; }
 
     /* ---- Jargon tooltips ---- */
-    .jargon { cursor: help; border-bottom: 1.5px dotted var(--accent); color: inherit; font-weight: inherit; }
-    .jargon:hover { color: var(--accent); }
+    .jargon { cursor: help; border-bottom: 1.5px dotted var(--orange); color: inherit; font-weight: inherit; }
+    .jargon:hover { color: var(--orange-light); }
 
     .tag-popover {
       position: fixed;
@@ -918,8 +1000,8 @@
 
     /* ---- Info banner ---- */
     .info-banner {
-      background: rgba(229,168,35,0.07);
-      border: 1px solid rgba(229,168,35,0.2);
+      background: rgba(240,105,55,0.07);
+      border: 1px solid rgba(240,105,55,0.25);
       border-radius: 12px;
       padding: 1rem 1.25rem;
       font-size: 13.5px;
@@ -931,42 +1013,57 @@
       align-items: flex-start;
     }
     .info-banner-icon { font-size: 18px; flex-shrink: 0; }
-    .info-banner strong { color: var(--gold); }
+    .info-banner strong { color: var(--orange-light); }
 
     /* ---- Footer ---- */
     footer {
       border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(26,44,87,0.18) 100%);
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
       font-size: 13px;
       color: var(--muted);
     }
-    footer strong { color: var(--red); }
+    footer .footer-mark {
+      width: 48px; height: 48px;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    footer strong { color: var(--orange-light); }
+    footer .footer-tagline {
+      display: block;
+      font-family: var(--heading);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
+    }
 
     /* ---- Back to top ---- */
     .back-to-top {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 42px; height: 42px;
+      width: 44px; height: 44px;
       border-radius: 50%;
-      background: var(--accent);
-      color: var(--bg);
+      background: var(--orange);
+      color: #fff;
       border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(0,200,150,0.3);
+      box-shadow: 0 6px 20px rgba(240,105,55,0.35);
       opacity: 0;
       visibility: hidden;
       transform: translateY(12px);
-      transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+      transition: opacity 0.25s, visibility 0.25s, transform 0.25s, background 0.2s;
       z-index: 120;
       -webkit-tap-highlight-color: transparent;
     }
     .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-    .back-to-top:hover { filter: brightness(1.15); }
+    .back-to-top:hover { background: var(--orange-deep); }
     .back-to-top svg { display: block; }
 
     /* ---- Animations ---- */
@@ -1067,82 +1164,116 @@
     .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
     .theme-toggle svg { display: block; }
 
-    /* ---- Light theme ---- */
+    /* ---- Light theme — IEDRC cream + navy ---- */
     html.light {
-      --bg: #f5f6fa;
-      --surface: #ffffff;
-      --surface2: #eef0f6;
-      --border: rgba(0,0,0,0.09);
-      --text: #1a1d27;
-      --muted: #5a6275;
+      --bg: #FFFFFF;
+      --surface: #F7F3E9;          /* IEDRC cream */
+      --surface2: #EFE8D6;
+      --border: rgba(26,44,87,0.12);
+      --text: #1A2C57;             /* IEDRC navy */
+      --muted: #4C5E89;            /* IEDRC muted navy */
       color-scheme: light;
     }
-    html.light nav { background: rgba(245,246,250,0.92); }
-    html.light .nav-links { background: rgba(245,246,250,0.97) !important; }
+    html.light nav { background: rgba(255,255,255,0.94); border-bottom-color: rgba(26,44,87,0.10); }
+    html.light .nav-links { background: rgba(255,255,255,0.98) !important; }
+    html.light .nav-brand .brand-text small { color: var(--navy-soft); }
     html.light .hero::before {
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.06) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(229,168,35,0.04) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(240,105,55,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(247,243,233,0.9) 0%, transparent 60%);
     }
-    html.light .hero-grid { background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px); }
-    html.light .hero-badge { background: rgba(200,16,46,0.07); border-color: rgba(200,16,46,0.18); color: var(--red); }
-    html.light .sample-text { background: #eef0f6; color: #2a2f3d; }
+    html.light .hero::after { opacity: 0.6; }
+    html.light .hero-grid { background-image: linear-gradient(rgba(26,44,87,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,44,87,0.04) 1px, transparent 1px); }
+    html.light .hero-badge { background: rgba(240,105,55,0.10); border-color: rgba(240,105,55,0.35); color: var(--orange-deep); }
+    html.light .hero h1 .text-red { color: var(--orange-deep); }
+    html.light .hero h1 .text-gold { color: var(--orange); }
+    html.light .hero-sub { color: var(--navy-soft); }
+    html.light .chip { background: var(--cream); border-color: rgba(26,44,87,0.12); color: var(--navy-soft); }
+    html.light .sample-text { background: #FAF6EC; color: #1A2C57; border-color: rgba(26,44,87,0.10); }
+    html.light .check-row { background: var(--cream); border-color: rgba(26,44,87,0.10); }
+    html.light .check-row:hover { background: #FAF6EC; border-color: rgba(26,44,87,0.18); }
     html.light .check-row.done .check-box::after { border-color: #fff; }
-    html.light .a11y-panel { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
-    html.light .hero h1 .text-gold { color: #b88200; }
-    html.light .nav-links a.active { color: #00875a; }
-    html.light .nav-links a.active::after { background: #00875a; }
-    html.light .section-eyebrow { color: #00875a; }
-    /* Light theme: text on tinted backgrounds needs darker shades */
-    html.light .aud-faculty { background: rgba(0,150,110,0.14); color: #00875a; }
-    html.light .aud-all { background: rgba(180,120,0,0.14); color: #b87000; }
-    html.light .ptag-cor { background: rgba(200,16,46,0.1); color: #b40023; }
-    html.light .ptag-slo { background: rgba(0,150,110,0.12); color: #00875a; }
-    html.light .ptag-assessment { background: rgba(100,80,200,0.12); color: #5040b0; }
-    html.light .ptag-rubric { background: rgba(180,120,0,0.12); color: #8a5a00; }
-    html.light .ptag-health { background: rgba(220,60,120,0.12); color: #b03060; }
-    html.light .ptag-business { background: rgba(180,120,0,0.12); color: #8a5a00; }
-    html.light .ptag-construction { background: rgba(220,100,0,0.12); color: #a05400; }
-    html.light .ptag-ict { background: rgba(100,80,200,0.12); color: #5040b0; }
-    html.light .ptag-all { background: rgba(0,0,0,0.06); color: var(--muted); }
-    html.light .filter-tab.active { color: #fff; }
-    html.light .filter-tab[data-disc="business"].active { color: #fff; background: #b87000; border-color: #b87000; }
-    html.light .filter-tab[data-disc="construction"].active { color: #fff; background: #a05400; border-color: #a05400; }
-    html.light .card-toggle, html.light .prompt-toggle { color: #00875a; }
-    html.light .card-toggle:hover, html.light .prompt-toggle:hover { background: rgba(0,150,110,0.08); border-color: #00875a; }
-    html.light .checklist-count { color: #00875a; }
-    html.light .checklist-bar-fill { background: #00875a; }
-    html.light .check-row.done { border-color: rgba(0,150,110,0.3); }
-    html.light .check-row.done .check-box { background: #00875a; border-color: #00875a; }
-    html.light .info-banner { background: rgba(180,120,0,0.07); border-color: rgba(180,120,0,0.25); }
-    html.light .info-banner strong { color: #8a5a00; }
-    html.light .copy-btn { background: rgba(180,120,0,0.1); border-color: rgba(180,120,0,0.3); color: #8a5a00; }
-    html.light .copy-btn:hover { background: rgba(180,120,0,0.18); }
-    html.light .copy-btn.copied { background: rgba(0,150,110,0.12); border-color: rgba(0,150,110,0.3); color: #00875a; }
-    html.light .sample-label { color: #8a5a00; }
-    html.light .agenda-time { color: #8a5a00; }
-    html.light .warn-card.warn-gold .warn-icon { background: rgba(180,120,0,0.14); }
-    html.light .warn-card.warn-gold .warn-tip { border-color: #b87000; }
-    html.light .agenda-phase[style*="--gold"] { color: #b87000 !important; }
-    html.light .back-to-top { background: #00875a; color: #fff; box-shadow: 0 4px 16px rgba(0,135,90,0.3); }
-    html.light .progress-bar { background: linear-gradient(90deg, #b40023, #b87000, #00875a); }
-    html.light .jargon { border-bottom-color: #00875a; }
-    html.light .jargon:hover { color: #00875a; }
-    html.light .a11y-hint { border-color: #00875a; }
-    html.light .resource-card:hover { background: var(--surface2); }
-    html.light .reader-btn { color: #00875a; }
-    html.light .skip-link { background: #00875a; color: #fff; }
+    html.light .a11y-panel { background: #fff; box-shadow: 0 8px 30px rgba(26,44,87,0.15); border-color: rgba(26,44,87,0.10); }
+    html.light .nav-links a { color: var(--navy-soft); }
+    html.light .nav-links a:hover { color: var(--orange-deep); background: rgba(240,105,55,0.08); }
+    html.light .nav-links a.active { color: var(--orange-deep); }
+    html.light .nav-links a.active::after { background: var(--orange-deep); }
+    html.light .section-eyebrow { color: var(--orange-deep); }
+    html.light .module-card, html.light .prompt-card, html.light .path-card, html.light .resource-card, html.light .warn-card { background: #fff; border-color: rgba(26,44,87,0.10); }
+    html.light .module-card:hover, html.light .prompt-card:hover, html.light .path-card:hover, html.light .resource-card:hover { border-color: rgba(240,105,55,0.4); background: #FFFEFB; }
+    html.light .step-badge { background: var(--cream); color: var(--navy); }
+    html.light .step-item { color: var(--navy-soft); }
+    html.light .card-vibe, html.light .prompt-vibe { color: var(--navy-soft); }
+    html.light .card-num, html.light .prompt-num { color: var(--navy-soft); }
+    /* Light theme: tinted badges with IEDRC tints, darker text for AA contrast */
+    html.light .aud-faculty { background: rgba(240,105,55,0.12); color: var(--orange-deep); }
+    html.light .aud-all { background: rgba(0,108,170,0.12); color: #003775; }
+    html.light .ptag-cor { background: rgba(240,105,55,0.12); color: var(--orange-deep); }
+    html.light .ptag-slo { background: rgba(0,108,170,0.12); color: #003775; }
+    html.light .ptag-assessment { background: rgba(76,94,137,0.16); color: var(--navy); }
+    html.light .ptag-rubric { background: rgba(241,138,45,0.14); color: #8a4a08; }
+    html.light .ptag-health { background: rgba(240,105,55,0.12); color: var(--orange-deep); }
+    html.light .ptag-business { background: rgba(241,138,45,0.14); color: #8a4a08; }
+    html.light .ptag-construction { background: rgba(192,91,40,0.14); color: var(--orange-deep); }
+    html.light .ptag-ict { background: rgba(0,108,170,0.12); color: #003775; }
+    html.light .ptag-all { background: rgba(26,44,87,0.06); color: var(--navy-soft); }
+    html.light .filter-tab { background: #fff; border-color: rgba(26,44,87,0.15); color: var(--navy-soft); }
+    html.light .filter-tab:hover { border-color: var(--orange); color: var(--orange-deep); }
+    html.light .filter-tab.active { color: #fff; background: var(--orange); border-color: var(--orange); }
+    html.light .filter-tab[data-disc="business"].active { color: #fff; background: var(--orange-deep); border-color: var(--orange-deep); }
+    html.light .filter-tab[data-disc="construction"].active { color: #fff; background: var(--orange-deep); border-color: var(--orange-deep); }
+    html.light .filter-tab[data-disc="ict"].active { color: #fff; background: #0669A7; border-color: #0669A7; }
+    html.light .card-toggle, html.light .prompt-toggle { color: var(--orange-deep); border-color: rgba(26,44,87,0.18); }
+    html.light .card-toggle:hover, html.light .prompt-toggle:hover { background: rgba(240,105,55,0.08); border-color: var(--orange); color: var(--orange-deep); }
+    html.light .checklist-count { color: var(--orange-deep); }
+    html.light .checklist-bar-track { background: rgba(26,44,87,0.08); }
+    html.light .checklist-bar-fill { background: linear-gradient(90deg, var(--orange-deep), var(--orange), var(--orange-light)); }
+    html.light .check-row.done { border-color: rgba(240,105,55,0.4); }
+    html.light .check-row.done .check-box { background: var(--orange); border-color: var(--orange); }
+    html.light .info-banner { background: rgba(240,105,55,0.06); border-color: rgba(240,105,55,0.25); color: var(--navy-soft); }
+    html.light .info-banner strong { color: var(--orange-deep); }
+    html.light .copy-btn { background: rgba(240,105,55,0.10); border-color: rgba(240,105,55,0.35); color: var(--orange-deep); }
+    html.light .copy-btn:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+    html.light .copy-btn.copied { background: rgba(0,108,170,0.12); border-color: rgba(0,108,170,0.35); color: #003775; }
+    html.light .sample-label { color: var(--orange-deep); }
+    html.light .sample-block { border-top-color: rgba(26,44,87,0.10); }
+    html.light .warn-card.warn-gold .warn-icon { background: rgba(241,138,45,0.16); }
+    html.light .warn-card.warn-gold .warn-tip { border-color: var(--orange); }
+    html.light .warn-card.warn-red .warn-tip { border-color: var(--orange-deep); }
+    html.light .warn-card.warn-blue .warn-icon { background: rgba(0,177,217,0.16); }
+    html.light .warn-card.warn-blue .warn-tip { border-color: #0669A7; }
+    html.light .warn-tip { background: var(--cream); }
+    html.light .back-to-top { background: var(--orange); color: #fff; box-shadow: 0 6px 20px rgba(240,105,55,0.35); }
+    html.light .back-to-top:hover { background: var(--orange-deep); }
+    html.light .progress-bar { background: linear-gradient(90deg, var(--orange-deep), var(--orange), var(--orange-light)); }
+    html.light .jargon { border-bottom-color: var(--orange); }
+    html.light .jargon:hover { color: var(--orange-deep); }
+    html.light .resource-arrow, html.light .resource-card { color: var(--navy); }
+    html.light .resource-info strong { color: var(--navy); }
+    html.light .resource-info span { color: var(--navy-soft); }
+    html.light footer { background: var(--cream); }
+    html.light footer .footer-tagline { color: var(--navy); }
+    html.light footer strong { color: var(--orange-deep); }
+    html.light .skip-link { background: var(--orange); color: #fff; }
+    html.light .theme-toggle, html.light .a11y-btn { border-color: rgba(26,44,87,0.20); color: var(--navy); }
+    html.light .theme-toggle:hover, html.light .a11y-btn:hover { background: var(--cream); border-color: var(--orange); }
 
-    /* ---- High contrast theme ---- */
+    /* ---- High contrast theme — IEDRC palette tuned for AAA contrast ---- */
     html.high-contrast {
       --bg: #000000;
       --surface: #0a0a0a;
       --surface2: #111111;
-      --border: rgba(255,255,255,0.35);
+      --border: rgba(255,255,255,0.40);
       --text: #ffffff;
-      --muted: #d0d0d0;
-      --accent: #00ffb8;
-      --red: #ff3350;
-      --gold: #ffc530;
+      --muted: #e6e6e6;
+      --orange: #FF8A4C;          /* Brighter orange for AAA contrast on black */
+      --orange-light: #FFB070;
+      --orange-deep: #F06937;
+      --cyan: #4FD8FF;
+      --sky: #4FD8FF;
+      --accent: #FF8A4C;
+      --red: #FF8A4C;
+      --gold: #FFB070;
       color-scheme: dark;
     }
     html.high-contrast nav { background: rgba(0,0,0,0.96); }
@@ -1150,18 +1281,20 @@
     html.high-contrast .check-row.done .check-box::after { border-color: #000; }
     html.high-contrast .hero-badge { border-width: 2px; }
     html.high-contrast .jargon { border-bottom-width: 2px; }
-    html.high-contrast .aud-faculty { background: rgba(0,255,184,0.15); color: var(--accent); border: 1px solid var(--accent); }
-    html.high-contrast .aud-all { background: rgba(255,197,48,0.15); color: var(--gold); border: 1px solid var(--gold); }
-    html.high-contrast .ptag-cor, html.high-contrast .ptag-health { color: var(--red); border: 1px solid var(--red); background: rgba(255,51,80,0.12); }
-    html.high-contrast .ptag-slo, html.high-contrast .ptag-construction { color: var(--gold); border: 1px solid var(--gold); background: rgba(255,197,48,0.12); }
-    html.high-contrast .ptag-rubric, html.high-contrast .ptag-business { color: var(--gold); border: 1px solid var(--gold); background: rgba(255,197,48,0.12); }
-    html.high-contrast .ptag-assessment, html.high-contrast .ptag-ict { color: var(--accent); border: 1px solid var(--accent); background: rgba(0,255,184,0.12); }
+    html.high-contrast .aud-faculty { background: rgba(255,138,76,0.15); color: var(--orange); border: 1px solid var(--orange); }
+    html.high-contrast .aud-all { background: rgba(79,216,255,0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    html.high-contrast .ptag-cor, html.high-contrast .ptag-health { color: var(--orange); border: 1px solid var(--orange); background: rgba(255,138,76,0.12); }
+    html.high-contrast .ptag-slo, html.high-contrast .ptag-ict { color: var(--cyan); border: 1px solid var(--cyan); background: rgba(79,216,255,0.12); }
+    html.high-contrast .ptag-rubric, html.high-contrast .ptag-business { color: var(--orange-light); border: 1px solid var(--orange-light); background: rgba(255,176,112,0.12); }
+    html.high-contrast .ptag-assessment, html.high-contrast .ptag-construction { color: var(--orange); border: 1px solid var(--orange); background: rgba(255,138,76,0.12); }
     html.high-contrast .ptag-all { color: var(--text); border: 1px solid var(--border); background: var(--surface2); }
-    html.high-contrast .card-toggle, html.high-contrast .prompt-toggle { color: var(--accent); border-color: var(--accent); }
+    html.high-contrast .card-toggle, html.high-contrast .prompt-toggle { color: var(--orange); border-color: var(--orange); border-width: 2px; }
     html.high-contrast .filter-tab { border-width: 2px; }
-    html.high-contrast .filter-tab.active { color: #000; }
+    html.high-contrast .filter-tab.active { color: #000; background: var(--orange); border-color: var(--orange); }
     html.high-contrast .check-box { border-width: 2px; }
-    html.high-contrast .copy-btn { border-width: 2px; }
+    html.high-contrast .copy-btn { border-width: 2px; background: rgba(255,138,76,0.15); color: var(--orange); border-color: var(--orange); }
+    html.high-contrast .back-to-top { background: var(--orange); color: #000; }
+    html.high-contrast .progress-bar { background: var(--orange); }
 
     /* ---- Responsive ---- */
     @media (max-width: 768px) {
@@ -1228,10 +1361,37 @@
 <div class="progress-bar" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Page scroll progress"></div>
 
 <nav aria-label="Main navigation">
-  <div class="nav-brand">
-    <span class="dot"></span>
-    AI Curriculum Partner
-  </div>
+  <a href="#home" class="nav-brand" aria-label="IEDRC AI Curriculum Partner — back to top">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <!-- IEDRC mountain + sunrise miniature mark -->
+        <defs>
+          <linearGradient id="navy-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2A4078"/>
+            <stop offset="100%" stop-color="#1A2C57"/>
+          </linearGradient>
+        </defs>
+        <!-- Sun rays -->
+        <g stroke="#F06937" stroke-width="2" stroke-linecap="round">
+          <line x1="30" y1="6"  x2="30" y2="12"/>
+          <line x1="18" y1="9"  x2="20.5" y2="14.5"/>
+          <line x1="42" y1="9"  x2="39.5" y2="14.5"/>
+          <line x1="10" y1="18" x2="15" y2="20.5"/>
+          <line x1="50" y1="18" x2="45" y2="20.5"/>
+        </g>
+        <!-- Sun -->
+        <circle cx="30" cy="22" r="5" fill="#F18A2D"/>
+        <!-- Mountains -->
+        <path d="M4 46 L18 26 L26 36 L34 22 L48 40 L56 46 Z" fill="url(#navy-grad)"/>
+        <!-- Desert curve at base -->
+        <path d="M4 50 Q30 42 56 50 L56 54 Q30 48 4 54 Z" fill="#F06937"/>
+      </svg>
+    </span>
+    <span class="brand-text">
+      <strong>IEDRC</strong>
+      <small>AI Curriculum Partner</small>
+    </span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#resources" onclick="closeNav()">Resources</a></li>
     <li><a href="#overview" onclick="closeNav()">Overview</a></li>
@@ -1279,16 +1439,24 @@
 <section class="hero" id="home">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-badge">
-    <span style="width:6px;height:6px;background:var(--red);border-radius:50%;display:inline-block;"></span>
+    <svg class="iedrc-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="#F06937" stroke-width="3" stroke-linecap="round">
+        <line x1="30" y1="6" x2="30" y2="14"/>
+        <line x1="14" y1="10" x2="18" y2="17"/>
+        <line x1="46" y1="10" x2="42" y2="17"/>
+      </g>
+      <circle cx="30" cy="24" r="6" fill="#F18A2D"/>
+      <path d="M4 50 L20 26 L28 38 L36 22 L52 44 L56 50 Z" fill="#1A2C57"/>
+    </svg>
     IEDRC Faculty Retreat · Self-Paced
   </div>
   <h1>AI as Your<br /><span class="text-red">Curriculum</span> <span class="text-gold">Partner</span></h1>
   <p class="hero-sub">Stop spending evenings rewriting <span class="jargon" data-tip="Course Outline of Record — the official catalog document that defines a course's description, objectives, content, and assessment methods. Required by ACCJC for every credit course.">CORs</span>. Let AI draft, refresh, and align your course outlines, <span class="jargon" data-tip="Student Learning Outcomes — statements that describe what students will know or be able to do upon completing a course. Must be measurable and assessed.">SLOs</span>, and rubrics while you steer the expertise. No prior AI experience needed.</p>
   <div class="hero-chips">
-    <div class="chip"><span class="pip" style="background:var(--accent)"></span> Self-paced · ~75 min</div>
-    <div class="chip"><span class="pip" style="background:var(--gold)"></span> ChatGPT or Claude or Gemini</div>
-    <div class="chip"><span class="pip" style="background:var(--red)"></span> Faculty</div>
-    <div class="chip"><span class="pip" style="background:var(--purple)"></span> Health · Business · Construction · ICT</div>
+    <div class="chip"><span class="pip" style="background:var(--orange)"></span> Self-paced · ~75 min</div>
+    <div class="chip"><span class="pip" style="background:var(--orange-light)"></span> ChatGPT or Claude or Gemini</div>
+    <div class="chip"><span class="pip" style="background:var(--cyan)"></span> Faculty</div>
+    <div class="chip"><span class="pip" style="background:var(--sky)"></span> Health · Business · Construction · ICT</div>
   </div>
   <div class="hero-cta">
     <a href="https://chatgpt.com" target="_blank" rel="noopener" class="btn-primary">Open ChatGPT (free)</a>
@@ -1305,7 +1473,7 @@
   </div>
   <div class="resource-grid">
     <a href="https://chatgpt.com" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(0,200,150,0.12);color:var(--accent);">GPT</div>
+      <div class="resource-icon" style="background:rgba(240,105,55,0.14);color:var(--orange-light);">GPT</div>
       <div class="resource-info">
         <strong>ChatGPT</strong>
         <span>Free account — GPT-4o recommended for curriculum work</span>
@@ -1313,7 +1481,7 @@
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
     <a href="https://claude.ai" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(229,168,35,0.12);color:var(--gold);">Cld</div>
+      <div class="resource-icon" style="background:rgba(241,138,45,0.14);color:var(--orange-light);">Cld</div>
       <div class="resource-info">
         <strong>Claude (Anthropic)</strong>
         <span>Excellent for long documents and policy-style writing</span>
@@ -1321,7 +1489,7 @@
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
     <a href="https://aistudio.google.com" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(200,16,46,0.12);color:var(--red);">AI</div>
+      <div class="resource-icon" style="background:rgba(192,91,40,0.16);color:#f0a070;">AI</div>
       <div class="resource-info">
         <strong>Google AI Studio</strong>
         <span>Upload PDFs &amp; use Gemini — free for faculty</span>
@@ -1329,7 +1497,7 @@
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
     <a href="https://www.onetonline.org" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(79,195,247,0.12);color:#4fc3f7;">O*N</div>
+      <div class="resource-icon" style="background:rgba(0,177,217,0.14);color:var(--cyan);">O*N</div>
       <div class="resource-info">
         <strong>O*NET Online</strong>
         <span>Official U.S. occupation tasks &amp; skills data — free</span>
@@ -1337,7 +1505,7 @@
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
     <a href="https://labormarketinfo.edd.ca.gov" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(124,106,255,0.12);color:#a598ff;">LMI</div>
+      <div class="resource-icon" style="background:rgba(76,94,137,0.20);color:#a8b3cf;">LMI</div>
       <div class="resource-info">
         <strong>CA Labor Market Info</strong>
         <span>California-specific wage &amp; employment projections (EDD)</span>
@@ -1345,7 +1513,7 @@
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
     <a href="https://www.accjc.org/accreditation-standards/" target="_blank" rel="noopener" class="resource-card reveal">
-      <div class="resource-icon" style="background:rgba(255,107,157,0.12);color:#ff6b9d;">ACC</div>
+      <div class="resource-icon" style="background:rgba(223,209,167,0.18);color:var(--tan);">ACC</div>
       <div class="resource-info">
         <strong>ACCJC Standards</strong>
         <span>Accreditation standards for verifying AI-generated language</span>
@@ -1406,12 +1574,12 @@
 
     <!-- MODULE 1 -->
     <div class="module-card reveal">
-      <div class="card-accent" style="background:linear-gradient(90deg,#C8102E,#ff6b6b);"></div>
+      <div class="card-accent" style="background:linear-gradient(90deg,#C05B28,#F06937);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 01</span><span class="card-audience aud-all">Everyone</span></div>
         <div class="card-title">AI as Your Curriculum Partner</div>
         <div class="card-vibe">Move from "AI generates content" to "AI is a first-draft specialist you direct." You are still the subject matter expert — the AI handles the blank-page problem.</div>
-        <div class="card-capability" style="background:rgba(200,16,46,0.1);color:#ff8a8a;" data-tip="You tell the AI who it is, what it knows, and how to behave before you ask it anything. This 'system prompt' or 'context setting' dramatically improves curriculum output quality.">Context-Setting Prompts</div>
+        <div class="card-capability" style="background:rgba(192,91,40,0.14);color:#f0a070;" data-tip="You tell the AI who it is, what it knows, and how to behave before you ask it anything. This 'system prompt' or 'context setting' dramatically improves curriculum output quality.">Context-Setting Prompts</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
           <div class="step-item"><div class="step-badge">1</div><div>Open ChatGPT, Claude, or Google AI Studio. Start a new chat. Before asking anything, set the scene — this is called a <span class="jargon" data-tip="A system prompt (or context-setter) is a paragraph you write before your first question that tells the AI its role, audience, and rules. Think of it as the AI's job description.">system prompt</span>.</div></div>
@@ -1440,12 +1608,12 @@ If you are asked to generate text that will go directly into a COR, remind me to
 
     <!-- MODULE 2 -->
     <div class="module-card reveal">
-      <div class="card-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="card-accent" style="background:linear-gradient(90deg,#F06937,#F18A2D);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 02</span><span class="card-audience aud-faculty">Faculty</span></div>
         <div class="card-title">Course Outlines of Record (COR)</div>
         <div class="card-vibe">Draft a new catalog description, refresh an outdated course objective list, or align course content to current discipline standards — in one conversation.</div>
-        <div class="card-capability" style="background:rgba(229,168,35,0.1);color:var(--gold);" data-tip="Paste your existing COR text (or just the catalog description) into the AI, tell it what's changed in the field, and ask it to revise. The AI produces a polished draft — you make the final judgment.">Document-in / Draft-out Workflow</div>
+        <div class="card-capability" style="background:rgba(241,138,45,0.14);color:var(--orange-light);" data-tip="Paste your existing COR text (or just the catalog description) into the AI, tell it what's changed in the field, and ask it to revise. The AI produces a polished draft — you make the final judgment.">Document-in / Draft-out Workflow</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
           <div class="step-item"><div class="step-badge">1</div><div>Start with the system prompt from Module 1 (or just paste it at the top of a new chat).</div></div>
@@ -1482,12 +1650,12 @@ Provide the revised description, then list 3 specific changes you made and why.<
 
     <!-- MODULE 3 -->
     <div class="module-card reveal">
-      <div class="card-accent" style="background:linear-gradient(90deg,#00c896,#7de8d0);"></div>
+      <div class="card-accent" style="background:linear-gradient(90deg,#1A2C57,#4C5E89);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 03</span><span class="card-audience aud-faculty">Faculty</span></div>
         <div class="card-title">SLOs Mapped to Labor Market</div>
         <div class="card-vibe">Use real O*NET occupation data to generate <span class="jargon" data-tip="Student Learning Outcomes — measurable statements of what students will be able to do upon completing a course. Required by ACCJC and used for program review.">SLOs</span> that demonstrate workforce relevance — one of the most powerful arguments you can make in a program review.</div>
-        <div class="card-capability" style="background:rgba(0,200,150,0.1);color:var(--accent);" data-tip="You paste raw O*NET task lists and wage data directly into the chat. The AI converts occupation data into properly-worded SLOs aligned to Bloom's Taxonomy — your job is to validate and select.">Labor Market → SLO Translation</div>
+        <div class="card-capability" style="background:rgba(240,105,55,0.14);color:var(--orange-light);" data-tip="You paste raw O*NET task lists and wage data directly into the chat. The AI converts occupation data into properly-worded SLOs aligned to Bloom's Taxonomy — your job is to validate and select.">Labor Market → SLO Translation</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
           <div class="step-item"><div class="step-badge">1</div><div>Go to <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--accent);">O*NET Online</a>. Search for an occupation your course prepares students for (e.g., "Registered Nurse," "Electrician," "Network Administrator").</div></div>
@@ -1530,12 +1698,12 @@ After the SLOs, provide a mapping table:
 
     <!-- MODULE 4 -->
     <div class="module-card reveal">
-      <div class="card-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="card-accent" style="background:linear-gradient(90deg,#0669A7,#00B1D9);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 04</span><span class="card-audience aud-faculty">Faculty</span></div>
         <div class="card-title">Assessments &amp; Rubrics</div>
         <div class="card-vibe">Design an authentic assessment task and a complete 4-level rubric in minutes. The AI builds the structure — you bring the discipline-specific expertise to validate it.</div>
-        <div class="card-capability" style="background:rgba(124,106,255,0.12);color:#a598ff;" data-tip="You provide the SLO text and the type of assessment (portfolio, demo, case study), and the AI generates both the task description and a complete rubric with 4-5 criteria and 4 performance levels.">SLO-Aligned Rubric Generation</div>
+        <div class="card-capability" style="background:rgba(76,94,137,0.20);color:#a8b3cf;" data-tip="You provide the SLO text and the type of assessment (portfolio, demo, case study), and the AI generates both the task description and a complete rubric with 4-5 criteria and 4 performance levels.">SLO-Aligned Rubric Generation</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
           <div class="step-item"><div class="step-badge">1</div><div>Have at least one SLO ready (from Module 3 or your existing course documents). The clearer the SLO, the better the rubric.</div></div>
@@ -1577,12 +1745,12 @@ For each criterion, identify which part of the SLO it measures.</pre>
 
     <!-- MODULE 5 -->
     <div class="module-card reveal">
-      <div class="card-accent" style="background:linear-gradient(90deg,#4fc3f7,#81d4fa);"></div>
+      <div class="card-accent" style="background:linear-gradient(90deg,#389BD9,#00B1D9);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 05</span><span class="card-audience aud-all">Everyone</span></div>
         <div class="card-title">Verify Before You Submit</div>
         <div class="card-vibe">AI hallucinations in curriculum documents can cause real accreditation problems. Learn the four-step verification routine before any AI-assisted COR goes to your curriculum committee.</div>
-        <div class="card-capability" style="background:rgba(79,195,247,0.1);color:#4fc3f7;" data-tip="This module teaches you how to use the AI itself as a quality-check tool — by asking it to spot its own errors, flag uncertain claims, and compare its output to your institution's standards.">AI-Assisted Quality Check</div>
+        <div class="card-capability" style="background:rgba(0,177,217,0.14);color:var(--cyan);" data-tip="This module teaches you how to use the AI itself as a quality-check tool — by asking it to spot its own errors, flag uncertain claims, and compare its output to your institution's standards.">AI-Assisted Quality Check</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
         <div class="card-steps">
           <div class="step-item"><div class="step-badge">1</div><div><strong>Step 1 — Ask for a self-audit.</strong> After the AI produces any COR text, immediately follow up with: <em>"Review your response. List any specific claims, regulation numbers, or standards you cited that I should independently verify before submitting to a curriculum committee."</em></div></div>
@@ -1744,7 +1912,7 @@ Include scoring guide: Pass / Repeat / Fail thresholds.</pre>
 
     <!-- PROMPT 4: Business COR -->
     <div class="prompt-card reveal" data-discipline="business">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#F06937,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-cor">COR</span>
@@ -1779,7 +1947,7 @@ Please:
 
     <!-- PROMPT 5: Business SLOs -->
     <div class="prompt-card reveal" data-discipline="business">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#F06937,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-slo">SLO</span>
@@ -1814,7 +1982,7 @@ Provide a 2-sentence program review rationale for regional employer demand.</pre
 
     <!-- PROMPT 6: Business Rubric -->
     <div class="prompt-card reveal" data-discipline="business">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#F06937,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-rubric">Rubric</span>
@@ -1950,7 +2118,7 @@ Add "Requires Redo" flag for safety violations in criterion 1.</pre>
 
     <!-- PROMPT 10: ICT COR -->
     <div class="prompt-card reveal" data-discipline="ict">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#0669A7,#00B1D9);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-cor">COR</span>
@@ -1988,7 +2156,7 @@ Flag all certification references with [VERIFY current version].</pre>
 
     <!-- PROMPT 11: ICT SLOs -->
     <div class="prompt-card reveal" data-discipline="ict">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#0669A7,#00B1D9);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-slo">SLO</span>
@@ -2021,7 +2189,7 @@ Output table: SLO | Certification Domain / O*NET Task</pre>
 
     <!-- PROMPT 12: ICT Rubric -->
     <div class="prompt-card reveal" data-discipline="ict">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#0669A7,#00B1D9);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-rubric">Rubric</span>
@@ -2055,7 +2223,7 @@ Include "GitHub/Portfolio Ready?" indicator in Exemplary column.</pre>
 
     <!-- PROMPT 13: All — Program Review Paragraph -->
     <div class="prompt-card reveal" data-discipline="all">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#00c896,#7de8d0);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#1A2C57,#4C5E89);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-all">All Disciplines</span>
@@ -2095,7 +2263,7 @@ Flag any missing data with [NEEDS DATA].</pre>
 
     <!-- PROMPT 14: All — SLO Self-Assessment for Students -->
     <div class="prompt-card reveal" data-discipline="all">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#4fc3f7,#81d4fa);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#389BD9,#00B1D9);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-assessment">Assessment</span>
@@ -2248,9 +2416,29 @@ Format as clean, printable forms.</pre>
 </main>
 
 <footer>
-  <p style="margin-bottom:0.4rem;"><strong>IEDRC Faculty Retreat</strong> — AI Curriculum Partner Workshop · Spring 2026</p>
-  <p>Self-paced site for faculty · Workforce &amp; Curriculum Alignment Initiative</p>
-  <p style="margin-top:0.75rem;font-size:12px;opacity:0.6;">AI-generated curriculum drafts must be reviewed and approved through your institution's official curriculum committee process before submission. This site does not replace CurricUNET or ACCJC compliance review.</p>
+  <svg class="footer-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="footer-navy" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4C5E89"/>
+        <stop offset="100%" stop-color="#1A2C57"/>
+      </linearGradient>
+    </defs>
+    <g stroke="#F06937" stroke-width="2" stroke-linecap="round">
+      <line x1="30" y1="6"  x2="30" y2="12"/>
+      <line x1="18" y1="9"  x2="20.5" y2="14.5"/>
+      <line x1="42" y1="9"  x2="39.5" y2="14.5"/>
+      <line x1="10" y1="18" x2="15" y2="20.5"/>
+      <line x1="50" y1="18" x2="45" y2="20.5"/>
+    </g>
+    <circle cx="30" cy="22" r="5" fill="#F18A2D"/>
+    <path d="M4 46 L18 26 L26 36 L34 22 L48 40 L56 46 Z" fill="url(#footer-navy)"/>
+    <path d="M4 50 Q30 42 56 50 L56 54 Q30 48 4 54 Z" fill="#F06937"/>
+  </svg>
+  <span class="footer-tagline">IEDRC Faculty Retreat · Spring 2026</span>
+  <p style="margin-bottom:0.4rem;"><strong>AI Curriculum Partner</strong> — Self-Paced Workshop for Faculty</p>
+  <p>Inland Empire / Desert Regional Consortium · Workforce &amp; Curriculum Alignment Initiative</p>
+  <p style="margin-top:1rem;font-size:12px;opacity:0.65;max-width:640px;margin-left:auto;margin-right:auto;">AI-generated curriculum drafts must be reviewed and approved through your institution's official curriculum committee process before submission. This site does not replace CurricUNET or ACCJC compliance review.</p>
+  <p style="margin-top:1rem;font-size:11px;opacity:0.5;letter-spacing:0.05em;">Funded by the California Strong Workforce Program · <a href="https://desertcolleges.org" target="_blank" rel="noopener" style="color:var(--orange-light);text-decoration:none;border-bottom:1px solid rgba(241,138,45,0.4);">desertcolleges.org</a></p>
 </footer>
 
 <button type="button" class="back-to-top" id="backTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">

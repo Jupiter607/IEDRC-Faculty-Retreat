@@ -261,7 +261,6 @@
 
     .hero h1 .text-red { color: var(--orange); }
     .hero h1 .text-gold { color: var(--orange-light); }
-    .hero h1 .text-accent { color: var(--orange); }
 
     .hero-sub {
       font-size: 17px;
@@ -771,6 +770,18 @@
       transition: transform 0.2s;
     }
     .data-tile:hover .data-tile-arrow { transform: translateY(2px); }
+    .data-tile-info code {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 10.5px;
+      background: rgba(0,177,217,0.10);
+      border: 1px solid rgba(0,177,217,0.20);
+      color: var(--cyan);
+      padding: 1px 5px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    html.light .data-tile-info code { background: rgba(0,108,170,0.08); border-color: rgba(0,108,170,0.20); color: #0669A7; }
+    html.high-contrast .data-tile-info code { background: rgba(79,216,255,0.12); border-color: var(--cyan); color: var(--cyan); border-width: 2px; }
     html.light .data-tile { background: rgba(0,108,170,0.06); border-color: rgba(0,108,170,0.25); }
     html.light .data-tile:hover { background: rgba(0,108,170,0.10); border-color: #0669A7; }
     html.light .data-tile-icon { background: rgba(0,108,170,0.12); color: #0669A7; }
@@ -1313,8 +1324,8 @@
     html.light .module-card:hover, html.light .prompt-card:hover, html.light .path-card:hover, html.light .resource-card:hover { border-color: rgba(240,105,55,0.4); background: #FFFEFB; }
     html.light .step-badge { background: var(--cream); color: var(--navy); }
     html.light .step-item { color: var(--navy-soft); }
-    html.light .card-vibe, html.light .prompt-vibe { color: var(--navy-soft); }
-    html.light .card-num, html.light .prompt-num { color: var(--navy-soft); }
+    html.light .card-vibe { color: var(--navy-soft); }
+    html.light .card-num { color: var(--navy-soft); }
     /* Light theme: tinted badges with IEDRC tints, darker text for AA contrast */
     html.light .aud-faculty { background: rgba(240,105,55,0.12); color: var(--orange-deep); }
     html.light .aud-all { background: rgba(0,108,170,0.12); color: #003775; }
@@ -1423,7 +1434,7 @@
       .nav-links {
         position: fixed;
         top: 59px; left: 0; right: 0;
-        background: rgba(11,14,23,0.97);
+        background: rgba(6,9,26,0.96);
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--border);
@@ -1462,6 +1473,84 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ---- Print stylesheet — faculty often print prompts to keep at their desk ---- */
+    @media print {
+      :root {
+        --bg: #ffffff;
+        --surface: #ffffff;
+        --surface2: #ffffff;
+        --border: rgba(0,0,0,0.18);
+        --text: #111111;
+        --muted: #333333;
+      }
+      *, *::before, *::after {
+        background: transparent !important;
+        box-shadow: none !important;
+        color: #111 !important;
+      }
+      body { font-size: 11pt; line-height: 1.4; }
+      nav, .progress-bar, .back-to-top, .a11y-wrap, .theme-toggle, .nav-toggle,
+      .skip-link, .hero-grid, .hero-chips, .hero-cta, .nav-controls,
+      .card-toggle, .prompt-toggle, .copy-btn, .filter-bar,
+      #popover, .reveal:not(.visible) { display: none !important; }
+      /* Reveal everything that was hidden by IntersectionObserver state */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      /* Open every collapsible card so the prompt content prints */
+      .card-steps, .prompt-content {
+        max-height: none !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+        margin-top: 0.5rem !important;
+        padding-top: 0.5rem !important;
+        border-top: 1px solid #ccc !important;
+      }
+      .module-card.expanded .card-body {
+        display: block !important;
+      }
+      .module-card.expanded .card-steps {
+        grid-column: auto !important;
+        border-left: none !important;
+        padding-left: 0 !important;
+      }
+      .hero { min-height: 0; padding: 1rem 0; page-break-after: avoid; text-align: left; align-items: flex-start; }
+      .hero h1 { font-size: 22pt; }
+      .hero-sub { color: #333 !important; font-size: 11pt; }
+      .hero-badge { border: 1px solid #333; }
+      section { padding: 1.5rem 0; max-width: 100%; }
+      .section-title { font-size: 16pt; }
+      .section-eyebrow { color: #555 !important; }
+      .module-card, .prompt-card, .warn-card, .check-row,
+      .resource-card, .path-card, .data-tile, .practice-banner {
+        page-break-inside: avoid;
+        border: 1px solid #ccc !important;
+        margin-bottom: 0.5rem;
+      }
+      .modules-grid, .prompts-grid, .warn-grid, .checklist-grid,
+      .resource-grid, .path-grid { display: block !important; }
+      .sample-text {
+        background: #f7f7f7 !important;
+        border: 1px solid #ccc !important;
+        max-height: none !important;
+        overflow: visible !important;
+        white-space: pre-wrap !important;
+        page-break-inside: avoid;
+        font-size: 9pt;
+      }
+      /* Show the destination of every link so printouts remain useful */
+      a[href^="http"]::after, a[href^="data/"]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #555;
+        word-break: break-all;
+      }
+      a { color: #1A2C57 !important; text-decoration: underline; }
+      .jargon { border: none; }
+      .check-row.done .check-text strong { text-decoration: line-through; }
+      footer { border-top: 2px solid #333; padding: 1rem 0; margin-top: 2rem; }
+      h1, h2, h3 { page-break-after: avoid; }
+      .practice-banner-pill { border: 1px solid #333; padding: 4px 8px; }
     }
   </style>
 </head>
@@ -1591,7 +1680,7 @@
       <span>One zip · five plain-text files · everything you need to complete every module if you didn&apos;t bring data of your own.</span>
     </span>
     <span class="practice-banner-cta">
-      <span class="practice-banner-pill">Download all (.zip · 18 KB)</span>
+      <span class="practice-banner-pill">Download all (5 files · zip)</span>
     </span>
   </a>
 
@@ -1636,7 +1725,7 @@
       </div>
       <span class="resource-arrow" aria-hidden="true">&rarr;</span>
     </a>
-    <a href="https://www.accjc.org/accreditation-standards/" target="_blank" rel="noopener" class="resource-card reveal">
+    <a href="https://accjc.org/eligibility-requirements-standards-policies/" target="_blank" rel="noopener" class="resource-card reveal">
       <div class="resource-icon" style="background:rgba(223,209,167,0.18);color:var(--tan);">ACC</div>
       <div class="resource-info">
         <strong>ACCJC Standards</strong>
@@ -1701,7 +1790,7 @@
       <div class="card-accent" style="background:linear-gradient(90deg,#C05B28,#F06937);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 01</span><span class="card-audience aud-all">Everyone</span></div>
-        <div class="card-title">AI as Your Curriculum Partner</div>
+        <h3 class="card-title">AI as Your Curriculum Partner</h3>
         <div class="card-vibe">Move from "AI generates content" to "AI is a first-draft specialist you direct." You are still the subject matter expert — the AI handles the blank-page problem.</div>
         <div class="card-capability" style="background:rgba(192,91,40,0.14);color:#f0a070;" data-tip="You tell the AI who it is, what it knows, and how to behave before you ask it anything. This 'system prompt' or 'context setting' dramatically improves curriculum output quality.">Context-Setting Prompts</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
@@ -1745,7 +1834,7 @@ If you are asked to generate text that will go directly into a COR, remind me to
       <div class="card-accent" style="background:linear-gradient(90deg,#F06937,#F18A2D);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 02</span><span class="card-audience aud-faculty">Faculty</span></div>
-        <div class="card-title">Course Outlines of Record (COR)</div>
+        <h3 class="card-title">Course Outlines of Record (COR)</h3>
         <div class="card-vibe">Draft a new catalog description, refresh an outdated course objective list, or align course content to current discipline standards — in one conversation.</div>
         <div class="card-capability" style="background:rgba(241,138,45,0.14);color:var(--orange-light);" data-tip="Paste your existing COR text (or just the catalog description) into the AI, tell it what's changed in the field, and ask it to revise. The AI produces a polished draft — you make the final judgment.">Document-in / Draft-out Workflow</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
@@ -1797,7 +1886,7 @@ Provide the revised description, then list 3 specific changes you made and why.<
       <div class="card-accent" style="background:linear-gradient(90deg,#1A2C57,#4C5E89);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 03</span><span class="card-audience aud-faculty">Faculty</span></div>
-        <div class="card-title">SLOs Mapped to Labor Market</div>
+        <h3 class="card-title">SLOs Mapped to Labor Market</h3>
         <div class="card-vibe">Use real O*NET occupation data to generate <span class="jargon" data-tip="Student Learning Outcomes — measurable statements of what students will be able to do upon completing a course. Required by ACCJC and used for program review.">SLOs</span> that demonstrate workforce relevance — one of the most powerful arguments you can make in a program review.</div>
         <div class="card-capability" style="background:rgba(240,105,55,0.14);color:var(--orange-light);" data-tip="You paste raw O*NET task lists and wage data directly into the chat. The AI converts occupation data into properly-worded SLOs aligned to Bloom's Taxonomy — your job is to validate and select.">Labor Market → SLO Translation</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
@@ -1855,7 +1944,7 @@ After the SLOs, provide a mapping table:
       <div class="card-accent" style="background:linear-gradient(90deg,#0669A7,#00B1D9);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 04</span><span class="card-audience aud-faculty">Faculty</span></div>
-        <div class="card-title">Assessments &amp; Rubrics</div>
+        <h3 class="card-title">Assessments &amp; Rubrics</h3>
         <div class="card-vibe">Design an authentic assessment task and a complete 4-level rubric in minutes. The AI builds the structure — you bring the discipline-specific expertise to validate it.</div>
         <div class="card-capability" style="background:rgba(76,94,137,0.20);color:#a8b3cf;" data-tip="You provide the SLO text and the type of assessment (portfolio, demo, case study), and the AI generates both the task description and a complete rubric with 4-5 criteria and 4 performance levels.">SLO-Aligned Rubric Generation</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
@@ -1912,7 +2001,7 @@ For each criterion, identify which part of the SLO it measures.</pre>
       <div class="card-accent" style="background:linear-gradient(90deg,#389BD9,#00B1D9);"></div>
       <div class="card-body">
         <div class="card-meta"><span class="card-num">Module 05</span><span class="card-audience aud-all">Everyone</span></div>
-        <div class="card-title">Verify Before You Submit</div>
+        <h3 class="card-title">Verify Before You Submit</h3>
         <div class="card-vibe">AI hallucinations in curriculum documents can cause real accreditation problems. Learn the four-step verification routine before any AI-assisted COR goes to your curriculum committee.</div>
         <div class="card-capability" style="background:rgba(0,177,217,0.14);color:var(--cyan);" data-tip="This module teaches you how to use the AI itself as a quality-check tool — by asking it to spot its own errors, flag uncertain claims, and compare its output to your institution's standards.">AI-Assisted Quality Check</div>
         <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
@@ -1982,13 +2071,13 @@ Format as a checklist with ✓ or ⚠ for each item.</pre>
 
     <!-- PROMPT 1: Health COR -->
     <div class="prompt-card reveal" data-discipline="health">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#C05B28,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-cor">COR</span>
           <span class="ptag ptag-health">Health</span>
         </div>
-        <div class="prompt-title">Clinical Skills Course Objectives</div>
+        <h3 class="prompt-title">Clinical Skills Course Objectives</h3>
         <div class="prompt-desc">Generate a complete set of course objectives for a clinical skills or patient care course, aligned to healthcare competency frameworks.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2015,13 +2104,13 @@ Flag any objective requiring clinical supervision or a licensed professional set
 
     <!-- PROMPT 2: Health SLO -->
     <div class="prompt-card reveal" data-discipline="health">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#C05B28,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-slo">SLO</span>
           <span class="ptag ptag-health">Health</span>
         </div>
-        <div class="prompt-title">Healthcare SLOs from BLS Projections</div>
+        <h3 class="prompt-title">Healthcare SLOs from BLS Projections</h3>
         <div class="prompt-desc">Convert Bureau of Labor Statistics healthcare occupation data and projected job growth into workforce-aligned SLOs with accreditation-ready language.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2049,13 +2138,13 @@ Provide a rationale paragraph for program review justifying SLOs based on labor 
 
     <!-- PROMPT 3: Health Rubric -->
     <div class="prompt-card reveal" data-discipline="health">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#C05B28,#F18A2D);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-rubric">Rubric</span>
           <span class="ptag ptag-health">Health</span>
         </div>
-        <div class="prompt-title">Clinical Simulation Performance Rubric</div>
+        <h3 class="prompt-title">Clinical Simulation Performance Rubric</h3>
         <div class="prompt-desc">Build a detailed rubric for evaluating clinical simulation or skills lab performance, including patient safety, communication, and technical criteria.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2092,7 +2181,7 @@ Include scoring guide: Pass / Repeat / Fail thresholds.</pre>
           <span class="ptag ptag-cor">COR</span>
           <span class="ptag ptag-business">Business</span>
         </div>
-        <div class="prompt-title">Business Course COR Refresh</div>
+        <h3 class="prompt-title">Business Course COR Refresh</h3>
         <div class="prompt-desc">Update a business, accounting, or management COR to reflect current industry tools, platforms, and employer expectations — especially post-AI transformation in business.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2127,7 +2216,7 @@ Please:
           <span class="ptag ptag-slo">SLO</span>
           <span class="ptag ptag-business">Business</span>
         </div>
-        <div class="prompt-title">Business SLOs + Employer Expectations</div>
+        <h3 class="prompt-title">Business SLOs + Employer Expectations</h3>
         <div class="prompt-desc">Generate SLOs for business courses that are explicitly mapped to employer skills surveys, industry certification competencies, and current job postings.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2162,7 +2251,7 @@ Provide a 2-sentence program review rationale for regional employer demand.</pre
           <span class="ptag ptag-rubric">Rubric</span>
           <span class="ptag ptag-business">Business</span>
         </div>
-        <div class="prompt-title">Business Case Study Rubric</div>
+        <h3 class="prompt-title">Business Case Study Rubric</h3>
         <div class="prompt-desc">Generate a rubric for business case analysis, business plan presentations, or professional report writing — with criteria aligned to real workplace standards.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2190,13 +2279,13 @@ Include peer-review version in plain language.</pre>
 
     <!-- PROMPT 7: Construction COR -->
     <div class="prompt-card reveal" data-discipline="construction">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#1A2C57,#C05B28);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-cor">COR</span>
           <span class="ptag ptag-construction">Construction</span>
         </div>
-        <div class="prompt-title">Trades / Construction Technology COR</div>
+        <h3 class="prompt-title">Trades / Construction Technology COR</h3>
         <div class="prompt-desc">Draft or refresh a COR for construction technology, electrical, plumbing, HVAC, or welding — incorporating current code editions, safety standards, and apprenticeship alignment.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2224,13 +2313,13 @@ Flag all code numbers with [VERIFY] — do not assume current edition.</pre>
 
     <!-- PROMPT 8: Construction SLOs -->
     <div class="prompt-card reveal" data-discipline="construction">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#1A2C57,#C05B28);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-slo">SLO</span>
           <span class="ptag ptag-construction">Construction</span>
         </div>
-        <div class="prompt-title">Trades SLOs — OSHA &amp; Apprenticeship Aligned</div>
+        <h3 class="prompt-title">Trades SLOs — OSHA &amp; Apprenticeship Aligned</h3>
         <div class="prompt-desc">Generate SLOs for construction and trades courses that are explicitly mapped to OSHA safety competencies, apprenticeship standards, and O*NET tasks for skilled trades occupations.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2258,13 +2347,13 @@ Include labor market justification using O*NET employment outlook.</pre>
 
     <!-- PROMPT 9: Construction Rubric -->
     <div class="prompt-card reveal" data-discipline="construction">
-      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#1A2C57,#C05B28);"></div>
       <div class="prompt-body">
         <div class="prompt-tags">
           <span class="ptag ptag-rubric">Rubric</span>
           <span class="ptag ptag-construction">Construction</span>
         </div>
-        <div class="prompt-title">Hands-On Performance Rubric (Trades)</div>
+        <h3 class="prompt-title">Hands-On Performance Rubric (Trades)</h3>
         <div class="prompt-desc">Build a rubric for evaluating hands-on skill performance in construction and trades courses — including safety compliance, technique, and code accuracy criteria.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2298,7 +2387,7 @@ Add "Requires Redo" flag for safety violations in criterion 1.</pre>
           <span class="ptag ptag-cor">COR</span>
           <span class="ptag ptag-ict">ICT</span>
         </div>
-        <div class="prompt-title">ICT / Cybersecurity / Networking COR</div>
+        <h3 class="prompt-title">ICT / Cybersecurity / Networking COR</h3>
         <div class="prompt-desc">Rapidly update an ICT course COR to reflect current technology stacks, cloud platforms, and industry certifications — critical in a field that evolves every 18 months.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2336,7 +2425,7 @@ Flag all certification references with [VERIFY current version].</pre>
           <span class="ptag ptag-slo">SLO</span>
           <span class="ptag ptag-ict">ICT</span>
         </div>
-        <div class="prompt-title">Tech Certification-Aligned SLOs</div>
+        <h3 class="prompt-title">Tech Certification-Aligned SLOs</h3>
         <div class="prompt-desc">Generate SLOs that map directly to CompTIA, AWS, Google, or Cisco certification exam objectives — making your course's workforce value explicit and defensible in program review.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2369,7 +2458,7 @@ Output table: SLO | Certification Domain / O*NET Task</pre>
           <span class="ptag ptag-rubric">Rubric</span>
           <span class="ptag ptag-ict">ICT</span>
         </div>
-        <div class="prompt-title">Technical Project / Lab Report Rubric</div>
+        <h3 class="prompt-title">Technical Project / Lab Report Rubric</h3>
         <div class="prompt-desc">Build a rubric for an ICT technical project, Capture the Flag (CTF) challenge, lab report, or portfolio — with criteria aligned to industry-level quality expectations.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2403,7 +2492,7 @@ Include "GitHub/Portfolio Ready?" indicator in Exemplary column.</pre>
           <span class="ptag ptag-all">All Disciplines</span>
           <span class="ptag ptag-slo">Program Review</span>
         </div>
-        <div class="prompt-title">Program Review Labor Market Narrative</div>
+        <h3 class="prompt-title">Program Review Labor Market Narrative</h3>
         <div class="prompt-desc">Generate the labor market analysis paragraph required in program review — using O*NET, BLS, and CA LMI data you provide. Saves 2–3 hours of writing per review cycle.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2443,7 +2532,7 @@ Flag any missing data with [NEEDS DATA].</pre>
           <span class="ptag ptag-assessment">Assessment</span>
           <span class="ptag ptag-all">All Disciplines</span>
         </div>
-        <div class="prompt-title">Student Self-Assessment from SLOs</div>
+        <h3 class="prompt-title">Student Self-Assessment from SLOs</h3>
         <div class="prompt-desc">Turn your SLOs into a student-facing self-assessment tool. Students rate their own confidence on each SLO — powerful for equity, early intervention, and demonstrating SLO awareness.</div>
         <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
         <div class="prompt-content">
@@ -2488,7 +2577,7 @@ Format as clean, printable forms.</pre>
 
     <div class="warn-card warn-red reveal">
       <div class="warn-icon">🔴</div>
-      <div class="warn-title">Hallucinated Facts</div>
+      <h3 class="warn-title">Hallucinated Facts</h3>
       <div class="warn-desc">AI fabricates specific details with complete confidence. In curriculum work, this means invented regulation numbers, wrong code editions, non-existent certifications, and made-up labor market statistics.</div>
       <ul class="warn-list">
         <li>Cites "Title 5, Section 55002.b" — always verify exact section numbers</li>
@@ -2502,7 +2591,7 @@ Format as clean, printable forms.</pre>
 
     <div class="warn-card warn-gold reveal">
       <div class="warn-icon">🟡</div>
-      <div class="warn-title">Accreditation Language Gaps</div>
+      <h3 class="warn-title">Accreditation Language Gaps</h3>
       <div class="warn-desc">AI knows general academic writing conventions but does not know your institution's specific COR format requirements, your curriculum committee's preferences, or current ACCJC guidance revisions.</div>
       <ul class="warn-list">
         <li>AI may write course objectives in a format your curriculum committee will reject — check your template</li>
@@ -2516,7 +2605,7 @@ Format as clean, printable forms.</pre>
 
     <div class="warn-card warn-blue reveal">
       <div class="warn-icon">🔵</div>
-      <div class="warn-title">How to Verify — The 4-Step Check</div>
+      <h3 class="warn-title">How to Verify — The 4-Step Check</h3>
       <div class="warn-desc">Build this four-step routine into every AI-assisted curriculum session. It takes 10–15 minutes and catches the problems that cause committee rejections and accreditation flags.</div>
       <ul class="warn-list">
         <li><strong>Run the AI self-audit prompt</strong> from Module 5 — the AI will flag its own uncertain claims</li>

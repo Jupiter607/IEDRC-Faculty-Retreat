@@ -90,8 +90,10 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      pointer-events: auto;
     }
     .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { pointer-events: auto; }
 
     .nav-links a {
       color: var(--muted);
@@ -1083,9 +1085,52 @@
     }
     html.light .hero-grid { background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px); }
     html.light .hero-badge { background: rgba(200,16,46,0.07); border-color: rgba(200,16,46,0.18); color: var(--red); }
-    html.light .sample-text { background: #eef0f6; }
+    html.light .sample-text { background: #eef0f6; color: #2a2f3d; }
     html.light .check-row.done .check-box::after { border-color: #fff; }
     html.light .a11y-panel { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+    html.light .hero h1 .text-gold { color: #b88200; }
+    html.light .nav-links a.active { color: #00875a; }
+    html.light .nav-links a.active::after { background: #00875a; }
+    html.light .section-eyebrow { color: #00875a; }
+    /* Light theme: text on tinted backgrounds needs darker shades */
+    html.light .aud-faculty { background: rgba(0,150,110,0.14); color: #00875a; }
+    html.light .aud-all { background: rgba(180,120,0,0.14); color: #b87000; }
+    html.light .ptag-cor { background: rgba(200,16,46,0.1); color: #b40023; }
+    html.light .ptag-slo { background: rgba(0,150,110,0.12); color: #00875a; }
+    html.light .ptag-assessment { background: rgba(100,80,200,0.12); color: #5040b0; }
+    html.light .ptag-rubric { background: rgba(180,120,0,0.12); color: #8a5a00; }
+    html.light .ptag-health { background: rgba(220,60,120,0.12); color: #b03060; }
+    html.light .ptag-business { background: rgba(180,120,0,0.12); color: #8a5a00; }
+    html.light .ptag-construction { background: rgba(220,100,0,0.12); color: #a05400; }
+    html.light .ptag-ict { background: rgba(100,80,200,0.12); color: #5040b0; }
+    html.light .ptag-all { background: rgba(0,0,0,0.06); color: var(--muted); }
+    html.light .filter-tab.active { color: #fff; }
+    html.light .filter-tab[data-disc="business"].active { color: #fff; background: #b87000; border-color: #b87000; }
+    html.light .filter-tab[data-disc="construction"].active { color: #fff; background: #a05400; border-color: #a05400; }
+    html.light .card-toggle, html.light .prompt-toggle { color: #00875a; }
+    html.light .card-toggle:hover, html.light .prompt-toggle:hover { background: rgba(0,150,110,0.08); border-color: #00875a; }
+    html.light .checklist-count { color: #00875a; }
+    html.light .checklist-bar-fill { background: #00875a; }
+    html.light .check-row.done { border-color: rgba(0,150,110,0.3); }
+    html.light .check-row.done .check-box { background: #00875a; border-color: #00875a; }
+    html.light .info-banner { background: rgba(180,120,0,0.07); border-color: rgba(180,120,0,0.25); }
+    html.light .info-banner strong { color: #8a5a00; }
+    html.light .copy-btn { background: rgba(180,120,0,0.1); border-color: rgba(180,120,0,0.3); color: #8a5a00; }
+    html.light .copy-btn:hover { background: rgba(180,120,0,0.18); }
+    html.light .copy-btn.copied { background: rgba(0,150,110,0.12); border-color: rgba(0,150,110,0.3); color: #00875a; }
+    html.light .sample-label { color: #8a5a00; }
+    html.light .agenda-time { color: #8a5a00; }
+    html.light .warn-card.warn-gold .warn-icon { background: rgba(180,120,0,0.14); }
+    html.light .warn-card.warn-gold .warn-tip { border-color: #b87000; }
+    html.light .agenda-phase[style*="--gold"] { color: #b87000 !important; }
+    html.light .back-to-top { background: #00875a; color: #fff; box-shadow: 0 4px 16px rgba(0,135,90,0.3); }
+    html.light .progress-bar { background: linear-gradient(90deg, #b40023, #b87000, #00875a); }
+    html.light .jargon { border-bottom-color: #00875a; }
+    html.light .jargon:hover { color: #00875a; }
+    html.light .a11y-hint { border-color: #00875a; }
+    html.light .resource-card:hover { background: var(--surface2); }
+    html.light .reader-btn { color: #00875a; }
+    html.light .skip-link { background: #00875a; color: #fff; }
 
     /* ---- High contrast theme ---- */
     html.high-contrast {
@@ -1105,6 +1150,18 @@
     html.high-contrast .check-row.done .check-box::after { border-color: #000; }
     html.high-contrast .hero-badge { border-width: 2px; }
     html.high-contrast .jargon { border-bottom-width: 2px; }
+    html.high-contrast .aud-faculty { background: rgba(0,255,184,0.15); color: var(--accent); border: 1px solid var(--accent); }
+    html.high-contrast .aud-all { background: rgba(255,197,48,0.15); color: var(--gold); border: 1px solid var(--gold); }
+    html.high-contrast .ptag-cor, html.high-contrast .ptag-health { color: var(--red); border: 1px solid var(--red); background: rgba(255,51,80,0.12); }
+    html.high-contrast .ptag-slo, html.high-contrast .ptag-construction { color: var(--gold); border: 1px solid var(--gold); background: rgba(255,197,48,0.12); }
+    html.high-contrast .ptag-rubric, html.high-contrast .ptag-business { color: var(--gold); border: 1px solid var(--gold); background: rgba(255,197,48,0.12); }
+    html.high-contrast .ptag-assessment, html.high-contrast .ptag-ict { color: var(--accent); border: 1px solid var(--accent); background: rgba(0,255,184,0.12); }
+    html.high-contrast .ptag-all { color: var(--text); border: 1px solid var(--border); background: var(--surface2); }
+    html.high-contrast .card-toggle, html.high-contrast .prompt-toggle { color: var(--accent); border-color: var(--accent); }
+    html.high-contrast .filter-tab { border-width: 2px; }
+    html.high-contrast .filter-tab.active { color: #000; }
+    html.high-contrast .check-box { border-width: 2px; }
+    html.high-contrast .copy-btn { border-width: 2px; }
 
     /* ---- Responsive ---- */
     @media (max-width: 768px) {
@@ -1364,7 +1421,7 @@
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Starter System Prompt</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `You are an experienced curriculum specialist at a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.\n\nAlways follow these rules:\n• Use third-person, present-tense, professional academic language for all COR text.\n• Write Student Learning Outcomes that begin with \"Upon successful completion of this course, students will be able to...\" followed by a measurable action verb from Bloom's Taxonomy.\n• Never invent accreditation standards, citations, or regulation numbers — flag anything you are uncertain about.\n• When I provide O*NET or labor market data, integrate it directly into SLOs and course objectives.\n• Format all structured output (rubrics, outlines) as Markdown tables or numbered lists.\n\nIf you are asked to generate text that will go directly into a COR, remind me to verify it against current ACCJC standards and our institution's curriculum committee guidelines before submission.`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
             <pre class="sample-text">You are an experienced curriculum specialist at a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.
 
@@ -1399,7 +1456,7 @@ If you are asked to generate text that will go directly into a COR, remind me to
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">COR Catalog Description Prompt</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `Here is my current catalog description:\n[PASTE YOUR CURRENT CATALOG DESCRIPTION HERE]\n\nPlease revise it with these goals:\n1. Update the language to reflect current practices in [YOUR DISCIPLINE/FIELD]\n2. Keep it under 100 words\n3. Write in third person, present tense\n4. Do NOT repeat the course title in the description\n5. Do NOT include the course number\n6. Begin with a clear sentence about what the course covers and what students will do\n7. End with prerequisites if any: [LIST PREREQUISITES OR WRITE \"None\"]\n\nCourse level: [Lower Division / Upper Division Transfer / Vocational]\nDiscipline: [YOUR DISCIPLINE]\nMajor changes since last revision: [BRIEFLY DESCRIBE: e.g., new software platforms, updated regulations, industry certification changes]\n\nProvide the revised description, then list 3 specific changes you made and why.`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
             <pre class="sample-text">Here is my current catalog description:
 [PASTE YOUR CURRENT CATALOG DESCRIPTION HERE]
@@ -1441,7 +1498,7 @@ Provide the revised description, then list 3 specific changes you made and why.<
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">SLO Generator Prompt</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `I am writing Student Learning Outcomes (SLOs) for the following course:\n\nCourse name: [COURSE NAME]\nCourse number: [e.g., NURS 101]\nDiscipline/Program: [YOUR DISCIPLINE]\nCourse level: [Introductory / Intermediate / Advanced]\n\nThe primary occupation this course prepares students for is:\nOccupation: [OCCUPATION TITLE]\nSOC Code: [e.g., 29-1141 for Registered Nurses]\n\nHere are the O*NET tasks for this occupation:\n[PASTE THE O*NET TASKS LIST HERE]\n\nPlease generate 5-6 Student Learning Outcomes that:\n• Begin with: \"Upon successful completion of this course, students will be able to...\"\n• Use measurable Bloom's Taxonomy action verbs appropriate for this course level\n• Connect directly to the O*NET tasks provided — note which task each SLO addresses\n• Are specific enough to be measured through a single assessment\n• Meet ACCJC standards for authentic, measurable outcomes\n\nAfter the SLOs, provide a mapping table:\n| SLO # | SLO Text | O*NET Task | Bloom's Level |`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
             <pre class="sample-text">I am writing Student Learning Outcomes (SLOs) for the following course:
 
@@ -1489,7 +1546,7 @@ After the SLOs, provide a mapping table:
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Rubric Generator Prompt</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `Create an authentic performance assessment and a 4-level analytic rubric for the following:\n\nCourse: [COURSE NAME]\nSLO being assessed: \"[PASTE YOUR SLO TEXT HERE]\"\nAssessment type: [portfolio / hands-on demonstration / written case study / oral presentation / lab report]\nStudent level: [First semester / Second year / Transfer-prep]\nContext: [Brief description: e.g., \"students in a Medical Assisting program preparing for entry-level clinical roles\"]\n\nDeliverables I need:\n\n1. ASSESSMENT TASK DESCRIPTION (3-5 sentences)\nDescribe the task students will complete. Be specific about what they must submit or demonstrate.\n\n2. ANALYTIC RUBRIC (Markdown table)\n• 4-5 criteria rows that directly measure the SLO\n• 4 performance levels: Exemplary (4) | Proficient (3) | Developing (2) | Beginning (1)\n• Each cell: describe specific, observable student behaviors — avoid vague words like \"excellent\" or \"poor\"\n• Include a row for professional or workplace-readiness standards\n• Point totals: show total possible score\n\n3. ALIGNMENT NOTE\nFor each criterion, identify which part of the SLO it measures.`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
             <pre class="sample-text">Create an authentic performance assessment and a 4-level analytic rubric for:
 
@@ -1535,7 +1592,7 @@ For each criterion, identify which part of the SLO it measures.</pre>
           <div class="sample-block">
             <div class="sample-header">
               <span class="sample-label">Self-Audit Prompt (run after any AI output)</span>
-              <button type="button" class="copy-btn" onclick="copyText(this, `Please review the curriculum text you just generated and perform a quality audit:\n\n1. ACCURACY CHECK\n   List any specific regulation numbers, code citations (e.g., Title 5, ACCJC standards), or accreditation language you referenced. Mark each as [VERIFY] so I can confirm them independently.\n\n2. MEASURABILITY CHECK\n   Review each Student Learning Outcome. Flag any that use vague, non-measurable verbs (understand, know, appreciate, be aware of, learn about). Suggest a replacement Bloom's Taxonomy verb for each.\n\n3. COMPLETENESS CHECK\n   Is anything missing that a complete COR section of this type would typically include?\n\n4. CURRENCY CHECK\n   Is there any content that may be out of date? Flag specific areas I should check against current industry standards or state regulations.\n\nFormat your audit as a checklist with ✓ (looks good) or ⚠ (needs verification) for each item.`)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
             <pre class="sample-text">Please review the curriculum text you just generated and perform a quality audit:
 
@@ -1596,7 +1653,7 @@ Format as a checklist with ✓ or ⚠ for each item.</pre>
           <div class="prompt-how">Paste into ChatGPT/Claude after your system prompt. Replace all <strong>[BRACKETS]</strong> with your course specifics.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Generate a complete list of Course Objectives for a community college health course:\n\nCourse: [COURSE NAME, e.g., Medical Assisting: Clinical Procedures]\nProgram: [PROGRAM NAME, e.g., Medical Assisting Certificate]\nClinical setting: [e.g., ambulatory care, acute care, long-term care]\nNational competency standard this course addresses: [e.g., CAAHEP Medical Assisting Competencies, NATEF, NCLEX-PN]\n\nRequirements:\n• Write 10-12 course objectives\n• Use infinitive verb form (To perform..., To demonstrate..., To apply...)\n• Reference specific clinical competencies from [COMPETENCY STANDARD]\n• Include objectives covering: patient safety, HIPAA compliance, clinical procedures, documentation, and professional standards\n• Indicate which objectives align to the competency standard (cite the competency number if known)\n\nAlso note: flag any objective that requires clinical supervision or a licensed professional setting — these may need special COR notation.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME, e.g., Medical Assisting: Clinical Procedures]
 Program: [PROGRAM NAME, e.g., Medical Assisting Certificate]
@@ -1629,7 +1686,7 @@ Flag any objective requiring clinical supervision or a licensed professional set
           <div class="prompt-how">Use after pulling up the BLS Occupational Outlook Handbook entry for your target occupation. Copy the "What [occupation] Do" section and paste it in.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `I need SLOs for a health occupations course that connect to real labor market demand.\n\nCourse: [COURSE NAME]\nTarget occupation: [e.g., Licensed Vocational Nurse]\nSOC code: [e.g., 29-2061]\n\nFrom the BLS Occupational Outlook Handbook, here are the primary duties for this occupation:\n[PASTE BLS \"What They Do\" SECTION HERE]\n\nFrom O*NET, the key knowledge areas for this occupation include:\n[PASTE O*NET KNOWLEDGE SECTION OR LEAVE BLANK AND ASK AI TO SUGGEST]\n\nGenerate 5 SLOs that:\n• Start with \"Upon successful completion of this course, students will be able to...\"\n• Use Bloom's Taxonomy verbs at the [Apply / Analyze / Evaluate] level (choose for your course)\n• Connect each SLO to a specific BLS duty or O*NET knowledge area\n• Are appropriate for a [Certificate / Associate Degree] program\n• Would satisfy ACCJC requirements for measurable, authentic outcomes\n\nProvide a rationale paragraph I can use in a program review to justify these SLOs based on labor market need.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Target occupation: [e.g., Licensed Vocational Nurse]
@@ -1663,7 +1720,7 @@ Provide a rationale paragraph for program review justifying SLOs based on labor 
           <div class="prompt-how">Works best after you have defined your SLO in Module 3. Paste the SLO text into this prompt before copying to your AI tool.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Create a clinical simulation performance rubric for a community college health program.\n\nCourse: [COURSE NAME]\nSimulation scenario: [e.g., post-operative patient assessment, medication administration, sterile field setup]\nSLO being assessed: \"[PASTE SLO TEXT]\"\nProgram standard: [e.g., CAAHEP, NATEF, NCLEX competency]\n\nRubric requirements:\n• 5 criteria: (1) Safety & Infection Control, (2) Technical Skill Accuracy, (3) Patient Communication & Therapeutic Interaction, (4) Clinical Documentation, (5) Professional Conduct\n• 4 performance levels: Exemplary (4) / Proficient (3) / Developing (2) / Beginning (1)\n• Each cell: describe specific, observable clinical behaviors\n• Note any \"immediate fail\" behaviors in the safety criterion (e.g., breaks sterile field)\n• Format as a Markdown table\n• Add a \"Faculty Observer Notes\" row at the bottom\n\nAfter the rubric, write a brief scoring guide: what total score earns a Pass/Repeat/Fail.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Scenario: [e.g., medication administration, post-op assessment]
@@ -1700,7 +1757,7 @@ Include scoring guide: Pass / Repeat / Fail thresholds.</pre>
           <div class="prompt-how">Start a fresh chat with the system prompt from Module 1. Then paste your current course description and this prompt together.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `I need to refresh a business course COR to reflect current industry expectations.\n\nCourse: [COURSE NAME, e.g., Introduction to Business, Principles of Accounting, Human Resources Management]\nCurrent catalog description:\n[PASTE CURRENT DESCRIPTION]\n\nWhat has changed since the last revision:\n• New tools/platforms now industry-standard: [e.g., QuickBooks Online, Salesforce, AI-assisted analytics tools]\n• Relevant certifications employers now expect: [e.g., Microsoft Excel MO-201, Salesforce Admin, QuickBooks ProAdvisor]\n• Industry shifts: [e.g., remote work management, ESG reporting, AI in financial analysis]\n\nPlease:\n1. Revise the catalog description (max 100 words, third person, present tense)\n2. Suggest 3 new course objectives that reflect current employer expectations\n3. Identify any outdated terminology in the current description and suggest modern replacements\n4. If this is a transfer course, suggest language that maintains articulation-readiness for CSU/UC transfer\n\nFormat each section separately with clear headings.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME, e.g., Introduction to Business]
 Current catalog description:
@@ -1735,7 +1792,7 @@ Please:
           <div class="prompt-how">Optionally: copy 5-10 skills from a current job posting on LinkedIn or Indeed for the target role and paste them into the "employer signals" section.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Generate 5-6 Student Learning Outcomes for a business course using employer demand signals.\n\nCourse: [COURSE NAME]\nTarget roles this course prepares students for: [e.g., Office Manager, Bookkeeper, Marketing Coordinator, HR Assistant]\n\nEmployer signals (copy from O*NET, job postings, or industry surveys):\n[PASTE 5-10 SKILLS OR TASKS FROM JOB POSTINGS OR O*NET]\n\nIndustry certifications relevant to this course: [e.g., MOS Excel, QuickBooks ProAdvisor, SHRM-CP]\n\nSLO Requirements:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Use Bloom's Taxonomy verbs at [Apply / Analyze] level\n• At least 2 SLOs should reference a specific tool or platform from the employer signals\n• At least 1 SLO should address professional communication or workplace readiness\n• Include one SLO that prepares students for a specific industry certification if applicable\n\nAlso provide: a 2-sentence program review rationale explaining why these SLOs address regional employer demand.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Target roles: [e.g., Office Manager, Bookkeeper, Marketing Coordinator]
@@ -1769,7 +1826,7 @@ Provide a 2-sentence program review rationale for regional employer demand.</pre
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Create a professional rubric for a business course assessment.\n\nCourse: [COURSE NAME]\nAssessment type: [business case analysis / business plan / professional report / presentation]\nSLO: \"[PASTE SLO]\"\nIndustry context: [e.g., small business management, financial services, marketing agency]\n\nRubric specifications:\n• 5 criteria: (1) Problem/Opportunity Analysis, (2) Data Use and Evidence, (3) Recommendations and Feasibility, (4) Professional Written/Oral Communication, (5) Ethical and Equity Considerations\n• 4 levels: Exemplary (4) / Proficient (3) / Developing (2) / Beginning (1)\n• Language should reflect professional workplace standards, not just academic standards\n• Format as Markdown table\n\nAfter the rubric:\n• Write instructor notes for scoring the \"Data Use\" criterion fairly for students without industry access\n• Add a peer review version (students score each other) using simplified language`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Assessment: [business case analysis / business plan / report / presentation]
@@ -1804,7 +1861,7 @@ Include peer-review version in plain language.</pre>
           <div class="prompt-how">Always manually verify code edition numbers (NEC, UBC, IBC) — the AI may reference outdated editions. Use the current year's adopted code for California.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Draft a course catalog description and course objectives for a construction/trades course.\n\nCourse: [COURSE NAME, e.g., Residential Electrical Wiring, Introduction to HVAC, Welding Fundamentals]\nTrade/Discipline: [Electrical / Plumbing / HVAC / Carpentry / Welding / Construction Management]\nCurrent industry standard/code: [e.g., 2023 NEC, 2022 California Building Code, AWS D1.1]\nApprenticeship alignment: [e.g., IBEW, UA, ABC — or \"not applicable\"]\nCourse level: [Introductory / Intermediate / Journeyperson prep]\n\nDeliverables:\n1. Catalog description (100 words max, third person, present tense)\n2. 8-10 course objectives using infinitive verb form\n3. Suggested course content outline (4-6 major topic areas)\n\nSpecific requirements:\n• Reference the current code edition in at least one objective\n• Include a safety objective that cites OSHA standards\n• If apprenticeship-aligned, note which apprenticeship hours this course satisfies\n\nIMPORTANT: Flag all code numbers and regulatory references with [VERIFY — check current CA adopted code] — do not assume the current edition.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME, e.g., Residential Electrical Wiring]
 Trade: [Electrical / Plumbing / HVAC / Carpentry / Welding]
@@ -1837,7 +1894,7 @@ Flag all code numbers with [VERIFY] — do not assume current edition.</pre>
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Generate Student Learning Outcomes for a construction/trades course aligned to industry and safety standards.\n\nCourse: [COURSE NAME]\nOccupation: [e.g., Electrician, Plumber, HVAC Technician, Welder]\nSOC Code: [e.g., 47-2111 for Electricians]\nApprenticeship standard: [e.g., IBEW Local 11 Level 1 — or \"none\"]\n\nO*NET tasks for this occupation:\n[PASTE O*NET TASKS HERE]\n\nKey OSHA standards for this trade:\n[e.g., OSHA 1926 Subpart K (Electrical), 1926 Subpart P (Excavation) — or ask the AI to suggest]\n\nGenerate 5-6 SLOs that:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Use hands-on Bloom's verbs: Demonstrate, Construct, Perform, Apply, Inspect, Calculate\n• At least 1 SLO addresses workplace safety using the relevant OSHA standard\n• At least 1 SLO references a specific tool, equipment, or code application\n• If apprenticeship-aligned, note which apprenticeship competency each SLO satisfies\n\nProvide a labor market justification paragraph citing O*NET employment outlook data for this occupation.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Occupation: [e.g., Electrician, HVAC Tech, Welder]
@@ -1871,7 +1928,7 @@ Include labor market justification using O*NET employment outlook.</pre>
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Create a hands-on performance rubric for a trades/construction course practical evaluation.\n\nCourse: [COURSE NAME]\nPractical skill being evaluated: [e.g., wiring a 20-amp circuit, running a bead weld on mild steel, installing a compression fitting]\nSLO: \"[PASTE SLO]\"\nCode/standard: [e.g., 2023 NEC Article 210, AWS D1.1]\n\nRubric criteria (5 rows):\n1. Safety Protocol Compliance (PPE, lockout/tagout, housekeeping)\n2. Technical Accuracy (correct measurements, tolerances, code compliance)\n3. Material and Tool Handling\n4. Work Quality and Finish\n5. Efficiency and Workplace Readiness\n\nPerformance levels:\n• Exemplary (4): Journeyperson-level quality with no prompting\n• Proficient (3): Student-level quality meeting all code/safety requirements\n• Developing (2): Meets most requirements with minor errors\n• Beginning (1): Significant errors or safety violation requiring correction\n\nFormat as Markdown table. Add a \"Requires Redo\" flag for safety violations in criterion 1.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Skill: [e.g., wiring a 20-amp circuit, running a weld bead]
@@ -1906,7 +1963,7 @@ Add "Requires Redo" flag for safety violations in criterion 1.</pre>
           <div class="prompt-how">ICT courses go stale fastest. Consider doing this refresh annually — the AI makes it a 30-minute task instead of a 3-hour one.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Update an ICT course COR to reflect current industry technology and certification standards.\n\nCourse: [COURSE NAME, e.g., Network Administration, Introduction to Cybersecurity, Web Development]\nSubdiscipline: [Networking / Cybersecurity / Software Development / Cloud Computing / Data Analytics]\nCurrent catalog description:\n[PASTE CURRENT DESCRIPTION]\n\nTechnology updates to incorporate:\n• New platforms/tools now industry standard: [e.g., AWS/Azure/GCP, Kubernetes, GitHub Actions, Python 3.x, React]\n• Industry certifications this course prepares students for: [e.g., CompTIA A+, Network+, Security+, AWS Cloud Practitioner, Google IT Support Certificate]\n• Emerging areas in this subdiscipline: [e.g., zero-trust security, AI-assisted threat detection, serverless computing]\n\nDeliverables:\n1. Revised catalog description (100 words, third person, present tense)\n2. 8-10 course objectives mentioning current tools and platforms by name\n3. Suggested content update: topics to ADD and topics that are now outdated\n4. A note on which certifications align to each major course topic\n\nDo not invent exam codes or certification version numbers — flag any certification reference with [VERIFY current version].`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME, e.g., Introduction to Cybersecurity]
 Subdiscipline: [Networking / Cybersecurity / Dev / Cloud / Data]
@@ -1943,7 +2000,7 @@ Flag all certification references with [VERIFY current version].</pre>
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Generate Student Learning Outcomes for an ICT course aligned to industry certification exam objectives.\n\nCourse: [COURSE NAME]\nPrimary certification this course prepares for: [e.g., CompTIA Security+, AWS Cloud Practitioner, Cisco CCNA]\nCertification exam domain/objectives summary:\n[PASTE THE EXAM OBJECTIVES OR DOMAIN LIST FROM THE CERTIFICATION VENDOR WEBSITE]\n\nTarget O*NET occupations:\n[e.g., Information Security Analysts (15-1212), Network and Computer Systems Administrators (15-1244)]\n\nGenerate 6 SLOs that:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Map at least 4 SLOs directly to a named certification exam domain\n• Use technical action verbs: Configure, Implement, Troubleshoot, Analyze, Design, Evaluate\n• Are written at the [Foundation / Associate / Professional] level for this certification\n• Include one SLO addressing security, ethics, or professional responsibility in ICT\n\nProvide a two-column table:\n| SLO | Certification Domain / O*NET Task It Addresses |`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Primary certification: [e.g., CompTIA Security+, AWS Cloud Practitioner]
@@ -1976,7 +2033,7 @@ Output table: SLO | Certification Domain / O*NET Task</pre>
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Create a technical assessment rubric for an ICT course project.\n\nCourse: [COURSE NAME]\nAssessment type: [network configuration lab / penetration testing report / software project / cloud deployment / portfolio]\nSLO: \"[PASTE SLO]\"\nTools/platforms used: [e.g., Wireshark, Metasploit, AWS Free Tier, GitHub, Python]\n\nRubric criteria (5 rows):\n1. Technical Accuracy & Functionality (does it work correctly?)\n2. Security and Best Practices Compliance\n3. Documentation & Technical Writing (README, lab report, code comments)\n4. Problem-Solving Process (troubleshooting evidence, iteration)\n5. Professional Standards (version control, naming conventions, clean code)\n\nPerformance levels:\n• Exemplary (4): Junior-developer or entry-level analyst quality\n• Proficient (3): Meets all requirements with minor issues\n• Developing (2): Partially meets requirements; functional but with significant gaps\n• Beginning (1): Does not meet requirements; non-functional or major security issues\n\nFormat as Markdown table. Include a \"GitHub/Portfolio Ready?\" indicator in the Exemplary column.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 Assessment: [lab report / network config / software project / CTF]
@@ -2011,7 +2068,7 @@ Include "GitHub/Portfolio Ready?" indicator in Exemplary column.</pre>
           <div class="prompt-how">Before using this prompt, pull the employment projections from O*NET and the regional wage data from CA LMI. Paste the key numbers in. The AI writes the narrative — you verify the data.</div>
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Write a program review labor market analysis narrative for the following program.\n\nProgram: [PROGRAM NAME]\nCollege: [YOUR COLLEGE NAME]\nRegion: [YOUR REGION]\n\nLabor market data (paste actual data — do not let the AI invent numbers):\n• O*NET occupation: [OCCUPATION NAME, SOC CODE]\n• O*NET 10-year employment growth projection: [PASTE ACTUAL %]\n• O*NET median annual wage: [PASTE ACTUAL $]\n• CA EDD/LMI projected Orange County job openings (10 yr): [PASTE OR WRITE \"I will add this\"]\n• Key employer sectors hiring in this field locally: [LIST 3-5]\n• Notable regional employers: [e.g., CHOC, St. Joseph Hospital, Hoag for Health programs]\n\nWrite a 250-300 word program review narrative that:\n• Opens with the regional employment outlook\n• Cites specific wage and growth projections (using the data I provided)\n• Connects local employer demand to the program's curriculum\n• References how the program's SLOs align to O*NET occupation tasks\n• Closes with a statement of the program's labor market relevance\n• Uses formal academic prose appropriate for an ACCJC accreditation document\n\nIMPORTANT: Only use the specific numbers I provided. Do not generate or estimate labor market statistics — flag any data gap with [NEEDS DATA].`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Program: [PROGRAM NAME]
 Region: Orange County / Southern California
@@ -2050,7 +2107,7 @@ Flag any missing data with [NEEDS DATA].</pre>
         <div class="prompt-content">
           <div class="sample-header">
             <span class="sample-label">Prompt</span>
-            <button type="button" class="copy-btn" onclick="copyText(this, `Convert my course SLOs into a student-facing self-assessment tool.\n\nCourse: [COURSE NAME]\nMy SLOs:\n[PASTE YOUR SLOs HERE — one per line]\n\nCreate two versions:\n\n1. PRE-COURSE SELF-ASSESSMENT (to be given Week 1)\nFor each SLO, write a plain-language question students can answer on a 1-4 scale:\n1 = I have no experience with this\n2 = I have heard of this but can't do it yet\n3 = I can do this with help\n4 = I can do this independently\n\nUse plain, jargon-free language. Replace technical terms with brief explanations in parentheses.\n\n2. POST-COURSE REFLECTION (to be given final week)\nSame SLOs, rewritten as reflection prompts:\n\"Before this course, I would have rated my ability to [SLO action] as ___. Now I would rate it as ___ because...\"\n\nFormat both versions as clean, printable forms with space for student name and date.`)">Copy</button>
+            <button type="button" class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
           <pre class="sample-text">Course: [COURSE NAME]
 SLOs: [PASTE YOUR SLOs HERE]
@@ -2145,43 +2202,43 @@ Format as clean, printable forms.</pre>
     <span>completed</span>
   </div>
   <div class="checklist-grid" id="checklistGrid">
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Set up an AI tool account</strong><span>ChatGPT, Claude, or Google AI Studio — all have free tiers</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Saved the Starter System Prompt</strong><span>Module 1 — sets up the AI to behave like a curriculum specialist</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Used AI to revise a COR section</strong><span>Module 2 — catalog description, course objectives, or content outline</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Found my course's O*NET occupation</strong><span>Module 3 — search onetonline.org and locate Tasks + SOC code</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Generated SLOs from O*NET data</strong><span>Module 3 — pasted O*NET tasks and produced 5+ measurable SLOs</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Built a 4-level rubric with AI</strong><span>Module 4 — complete rubric with criteria and observable behaviors</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Ran the AI self-audit prompt</strong><span>Module 5 — asked the AI to flag its own uncertain claims</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Tried a discipline-specific prompt</strong><span>Prompt Library — used at least one Health / Business / Construction / ICT prompt</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Verified AI output against CurricUNET</strong><span>Opened an approved COR and compared structure and language to AI draft</span></div>
     </div>
-    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="handleCheckKey(event, this)">
       <div class="check-box"></div>
       <div class="check-text"><strong>Shared a prompt with a colleague</strong><span>Send one prompt from this library to someone who teaches in your discipline</span></div>
     </div>
@@ -2310,25 +2367,48 @@ Format as clean, printable forms.</pre>
     });
   }
 
-  /* ---------- Copy buttons ---------- */
-  function copyText(btn, text) {
-    navigator.clipboard.writeText(text).then(() => {
+  /* ---------- Copy buttons ----------
+     Each copy-btn lives in a .sample-header that is a sibling of a <pre class="sample-text">.
+     We read the text from that <pre> rather than passing it inline (avoids HTML attribute
+     escaping issues with quotes inside prompts).
+  */
+  function copyText(btn) {
+    // Find the sibling <pre class="sample-text">
+    let container = btn.closest('.sample-block') || btn.closest('.prompt-content') || btn.closest('.sample-header').parentElement;
+    let pre = container ? container.querySelector('.sample-text') : null;
+    if (!pre) {
+      // fallback: look at next siblings of header
+      const header = btn.closest('.sample-header');
+      if (header) {
+        let n = header.nextElementSibling;
+        while (n && !n.classList.contains('sample-text')) n = n.nextElementSibling;
+        pre = n;
+      }
+    }
+    const text = pre ? pre.textContent : '';
+    const showCopied = () => {
       btn.textContent = 'Copied!';
       btn.classList.add('copied');
       setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-    }).catch(() => {
-      // fallback
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-    });
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(showCopied).catch(() => fallbackCopy(text, showCopied));
+    } else {
+      fallbackCopy(text, showCopied);
+    }
+  }
+  function fallbackCopy(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '0'; ta.style.left = '0';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    done && done();
   }
 
   /* ---------- Checklist ---------- */
@@ -2361,6 +2441,13 @@ Format as clean, printable forms.</pre>
     saveChecklist();
   }
 
+  function handleCheckKey(event, row) {
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+      event.preventDefault();
+      toggleCheck(row);
+    }
+  }
+
   function updateChecklistBar() {
     const rows = document.querySelectorAll('#checklistGrid .check-row');
     const done = Array.from(rows).filter(r => r.classList.contains('done')).length;
@@ -2380,18 +2467,19 @@ Format as clean, printable forms.</pre>
     popover.style.display = 'block';
     popover.classList.remove('flip');
     const rect = el.getBoundingClientRect();
-    const pw = 280;
+    const pw = popover.offsetWidth || 280;
+    const ph = popover.offsetHeight;
     let left = rect.left + rect.width / 2 - pw / 2;
     left = Math.max(8, Math.min(left, window.innerWidth - pw - 8));
     const arrowX = (rect.left + rect.width / 2 - left);
     popover.style.setProperty('--arrow-x', arrowX + 'px');
     popover.style.left = left + 'px';
-    const above = rect.top - 10 - popover.offsetHeight;
-    if (above < 60) {
+    // popover uses position: fixed — top is viewport-relative; do NOT add scrollY
+    if (rect.top - ph - 10 < 60) {
       popover.classList.add('flip');
-      popover.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+      popover.style.top = (rect.bottom + 10) + 'px';
     } else {
-      popover.style.top = (rect.top + window.scrollY - popover.offsetHeight - 10) + 'px';
+      popover.style.top = (rect.top - ph - 10) + 'px';
     }
     activeJargon = el;
   }
@@ -2406,11 +2494,18 @@ Format as clean, printable forms.</pre>
     el.addEventListener('focus', () => showPopover(el));
     el.addEventListener('mouseleave', hidePopover);
     el.addEventListener('blur', hidePopover);
+    // Tap to toggle on touch devices
+    el.addEventListener('click', (e) => {
+      if (activeJargon === el) { hidePopover(); }
+      else { showPopover(el); }
+    });
   });
 
   document.addEventListener('click', e => {
     if (!e.target.closest('.jargon') && !e.target.closest('#popover')) hidePopover();
   });
+  window.addEventListener('scroll', hidePopover, { passive: true });
+  window.addEventListener('resize', hidePopover);
 
   /* ---------- Scroll reveal ---------- */
   const revealObserver = new IntersectionObserver((entries) => {

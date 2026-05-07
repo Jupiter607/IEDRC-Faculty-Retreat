@@ -198,37 +198,21 @@
         radial-gradient(ellipse 50% 40% at 15% 60%, rgba(241,138,45,0.08) 0%, transparent 65%);
       pointer-events: none;
     }
-    /* Sun-ray motif behind hero — IEDRC's signature visual element */
+    /* Subtle IEDRC sun-rise glow at the top of the hero */
     .hero::after {
       content: '';
       position: absolute;
-      top: -120px;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 520px; height: 260px;
+      width: 700px; height: 200px;
       background:
-        conic-gradient(from 200deg at 50% 100%,
-          transparent 0deg,
-          transparent 25deg,
-          rgba(240,105,55,0.22) 30deg,
-          transparent 38deg,
-          transparent 50deg,
-          rgba(241,138,45,0.18) 55deg,
-          transparent 63deg,
-          transparent 75deg,
-          rgba(240,105,55,0.22) 80deg,
-          transparent 88deg,
-          transparent 100deg,
-          rgba(241,138,45,0.18) 105deg,
-          transparent 113deg,
-          transparent 125deg,
-          rgba(240,105,55,0.22) 130deg,
-          transparent 138deg,
-          transparent 360deg);
-      mask: radial-gradient(circle at 50% 100%, black 0%, black 60%, transparent 75%);
-      -webkit-mask: radial-gradient(circle at 50% 100%, black 0%, black 60%, transparent 75%);
+        radial-gradient(ellipse 60% 100% at 50% 0%,
+          rgba(241,138,45,0.18) 0%,
+          rgba(240,105,55,0.10) 35%,
+          transparent 70%);
       pointer-events: none;
-      opacity: 0.85;
+      filter: blur(6px);
     }
 
     .hero-grid {

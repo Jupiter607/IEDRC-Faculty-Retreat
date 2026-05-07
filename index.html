@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI as Your Curriculum Partner — SAC Spring 2026</title>
+  <meta name="description" content="A self-paced workshop for Santa Ana College faculty: use AI to draft Course Outlines of Record, generate SLOs from labor market data, and build assessments and rubrics in minutes." />
+  <meta name="theme-color" content="#0b0e17" />
+  <meta property="og:title" content="AI as Your Curriculum Partner — SAC Spring 2026" />
+  <meta property="og:description" content="Self-paced faculty workshop: COR drafting, SLOs from labor market data, rubrics in minutes. No prior AI experience needed." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C8102E;
+      --gold: #E5A823;
+      --accent: #00c896;
+      --purple: #7c6aff;
+      --blue: #4fc3f7;
+      --bg: #0b0e17;
+      --surface: #111520;
+      --surface2: #181d2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #eef0f6;
+      --muted: #8892a4;
+      --heading: 'Syne', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--accent));
+      z-index: 300;
+      transition: width 0.15s linear;
+      will-change: width;
+    }
+
+    nav {
+      position: sticky;
+      top: 3px;
+      z-index: 100;
+      background: rgba(11,14,23,0.92);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-brand {
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav-brand .dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; display: inline-block; }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      transition: color 0.25s, background 0.25s;
+      white-space: nowrap;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav-toggle:hover { background: rgba(255,255,255,0.06); }
+    .nav-toggle svg { display: block; }
+
+    .hero {
+      min-height: min(92vh, 880px);
+      min-height: min(92dvh, 880px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(229,168,35,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0,200,150,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,16,46,0.12);
+      border: 1px solid rgba(200,16,46,0.3);
+      color: #ff7a8a;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      max-width: 820px;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+      position: relative;
+    }
+
+    .hero h1 .text-red { color: var(--red); }
+    .hero h1 .text-gold { color: var(--gold); }
+    .hero h1 .text-accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+      position: relative;
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+      position: relative;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+    .chip .pip { width: 5px; height: 5px; border-radius: 50%; }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.6s 0.4s ease both;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #e01535; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,16,46,0.3); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.25); background: var(--surface); transform: translateY(-1px); }
+    .btn-outline:active { transform: translateY(0); }
+
+    section { padding: 5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+    section[id] { scroll-margin-top: 68px; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-lead {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ---- Resource cards ---- */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .resource-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .resource-card:hover { border-color: rgba(255,255,255,0.15); background: var(--surface2); transform: translateY(-2px); }
+
+    .resource-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: var(--heading);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .resource-info { flex: 1; min-width: 0; }
+    .resource-info strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .resource-info span { font-size: 12px; color: var(--muted); display: block; }
+    .resource-arrow { color: var(--muted); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; }
+    .resource-card:hover .resource-arrow { transform: translateX(3px); }
+
+    /* ---- Learning path / overview ---- */
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+      gap: 1rem;
+      counter-reset: path-counter;
+    }
+
+    .path-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.2rem;
+      position: relative;
+      counter-increment: path-counter;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .path-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+    .path-card::before {
+      content: counter(path-counter, decimal-leading-zero);
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .path-card:nth-child(1)::before { color: var(--red); }
+    .path-card:nth-child(2)::before { color: var(--gold); }
+    .path-card:nth-child(3)::before { color: var(--accent); }
+    .path-card:nth-child(4)::before { color: var(--purple); }
+    .path-card:nth-child(5)::before { color: var(--blue); }
+
+    .path-card h3 { font-family: var(--heading); font-size: 15px; font-weight: 700; margin-bottom: 0.4rem; }
+    .path-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-bottom: 0.75rem; }
+    .path-time { font-size: 11px; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .path-time::before { content: '⏱'; }
+
+    /* ---- Module cards ---- */
+    #modules { max-width: 1100px; }
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      gap: 1.1rem;
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .module-card.expanded {
+        grid-column: 1 / -1;
+        position: relative;
+        z-index: 2;
+      }
+      .module-card.expanded:hover { transform: none; }
+      .module-card.expanded .card-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        gap: clamp(1.25rem, 3vw, 2.25rem);
+        align-items: start;
+      }
+      .module-card.expanded .card-meta,
+      .module-card.expanded .card-title,
+      .module-card.expanded .card-vibe,
+      .module-card.expanded .card-capability,
+      .module-card.expanded .card-toggle { grid-column: 1; }
+      .module-card.expanded .card-steps {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        padding-left: clamp(1.25rem, 2.5vw, 2rem);
+        border-left: 1px solid var(--border);
+        align-self: stretch;
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+      }
+      .module-card.expanded .sample-text { max-height: clamp(320px, 55vh, 520px); }
+    }
+
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      min-width: 0;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .module-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+
+    .card-accent { height: 3px; }
+    .card-body { padding: 1.25rem clamp(1rem, 3vw, 1.4rem) 1.4rem; }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card-audience {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 5px;
+    }
+    .aud-faculty { background: rgba(0,200,150,0.12); color: #00c896; }
+    .aud-all { background: rgba(229,168,35,0.12); color: #ffb74d; }
+
+    .card-title {
+      font-family: var(--heading);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-vibe {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.55;
+    }
+
+    .card-capability {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .card-capability:hover { filter: brightness(1.25); }
+
+    .card-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card-toggle:hover { background: rgba(0,200,150,0.07); border-color: var(--accent); }
+
+    .card-steps {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 1px solid transparent;
+    }
+    .card-steps.open {
+      max-height: none;
+      overflow: visible;
+      opacity: 1;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top-color: var(--border);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: clamp(13px, 2.5vw, 14px);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .step-item:last-child { margin-bottom: 0; }
+    .step-badge {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .step-item > div:last-child { min-width: 0; overflow-wrap: break-word; }
+    .step-item em { color: var(--text); font-style: italic; }
+
+    .sample-block {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+    }
+
+    .sample-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .sample-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      min-width: 0;
+    }
+
+    .copy-btn {
+      background: rgba(229,168,35,0.12);
+      border: 1px solid rgba(229,168,35,0.25);
+      color: var(--gold);
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .copy-btn:hover { background: rgba(229,168,35,0.2); border-color: rgba(229,168,35,0.4); }
+    .copy-btn.copied { background: rgba(0,200,150,0.15); border-color: rgba(0,200,150,0.3); color: var(--accent); }
+
+    .sample-text {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(10px, 3vw, 14px);
+      font-size: clamp(12px, 2.5vw, 13.5px);
+      line-height: 1.7;
+      color: var(--muted);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-height: clamp(220px, 40vh, 340px);
+      overflow-x: auto;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.1) transparent;
+    }
+    .sample-text::-webkit-scrollbar { width: 4px; }
+    .sample-text::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    /* ---- Filter tabs (prompt library) ---- */
+    #prompts { max-width: 1100px; }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filter-tab {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .filter-tab:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .filter-tab.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .filter-tab[data-disc="health"].active { background: #ff6b9d; border-color: #ff6b9d; }
+    .filter-tab[data-disc="business"].active { background: var(--gold); border-color: var(--gold); color: #0b0e17; }
+    .filter-tab[data-disc="construction"].active { background: #ff8c00; border-color: #ff8c00; color: #0b0e17; }
+    .filter-tab[data-disc="ict"].active { background: var(--purple); border-color: var(--purple); }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .prompt-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .prompt-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.14); box-shadow: 0 12px 32px rgba(0,0,0,0.35); }
+    .prompt-card[hidden] { display: none; }
+
+    .prompt-accent { height: 3px; }
+    .prompt-body { padding: 1.2rem 1.25rem 1.35rem; }
+
+    .prompt-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .ptag {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 5px;
+    }
+    .ptag-cor { background: rgba(200,16,46,0.12); color: #ff8a8a; }
+    .ptag-slo { background: rgba(0,200,150,0.12); color: #00c896; }
+    .ptag-assessment { background: rgba(124,106,255,0.15); color: #a598ff; }
+    .ptag-rubric { background: rgba(229,168,35,0.12); color: var(--gold); }
+    .ptag-health { background: rgba(255,107,157,0.12); color: #ff6b9d; }
+    .ptag-business { background: rgba(229,168,35,0.12); color: var(--gold); }
+    .ptag-construction { background: rgba(255,140,0,0.12); color: #ff8c00; }
+    .ptag-ict { background: rgba(124,106,255,0.12); color: var(--purple); }
+    .ptag-all { background: rgba(255,255,255,0.07); color: var(--muted); }
+
+    .prompt-title {
+      font-family: var(--heading);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .prompt-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.55;
+    }
+
+    .prompt-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s, border-color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .prompt-toggle:hover { background: rgba(0,200,150,0.07); border-color: var(--accent); }
+
+    .prompt-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 1px solid transparent;
+    }
+    .prompt-content.open {
+      max-height: none;
+      overflow: visible;
+      opacity: 1;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top-color: var(--border);
+    }
+
+    .prompt-how { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .prompt-how strong { color: var(--text); }
+
+    /* ---- Warning / Watch Out cards ---- */
+    #watchout { max-width: 1000px; }
+
+    .warn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+      gap: 1rem;
+    }
+
+    .warn-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .warn-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .warn-card.warn-red::before { background: linear-gradient(90deg, var(--red), #ff6b6b); }
+    .warn-card.warn-gold::before { background: linear-gradient(90deg, var(--gold), #ffcc70); }
+    .warn-card.warn-blue::before { background: linear-gradient(90deg, var(--blue), #81d4fa); }
+
+    .warn-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 1rem;
+    }
+    .warn-red .warn-icon { background: rgba(200,16,46,0.12); }
+    .warn-gold .warn-icon { background: rgba(229,168,35,0.12); }
+    .warn-blue .warn-icon { background: rgba(79,195,247,0.12); }
+
+    .warn-title {
+      font-family: var(--heading);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .warn-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+    .warn-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .warn-list li {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .warn-list li::before { content: '⚠'; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+    .warn-card.warn-gold .warn-list li::before { content: '💡'; }
+    .warn-card.warn-blue .warn-list li::before { content: '✓'; color: var(--accent); }
+
+    .warn-tip {
+      margin-top: 1rem;
+      font-size: 12.5px;
+      color: var(--muted);
+      padding: 10px 12px;
+      background: var(--surface2);
+      border-radius: 8px;
+      border-left: 3px solid;
+      line-height: 1.55;
+    }
+    .warn-red .warn-tip { border-color: var(--red); }
+    .warn-gold .warn-tip { border-color: var(--gold); }
+    .warn-blue .warn-tip { border-color: var(--blue); }
+    .warn-tip strong { color: var(--text); }
+
+    /* ---- Checklist ---- */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .check-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .check-row:hover { border-color: rgba(255,255,255,0.14); background: var(--surface2); }
+    .check-row:active { transform: scale(0.98); }
+    .check-row.done { border-color: rgba(0,200,150,0.25); }
+    .check-row.done .check-text strong { text-decoration: line-through; color: var(--muted); }
+
+    .check-box {
+      width: 22px; height: 22px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 1px;
+    }
+    .check-row.done .check-box { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+    .check-row.done .check-box::after {
+      content: '';
+      width: 5px; height: 9px;
+      border: 2px solid #0b0e17;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+      display: block;
+    }
+
+    .check-text strong { display: block; font-weight: 500; font-size: 14px; margin-bottom: 2px; transition: color 0.2s; }
+    .check-text span { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .checklist-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .checklist-bar-track { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
+    .checklist-bar-fill { height: 100%; width: 0%; border-radius: 2px; background: var(--accent); transition: width 0.3s ease; }
+    .checklist-count { font-weight: 600; font-family: var(--heading); color: var(--accent); white-space: nowrap; }
+
+    /* ---- Jargon tooltips ---- */
+    .jargon { cursor: help; border-bottom: 1.5px dotted var(--accent); color: inherit; font-weight: inherit; }
+    .jargon:hover { color: var(--accent); }
+
+    .tag-popover {
+      position: fixed;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-family: var(--body);
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text);
+      width: 280px;
+      max-width: calc(100vw - 32px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+      z-index: 350;
+      pointer-events: auto;
+      animation: popIn 0.15s ease-out;
+    }
+    .tag-popover::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: var(--arrow-x, 50%);
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--border);
+    }
+    .tag-popover.flip::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--border); }
+    @keyframes popIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ---- Info banner ---- */
+    .info-banner {
+      background: rgba(229,168,35,0.07);
+      border: 1px solid rgba(229,168,35,0.2);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .info-banner-icon { font-size: 18px; flex-shrink: 0; }
+    .info-banner strong { color: var(--gold); }
+
+    /* ---- Footer ---- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer strong { color: var(--red); }
+
+    /* ---- Back to top ---- */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,200,150,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+      z-index: 120;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-to-top:hover { filter: brightness(1.15); }
+    .back-to-top svg { display: block; }
+
+    /* ---- Animations ---- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ---- Skip link + focus ---- */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 8px 16px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 14px;
+      z-index: 300;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .check-row:focus-visible { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px var(--accent); }
+    .card-toggle:focus-visible, .prompt-toggle:focus-visible { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px var(--accent); }
+    .nav-links a:focus-visible { outline-offset: -2px; }
+
+    /* ---- Accessibility controls ---- */
+    .nav-controls { display: flex; align-items: center; gap: 6px; }
+
+    .a11y-wrap { position: relative; }
+    .a11y-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .a11y-btn:hover { color: var(--text); border-color: var(--accent); }
+    .a11y-btn svg { display: block; }
+
+    .a11y-panel {
+      position: absolute;
+      top: 44px; right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      min-width: 220px;
+      display: none;
+      z-index: 150;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .a11y-panel.open { display: block; }
+    .a11y-section { margin-bottom: 14px; }
+    .a11y-section:last-child { margin-bottom: 0; }
+    .a11y-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 6px; }
+    .a11y-btns { display: flex; gap: 6px; }
+    .size-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--heading);
+      font-weight: 600;
+      padding: 6px 0;
+      flex: 1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .size-btn:hover { border-color: var(--accent); }
+    .size-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+    .theme-toggle svg { display: block; }
+
+    /* ---- Light theme ---- */
+    html.light {
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface2: #eef0f6;
+      --border: rgba(0,0,0,0.09);
+      --text: #1a1d27;
+      --muted: #5a6275;
+      color-scheme: light;
+    }
+    html.light nav { background: rgba(245,246,250,0.92); }
+    html.light .nav-links { background: rgba(245,246,250,0.97) !important; }
+    html.light .hero::before {
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,16,46,0.06) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(229,168,35,0.04) 0%, transparent 60%);
+    }
+    html.light .hero-grid { background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px); }
+    html.light .hero-badge { background: rgba(200,16,46,0.07); border-color: rgba(200,16,46,0.18); color: var(--red); }
+    html.light .sample-text { background: #eef0f6; }
+    html.light .check-row.done .check-box::after { border-color: #fff; }
+    html.light .a11y-panel { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+
+    /* ---- High contrast theme ---- */
+    html.high-contrast {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface2: #111111;
+      --border: rgba(255,255,255,0.35);
+      --text: #ffffff;
+      --muted: #d0d0d0;
+      --accent: #00ffb8;
+      --red: #ff3350;
+      --gold: #ffc530;
+      color-scheme: dark;
+    }
+    html.high-contrast nav { background: rgba(0,0,0,0.96); }
+    html.high-contrast .nav-links { background: rgba(0,0,0,0.98) !important; }
+    html.high-contrast .check-row.done .check-box::after { border-color: #000; }
+    html.high-contrast .hero-badge { border-width: 2px; }
+    html.high-contrast .jargon { border-bottom-width: 2px; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 1.25rem; }
+      .hero { min-height: 85vh; min-height: 85dvh; padding: 4rem 1.25rem 2.5rem; }
+      .modules-grid { grid-template-columns: 1fr 1fr; }
+      .card-body { padding: 1.1rem 1rem 1.2rem; }
+      .card-title { font-size: 16px; }
+      .sample-text { font-size: 12.5px; }
+      .path-grid { grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 14px; }
+      nav { padding: 0 1rem; }
+      .nav-links {
+        position: fixed;
+        top: 59px; left: 0; right: 0;
+        background: rgba(11,14,23,0.97);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 0.5rem 1rem 1rem;
+        gap: 0;
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.25s ease;
+        pointer-events: none;
+      }
+      .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav-links a { padding: 0.75rem 0.85rem; font-size: 15px; border-radius: 8px; }
+      .nav-toggle { display: block; }
+      .hero { min-height: 80vh; min-height: 80dvh; padding: 3rem 1rem 2rem; }
+      .hero h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+      .hero-sub { font-size: 15px; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .module-card:hover { transform: none; }
+      .prompt-card:hover { transform: none; }
+      .checklist-grid { grid-template-columns: 1fr; }
+      .warn-grid { grid-template-columns: 1fr; }
+      .path-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-lead { font-size: 14px; margin-bottom: 2rem; }
+      .btn-primary, .btn-outline { padding: 11px 24px; font-size: 13px; }
+      .filter-bar { gap: 0.4rem; }
+      .filter-tab { font-size: 11.5px; padding: 6px 12px; }
+    }
+
+    @media (max-width: 400px) {
+      .path-grid { grid-template-columns: 1fr; }
+      section { padding: 2.5rem 0.75rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<div class="progress-bar" id="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Page scroll progress"></div>
+
+<nav aria-label="Main navigation">
+  <div class="nav-brand">
+    <span class="dot"></span>
+    AI Curriculum Partner
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#resources" onclick="closeNav()">Resources</a></li>
+    <li><a href="#overview" onclick="closeNav()">Overview</a></li>
+    <li><a href="#modules" onclick="closeNav()">Modules</a></li>
+    <li><a href="#prompts" onclick="closeNav()">Prompts</a></li>
+    <li><a href="#watchout" onclick="closeNav()">Watch Out</a></li>
+    <li><a href="#checklist" onclick="closeNav()">Checklist</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button type="button" class="theme-toggle" onclick="cycleTheme()" aria-label="Switch contrast mode" title="Switch contrast">
+      <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <div class="a11y-wrap">
+      <button type="button" class="a11y-btn" id="a11yToggle" onclick="toggleA11yPanel()" aria-label="Accessibility options" aria-expanded="false" title="Accessibility">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="4.5" r="2.5"/><path d="M12 7v6m0 0l-3 7m3-7l3 7"/><path d="M5 10c2.3-.8 4.6-1.2 7-1.2s4.7.4 7 1.2"/>
+        </svg>
+      </button>
+      <div class="a11y-panel" id="a11yPanel" role="region" aria-label="Accessibility settings">
+        <div class="a11y-section">
+          <span class="a11y-label">Text Size</span>
+          <div class="a11y-btns">
+            <button type="button" class="size-btn active" data-size="100" onclick="setScale(100)">A</button>
+            <button type="button" class="size-btn" data-size="120" onclick="setScale(120)">A+</button>
+            <button type="button" class="size-btn" data-size="140" onclick="setScale(140)">A++</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+      <svg id="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-badge">
+    <span style="width:6px;height:6px;background:var(--red);border-radius:50%;display:inline-block;"></span>
+    Santa Ana College — Spring 2026 · Self-Paced
+  </div>
+  <h1>AI as Your<br /><span class="text-red">Curriculum</span> <span class="text-gold">Partner</span></h1>
+  <p class="hero-sub">Stop spending evenings rewriting <span class="jargon" data-tip="Course Outline of Record — the official catalog document that defines a course's description, objectives, content, and assessment methods. Required by ACCJC for every credit course.">CORs</span>. Let AI draft, refresh, and align your course outlines, <span class="jargon" data-tip="Student Learning Outcomes — statements that describe what students will know or be able to do upon completing a course. Must be measurable and assessed.">SLOs</span>, and rubrics while you steer the expertise. No prior AI experience needed.</p>
+  <div class="hero-chips">
+    <div class="chip"><span class="pip" style="background:var(--accent)"></span> Self-paced · ~75 min</div>
+    <div class="chip"><span class="pip" style="background:var(--gold)"></span> ChatGPT or Claude or Gemini</div>
+    <div class="chip"><span class="pip" style="background:var(--red)"></span> Faculty</div>
+    <div class="chip"><span class="pip" style="background:var(--purple)"></span> Health · Business · Construction · ICT</div>
+  </div>
+  <div class="hero-cta">
+    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="btn-primary">Open ChatGPT (free)</a>
+    <a href="#modules" class="btn-outline">Start the Modules</a>
+  </div>
+</section>
+
+<!-- ===================== RESOURCES ===================== -->
+<section id="resources">
+  <div class="reveal">
+    <p class="section-eyebrow">Before You Begin</p>
+    <h2 class="section-title">Quick Start Links</h2>
+    <p class="section-lead">Open one AI tool and at least one labor market source before starting Module 3. Everything is free.</p>
+  </div>
+  <div class="resource-grid">
+    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(0,200,150,0.12);color:var(--accent);">GPT</div>
+      <div class="resource-info">
+        <strong>ChatGPT</strong>
+        <span>Free account — GPT-4o recommended for curriculum work</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="https://claude.ai" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(229,168,35,0.12);color:var(--gold);">Cld</div>
+      <div class="resource-info">
+        <strong>Claude (Anthropic)</strong>
+        <span>Excellent for long documents and policy-style writing</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="https://aistudio.google.com" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(200,16,46,0.12);color:var(--red);">AI</div>
+      <div class="resource-info">
+        <strong>Google AI Studio</strong>
+        <span>Upload PDFs &amp; use Gemini — free for faculty</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="https://www.onetonline.org" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(79,195,247,0.12);color:#4fc3f7;">O*N</div>
+      <div class="resource-info">
+        <strong>O*NET Online</strong>
+        <span>Official U.S. occupation tasks &amp; skills data — free</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="https://labormarketinfo.edd.ca.gov" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(124,106,255,0.12);color:#a598ff;">LMI</div>
+      <div class="resource-info">
+        <strong>CA Labor Market Info</strong>
+        <span>California-specific wage &amp; employment projections (EDD)</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="https://www.accjc.org/accreditation-standards/" target="_blank" rel="noopener" class="resource-card reveal">
+      <div class="resource-icon" style="background:rgba(255,107,157,0.12);color:#ff6b9d;">ACC</div>
+      <div class="resource-info">
+        <strong>ACCJC Standards</strong>
+        <span>Accreditation standards for verifying AI-generated language</span>
+      </div>
+      <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section id="overview">
+  <div class="reveal">
+    <p class="section-eyebrow">Your Learning Path</p>
+    <h2 class="section-title">Five Modules, ~75 Minutes</h2>
+    <p class="section-lead">Work through each module at your own pace. Each one builds on the last — but every module also stands alone if you need a quick refresher.</p>
+  </div>
+  <div class="info-banner reveal">
+    <div class="info-banner-icon">💡</div>
+    <div><strong>How to use this site:</strong> Click <em>"Try It"</em> on any module card to expand step-by-step instructions with a ready-to-copy prompt. All prompts include <strong>[PLACEHOLDERS IN BRACKETS]</strong> — swap them for your actual course details before sending to the AI.</div>
+  </div>
+  <div class="path-grid">
+    <div class="path-card reveal">
+      <h3>AI as Curriculum Partner</h3>
+      <p>What AI does well, what it gets wrong, and how to set it up for curriculum work.</p>
+      <div class="path-time">~10 min</div>
+    </div>
+    <div class="path-card reveal">
+      <h3>Course Outlines of Record</h3>
+      <p>Draft and refresh catalog descriptions, course objectives, and content outlines.</p>
+      <div class="path-time">~15 min</div>
+    </div>
+    <div class="path-card reveal">
+      <h3>SLOs + Labor Market</h3>
+      <p>Generate measurable SLOs mapped directly to O*NET occupation data.</p>
+      <div class="path-time">~15 min</div>
+    </div>
+    <div class="path-card reveal">
+      <h3>Assessments &amp; Rubrics</h3>
+      <p>Build authentic assessments and 4-level rubrics in minutes, not hours.</p>
+      <div class="path-time">~15 min</div>
+    </div>
+    <div class="path-card reveal">
+      <h3>Verify AI Output</h3>
+      <p>Spot hallucinations, check accreditation language, and submit with confidence.</p>
+      <div class="path-time">~10 min</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MODULES ===================== -->
+<section id="modules">
+  <div class="reveal">
+    <p class="section-eyebrow">Hands-On Learning</p>
+    <h2 class="section-title">The Five Modules</h2>
+    <p class="section-lead">Expand each module for step-by-step instructions and a ready-to-copy prompt tailored to community college curriculum work.</p>
+  </div>
+  <div class="modules-grid">
+
+    <!-- MODULE 1 -->
+    <div class="module-card reveal">
+      <div class="card-accent" style="background:linear-gradient(90deg,#C8102E,#ff6b6b);"></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-num">Module 01</span><span class="card-audience aud-all">Everyone</span></div>
+        <div class="card-title">AI as Your Curriculum Partner</div>
+        <div class="card-vibe">Move from "AI generates content" to "AI is a first-draft specialist you direct." You are still the subject matter expert — the AI handles the blank-page problem.</div>
+        <div class="card-capability" style="background:rgba(200,16,46,0.1);color:#ff8a8a;" data-tip="You tell the AI who it is, what it knows, and how to behave before you ask it anything. This 'system prompt' or 'context setting' dramatically improves curriculum output quality.">Context-Setting Prompts</div>
+        <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
+        <div class="card-steps">
+          <div class="step-item"><div class="step-badge">1</div><div>Open ChatGPT, Claude, or Google AI Studio. Start a new chat. Before asking anything, set the scene — this is called a <span class="jargon" data-tip="A system prompt (or context-setter) is a paragraph you write before your first question that tells the AI its role, audience, and rules. Think of it as the AI's job description.">system prompt</span>.</div></div>
+          <div class="step-item"><div class="step-badge">2</div><div>Copy the starter prompt below and paste it as your very first message. This "trains" the AI's behavior for the rest of the conversation.</div></div>
+          <div class="step-item"><div class="step-badge">3</div><div>Try asking: <em>"What are the biggest risks of using AI for curriculum development at a California community college?"</em> — see how the AI's self-awareness shapes its answer.</div></div>
+          <div class="step-item"><div class="step-badge">4</div><div>Read the response critically. Does the AI cite specific accreditation standards correctly? If not — that's the lesson. AI knows patterns; you know your institution.</div></div>
+          <div class="sample-block">
+            <div class="sample-header">
+              <span class="sample-label">Starter System Prompt</span>
+              <button type="button" class="copy-btn" onclick="copyText(this, `You are an experienced curriculum specialist at Santa Ana College, a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.\n\nAlways follow these rules:\n• Use third-person, present-tense, professional academic language for all COR text.\n• Write Student Learning Outcomes that begin with \"Upon successful completion of this course, students will be able to...\" followed by a measurable action verb from Bloom's Taxonomy.\n• Never invent accreditation standards, citations, or regulation numbers — flag anything you are uncertain about.\n• When I provide O*NET or labor market data, integrate it directly into SLOs and course objectives.\n• Format all structured output (rubrics, outlines) as Markdown tables or numbered lists.\n\nIf you are asked to generate text that will go directly into a COR, remind me to verify it against current ACCJC standards and our institution's curriculum committee guidelines before submission.`)">Copy</button>
+            </div>
+            <pre class="sample-text">You are an experienced curriculum specialist at Santa Ana College, a California community college accredited by ACCJC. Your job is to assist faculty in drafting, revising, and improving curriculum documents including Course Outlines of Record (CORs), Student Learning Outcomes (SLOs), and assessment rubrics.
+
+Always follow these rules:
+• Use third-person, present-tense, professional academic language for all COR text.
+• Write Student Learning Outcomes that begin with "Upon successful completion of this course, students will be able to..." followed by a measurable action verb from Bloom's Taxonomy.
+• Never invent accreditation standards, citations, or regulation numbers — flag anything you are uncertain about.
+• When I provide O*NET or labor market data, integrate it directly into SLOs and course objectives.
+• Format all structured output (rubrics, outlines) as Markdown tables or numbered lists.
+
+If you are asked to generate text that will go directly into a COR, remind me to verify it against current ACCJC standards and our institution's curriculum committee guidelines before submission.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module-card reveal">
+      <div class="card-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-num">Module 02</span><span class="card-audience aud-faculty">Faculty</span></div>
+        <div class="card-title">Course Outlines of Record (COR)</div>
+        <div class="card-vibe">Draft a new catalog description, refresh an outdated course objective list, or align course content to current discipline standards — in one conversation.</div>
+        <div class="card-capability" style="background:rgba(229,168,35,0.1);color:var(--gold);" data-tip="Paste your existing COR text (or just the catalog description) into the AI, tell it what's changed in the field, and ask it to revise. The AI produces a polished draft — you make the final judgment.">Document-in / Draft-out Workflow</div>
+        <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
+        <div class="card-steps">
+          <div class="step-item"><div class="step-badge">1</div><div>Start with the system prompt from Module 1 (or just paste it at the top of a new chat).</div></div>
+          <div class="step-item"><div class="step-badge">2</div><div>Copy your current catalog description (from <span class="jargon" data-tip="CurricUNET is the curriculum management software used by California community colleges to develop, review, and approve Course Outlines of Record.">CurricUNET</span> or your syllabus) and paste it into the chat, then paste the prompt below.</div></div>
+          <div class="step-item"><div class="step-badge">3</div><div>Review the AI draft. It will suggest updated language. Ask follow-ups: <em>"Make it more concise"</em> or <em>"Add a reference to current industry standards in [your field]."</em></div></div>
+          <div class="step-item"><div class="step-badge">4</div><div>For a full course objectives list, follow up: <em>"Now generate 8 course objectives for this course using parallel grammatical structure starting with infinitive verbs (to analyze, to demonstrate, etc.)."</em></div></div>
+          <div class="step-item"><div class="step-badge">5</div><div>Before submitting to curriculum committee: verify all <span class="jargon" data-tip="Title 5 regulations are the California Education Code rules that govern community college curriculum, including minimum content, unit value, and transfer requirements.">Title 5</span> language, prerequisite wording, and unit hours are correct. AI sometimes gets these wrong.</div></div>
+          <div class="sample-block">
+            <div class="sample-header">
+              <span class="sample-label">COR Catalog Description Prompt</span>
+              <button type="button" class="copy-btn" onclick="copyText(this, `Here is my current catalog description:\n[PASTE YOUR CURRENT CATALOG DESCRIPTION HERE]\n\nPlease revise it with these goals:\n1. Update the language to reflect current practices in [YOUR DISCIPLINE/FIELD]\n2. Keep it under 100 words\n3. Write in third person, present tense\n4. Do NOT repeat the course title in the description\n5. Do NOT include the course number\n6. Begin with a clear sentence about what the course covers and what students will do\n7. End with prerequisites if any: [LIST PREREQUISITES OR WRITE \"None\"]\n\nCourse level: [Lower Division / Upper Division Transfer / Vocational]\nDiscipline: [YOUR DISCIPLINE]\nMajor changes since last revision: [BRIEFLY DESCRIBE: e.g., new software platforms, updated regulations, industry certification changes]\n\nProvide the revised description, then list 3 specific changes you made and why.`)">Copy</button>
+            </div>
+            <pre class="sample-text">Here is my current catalog description:
+[PASTE YOUR CURRENT CATALOG DESCRIPTION HERE]
+
+Please revise it with these goals:
+1. Update the language to reflect current practices in [YOUR DISCIPLINE/FIELD]
+2. Keep it under 100 words
+3. Write in third person, present tense
+4. Do NOT repeat the course title in the description
+5. Do NOT include the course number
+6. Begin with a clear sentence about what the course covers
+7. End with prerequisites if any: [LIST PREREQUISITES OR WRITE "None"]
+
+Course level: [Lower Division / Upper Division Transfer / Vocational]
+Discipline: [YOUR DISCIPLINE]
+Major changes since last revision: [BRIEFLY DESCRIBE WHAT'S CHANGED]
+
+Provide the revised description, then list 3 specific changes you made and why.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="module-card reveal">
+      <div class="card-accent" style="background:linear-gradient(90deg,#00c896,#7de8d0);"></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-num">Module 03</span><span class="card-audience aud-faculty">Faculty</span></div>
+        <div class="card-title">SLOs Mapped to Labor Market</div>
+        <div class="card-vibe">Use real O*NET occupation data to generate <span class="jargon" data-tip="Student Learning Outcomes — measurable statements of what students will be able to do upon completing a course. Required by ACCJC and used for program review.">SLOs</span> that demonstrate workforce relevance — one of the most powerful arguments you can make in a program review.</div>
+        <div class="card-capability" style="background:rgba(0,200,150,0.1);color:var(--accent);" data-tip="You paste raw O*NET task lists and wage data directly into the chat. The AI converts occupation data into properly-worded SLOs aligned to Bloom's Taxonomy — your job is to validate and select.">Labor Market → SLO Translation</div>
+        <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
+        <div class="card-steps">
+          <div class="step-item"><div class="step-badge">1</div><div>Go to <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--accent);">O*NET Online</a>. Search for an occupation your course prepares students for (e.g., "Registered Nurse," "Electrician," "Network Administrator").</div></div>
+          <div class="step-item"><div class="step-badge">2</div><div>On the O*NET summary page, copy the <strong>Tasks</strong> section (the bullet list of job duties). Also note the <strong>SOC code</strong> and the occupation's median wage.</div></div>
+          <div class="step-item"><div class="step-badge">3</div><div>Paste the O*NET tasks into the chat along with the prompt below. The AI will generate SLOs directly connected to real job demands.</div></div>
+          <div class="step-item"><div class="step-badge">4</div><div>Review: Are the Bloom's verbs measurable? (Analyze, Demonstrate, Evaluate — good. Know, Understand, Appreciate — too vague.) Ask the AI to revise any SLO that uses vague verbs.</div></div>
+          <div class="step-item"><div class="step-badge">5</div><div>Optional: Ask for a mapping table: <em>"Create a table with three columns: SLO | O*NET Task It Addresses | Bloom's Level."</em> This is gold for program review documentation.</div></div>
+          <div class="sample-block">
+            <div class="sample-header">
+              <span class="sample-label">SLO Generator Prompt</span>
+              <button type="button" class="copy-btn" onclick="copyText(this, `I am writing Student Learning Outcomes (SLOs) for the following course:\n\nCourse name: [COURSE NAME]\nCourse number: [e.g., NURS 101]\nDiscipline/Program: [YOUR DISCIPLINE]\nCourse level: [Introductory / Intermediate / Advanced]\n\nThe primary occupation this course prepares students for is:\nOccupation: [OCCUPATION TITLE]\nSOC Code: [e.g., 29-1141 for Registered Nurses]\n\nHere are the O*NET tasks for this occupation:\n[PASTE THE O*NET TASKS LIST HERE]\n\nPlease generate 5-6 Student Learning Outcomes that:\n• Begin with: \"Upon successful completion of this course, students will be able to...\"\n• Use measurable Bloom's Taxonomy action verbs appropriate for this course level\n• Connect directly to the O*NET tasks provided — note which task each SLO addresses\n• Are specific enough to be measured through a single assessment\n• Meet ACCJC standards for authentic, measurable outcomes\n\nAfter the SLOs, provide a mapping table:\n| SLO # | SLO Text | O*NET Task | Bloom's Level |`)">Copy</button>
+            </div>
+            <pre class="sample-text">I am writing Student Learning Outcomes (SLOs) for the following course:
+
+Course name: [COURSE NAME]
+Course number: [e.g., NURS 101]
+Discipline/Program: [YOUR DISCIPLINE]
+Course level: [Introductory / Intermediate / Advanced]
+
+The primary occupation this course prepares students for is:
+Occupation: [OCCUPATION TITLE]
+SOC Code: [e.g., 29-1141 for Registered Nurses]
+
+Here are the O*NET tasks for this occupation:
+[PASTE THE O*NET TASKS LIST HERE]
+
+Please generate 5-6 Student Learning Outcomes that:
+• Begin with: "Upon successful completion of this course, students will be able to..."
+• Use measurable Bloom's Taxonomy action verbs for this course level
+• Connect directly to the O*NET tasks provided
+• Are specific enough to be measured through a single assessment
+• Meet ACCJC standards for authentic, measurable outcomes
+
+After the SLOs, provide a mapping table:
+| SLO # | SLO Text | O*NET Task | Bloom's Level |</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module-card reveal">
+      <div class="card-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-num">Module 04</span><span class="card-audience aud-faculty">Faculty</span></div>
+        <div class="card-title">Assessments &amp; Rubrics</div>
+        <div class="card-vibe">Design an authentic assessment task and a complete 4-level rubric in minutes. The AI builds the structure — you bring the discipline-specific expertise to validate it.</div>
+        <div class="card-capability" style="background:rgba(124,106,255,0.12);color:#a598ff;" data-tip="You provide the SLO text and the type of assessment (portfolio, demo, case study), and the AI generates both the task description and a complete rubric with 4-5 criteria and 4 performance levels.">SLO-Aligned Rubric Generation</div>
+        <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
+        <div class="card-steps">
+          <div class="step-item"><div class="step-badge">1</div><div>Have at least one SLO ready (from Module 3 or your existing course documents). The clearer the SLO, the better the rubric.</div></div>
+          <div class="step-item"><div class="step-badge">2</div><div>Decide on an assessment type: <em>written case study, hands-on demonstration, portfolio, group project, oral presentation, lab report</em> — the type shapes the rubric criteria.</div></div>
+          <div class="step-item"><div class="step-badge">3</div><div>Paste the prompt below. The AI will generate both the assessment task description (what students are asked to do) and the complete rubric in one output.</div></div>
+          <div class="step-item"><div class="step-badge">4</div><div>Refine: Ask the AI to <em>"Add a criterion for professional communication standards"</em> or <em>"Make the Exemplary column more specific for [YOUR FIELD]."</em></div></div>
+          <div class="step-item"><div class="step-badge">5</div><div>Bonus: Ask for a <span class="jargon" data-tip="A student-facing version of the rubric, written in plain language, that students can use to self-assess their work before submitting.">student-facing version</span> of the rubric: <em>"Rewrite this rubric in plain language that a first-semester student can understand and use to self-assess."</em></div></div>
+          <div class="sample-block">
+            <div class="sample-header">
+              <span class="sample-label">Rubric Generator Prompt</span>
+              <button type="button" class="copy-btn" onclick="copyText(this, `Create an authentic performance assessment and a 4-level analytic rubric for the following:\n\nCourse: [COURSE NAME]\nSLO being assessed: \"[PASTE YOUR SLO TEXT HERE]\"\nAssessment type: [portfolio / hands-on demonstration / written case study / oral presentation / lab report]\nStudent level: [First semester / Second year / Transfer-prep]\nContext: [Brief description: e.g., \"students in a Medical Assisting program preparing for entry-level clinical roles\"]\n\nDeliverables I need:\n\n1. ASSESSMENT TASK DESCRIPTION (3-5 sentences)\nDescribe the task students will complete. Be specific about what they must submit or demonstrate.\n\n2. ANALYTIC RUBRIC (Markdown table)\n• 4-5 criteria rows that directly measure the SLO\n• 4 performance levels: Exemplary (4) | Proficient (3) | Developing (2) | Beginning (1)\n• Each cell: describe specific, observable student behaviors — avoid vague words like \"excellent\" or \"poor\"\n• Include a row for professional or workplace-readiness standards\n• Point totals: show total possible score\n\n3. ALIGNMENT NOTE\nFor each criterion, identify which part of the SLO it measures.`)">Copy</button>
+            </div>
+            <pre class="sample-text">Create an authentic performance assessment and a 4-level analytic rubric for:
+
+Course: [COURSE NAME]
+SLO being assessed: "[PASTE YOUR SLO TEXT HERE]"
+Assessment type: [portfolio / demonstration / case study / oral presentation]
+Student level: [First semester / Second year / Transfer-prep]
+Context: [Brief description of program and career pathway]
+
+Deliverables needed:
+
+1. ASSESSMENT TASK DESCRIPTION (3-5 sentences)
+Describe the task students will complete and what they must submit.
+
+2. ANALYTIC RUBRIC (Markdown table)
+• 4-5 criteria rows that directly measure the SLO
+• 4 performance levels: Exemplary (4) | Proficient (3) | Developing (2) | Beginning (1)
+• Each cell: observable, specific student behaviors
+• Include a professional/workplace-readiness row
+• Show total possible score
+
+3. ALIGNMENT NOTE
+For each criterion, identify which part of the SLO it measures.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module-card reveal">
+      <div class="card-accent" style="background:linear-gradient(90deg,#4fc3f7,#81d4fa);"></div>
+      <div class="card-body">
+        <div class="card-meta"><span class="card-num">Module 05</span><span class="card-audience aud-all">Everyone</span></div>
+        <div class="card-title">Verify Before You Submit</div>
+        <div class="card-vibe">AI hallucinations in curriculum documents can cause real accreditation problems. Learn the four-step verification routine before any AI-assisted COR goes to your curriculum committee.</div>
+        <div class="card-capability" style="background:rgba(79,195,247,0.1);color:#4fc3f7;" data-tip="This module teaches you how to use the AI itself as a quality-check tool — by asking it to spot its own errors, flag uncertain claims, and compare its output to your institution's standards.">AI-Assisted Quality Check</div>
+        <button type="button" class="card-toggle" aria-expanded="false" onclick="toggleSteps(this)"><span>Try It</span> <span class="arrow">↓</span></button>
+        <div class="card-steps">
+          <div class="step-item"><div class="step-badge">1</div><div><strong>Step 1 — Ask for a self-audit.</strong> After the AI produces any COR text, immediately follow up with: <em>"Review your response. List any specific claims, regulation numbers, or standards you cited that I should independently verify before submitting to a curriculum committee."</em></div></div>
+          <div class="step-item"><div class="step-badge">2</div><div><strong>Step 2 — Check Bloom's verbs.</strong> Copy any SLOs and paste this prompt: <em>"Review these SLOs. Flag any that use non-measurable verbs (understand, know, appreciate, be aware of) and suggest replacement action verbs."</em></div></div>
+          <div class="step-item"><div class="step-badge">3</div><div><strong>Step 3 — Cross-check CurricUNET.</strong> Open your institution's existing COR in <span class="jargon" data-tip="CurricUNET is the California curriculum management platform. Every COR must go through the official curriculum committee approval process — AI does not bypass that process.">CurricUNET</span>. Compare AI-suggested language to current catalog language. Verify unit values, hours, and prerequisite wording match Title 5 requirements.</div></div>
+          <div class="step-item"><div class="step-badge">4</div><div><strong>Step 4 — Verify labor market citations.</strong> If the AI references specific employment projections or wage data, verify them directly on <a href="https://www.onetonline.org" target="_blank" rel="noopener" style="color:var(--accent);">O*NET</a> or <a href="https://labormarketinfo.edd.ca.gov" target="_blank" rel="noopener" style="color:var(--accent);">CA LMI</a>. AI training data may be outdated.</div></div>
+          <div class="sample-block">
+            <div class="sample-header">
+              <span class="sample-label">Self-Audit Prompt (run after any AI output)</span>
+              <button type="button" class="copy-btn" onclick="copyText(this, `Please review the curriculum text you just generated and perform a quality audit:\n\n1. ACCURACY CHECK\n   List any specific regulation numbers, code citations (e.g., Title 5, ACCJC standards), or accreditation language you referenced. Mark each as [VERIFY] so I can confirm them independently.\n\n2. MEASURABILITY CHECK\n   Review each Student Learning Outcome. Flag any that use vague, non-measurable verbs (understand, know, appreciate, be aware of, learn about). Suggest a replacement Bloom's Taxonomy verb for each.\n\n3. COMPLETENESS CHECK\n   Is anything missing that a complete COR section of this type would typically include?\n\n4. CURRENCY CHECK\n   Is there any content that may be out of date? Flag specific areas I should check against current industry standards or state regulations.\n\nFormat your audit as a checklist with ✓ (looks good) or ⚠ (needs verification) for each item.`)">Copy</button>
+            </div>
+            <pre class="sample-text">Please review the curriculum text you just generated and perform a quality audit:
+
+1. ACCURACY CHECK
+   List any regulation numbers, code citations, or accreditation language
+   you referenced. Mark each as [VERIFY].
+
+2. MEASURABILITY CHECK
+   Review each SLO. Flag any with vague verbs (understand, know, appreciate).
+   Suggest a replacement Bloom's Taxonomy verb for each.
+
+3. COMPLETENESS CHECK
+   Is anything missing that a complete COR section would typically include?
+
+4. CURRENCY CHECK
+   Flag any content that may be out of date — areas I should verify
+   against current industry standards or state regulations.
+
+Format as a checklist with ✓ or ⚠ for each item.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end modules-grid -->
+</section>
+
+<!-- ===================== PROMPT LIBRARY ===================== -->
+<section id="prompts">
+  <div class="reveal">
+    <p class="section-eyebrow">Discipline Prompt Library</p>
+    <h2 class="section-title">Ready-to-Use Prompts by Discipline</h2>
+    <p class="section-lead">Filter by your discipline. Every prompt includes <strong>[PLACEHOLDERS]</strong> — fill them in and copy straight to your AI tool. No customization needed beyond what's bracketed.</p>
+  </div>
+
+  <div class="filter-bar reveal" role="group" aria-label="Filter prompts by discipline">
+    <button type="button" class="filter-tab active" data-disc="all" onclick="filterPrompts('all')">All Disciplines</button>
+    <button type="button" class="filter-tab" data-disc="health" onclick="filterPrompts('health')">Health</button>
+    <button type="button" class="filter-tab" data-disc="business" onclick="filterPrompts('business')">Business</button>
+    <button type="button" class="filter-tab" data-disc="construction" onclick="filterPrompts('construction')">Construction</button>
+    <button type="button" class="filter-tab" data-disc="ict" onclick="filterPrompts('ict')">ICT</button>
+  </div>
+
+  <div class="prompts-grid" id="promptsGrid">
+
+    <!-- PROMPT 1: Health COR -->
+    <div class="prompt-card reveal" data-discipline="health">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-cor">COR</span>
+          <span class="ptag ptag-health">Health</span>
+        </div>
+        <div class="prompt-title">Clinical Skills Course Objectives</div>
+        <div class="prompt-desc">Generate a complete set of course objectives for a clinical skills or patient care course, aligned to healthcare competency frameworks.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Paste into ChatGPT/Claude after your system prompt. Replace all <strong>[BRACKETS]</strong> with your course specifics.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Generate a complete list of Course Objectives for a community college health course:\n\nCourse: [COURSE NAME, e.g., Medical Assisting: Clinical Procedures]\nProgram: [PROGRAM NAME, e.g., Medical Assisting Certificate]\nClinical setting: [e.g., ambulatory care, acute care, long-term care]\nNational competency standard this course addresses: [e.g., CAAHEP Medical Assisting Competencies, NATEF, NCLEX-PN]\n\nRequirements:\n• Write 10-12 course objectives\n• Use infinitive verb form (To perform..., To demonstrate..., To apply...)\n• Reference specific clinical competencies from [COMPETENCY STANDARD]\n• Include objectives covering: patient safety, HIPAA compliance, clinical procedures, documentation, and professional standards\n• Indicate which objectives align to the competency standard (cite the competency number if known)\n\nAlso note: flag any objective that requires clinical supervision or a licensed professional setting — these may need special COR notation.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME, e.g., Medical Assisting: Clinical Procedures]
+Program: [PROGRAM NAME, e.g., Medical Assisting Certificate]
+Clinical setting: [e.g., ambulatory care, acute care, long-term care]
+Competency standard: [e.g., CAAHEP Medical Assisting Competencies]
+
+Generate 10-12 course objectives:
+• Use infinitive verb form (To perform, To demonstrate, To apply...)
+• Reference specific clinical competencies
+• Cover: patient safety, HIPAA, clinical procedures, documentation, professional standards
+• Indicate which objectives align to the competency standard
+
+Flag any objective requiring clinical supervision or a licensed professional setting.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 2: Health SLO -->
+    <div class="prompt-card reveal" data-discipline="health">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-slo">SLO</span>
+          <span class="ptag ptag-health">Health</span>
+        </div>
+        <div class="prompt-title">Healthcare SLOs from BLS Projections</div>
+        <div class="prompt-desc">Convert Bureau of Labor Statistics healthcare occupation data and projected job growth into workforce-aligned SLOs with accreditation-ready language.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Use after pulling up the BLS Occupational Outlook Handbook entry for your target occupation. Copy the "What [occupation] Do" section and paste it in.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `I need SLOs for a health occupations course that connect to real labor market demand.\n\nCourse: [COURSE NAME]\nTarget occupation: [e.g., Licensed Vocational Nurse]\nSOC code: [e.g., 29-2061]\n\nFrom the BLS Occupational Outlook Handbook, here are the primary duties for this occupation:\n[PASTE BLS \"What They Do\" SECTION HERE]\n\nFrom O*NET, the key knowledge areas for this occupation include:\n[PASTE O*NET KNOWLEDGE SECTION OR LEAVE BLANK AND ASK AI TO SUGGEST]\n\nGenerate 5 SLOs that:\n• Start with \"Upon successful completion of this course, students will be able to...\"\n• Use Bloom's Taxonomy verbs at the [Apply / Analyze / Evaluate] level (choose for your course)\n• Connect each SLO to a specific BLS duty or O*NET knowledge area\n• Are appropriate for a [Certificate / Associate Degree] program\n• Would satisfy ACCJC requirements for measurable, authentic outcomes\n\nProvide a rationale paragraph I can use in a program review to justify these SLOs based on labor market need.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Target occupation: [e.g., Licensed Vocational Nurse]
+SOC code: [e.g., 29-2061]
+
+[PASTE BLS "What They Do" SECTION HERE]
+
+Generate 5 SLOs that:
+• Start with "Upon successful completion of this course, students will be able to..."
+• Use Bloom's Taxonomy verbs at [Apply / Analyze / Evaluate] level
+• Connect each SLO to a specific BLS duty
+• Appropriate for a [Certificate / Associate Degree] program
+
+Provide a rationale paragraph for program review justifying SLOs based on labor market need.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 3: Health Rubric -->
+    <div class="prompt-card reveal" data-discipline="health">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff6b9d,#ffb3cf);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-rubric">Rubric</span>
+          <span class="ptag ptag-health">Health</span>
+        </div>
+        <div class="prompt-title">Clinical Simulation Performance Rubric</div>
+        <div class="prompt-desc">Build a detailed rubric for evaluating clinical simulation or skills lab performance, including patient safety, communication, and technical criteria.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Works best after you have defined your SLO in Module 3. Paste the SLO text into this prompt before copying to your AI tool.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Create a clinical simulation performance rubric for a community college health program.\n\nCourse: [COURSE NAME]\nSimulation scenario: [e.g., post-operative patient assessment, medication administration, sterile field setup]\nSLO being assessed: \"[PASTE SLO TEXT]\"\nProgram standard: [e.g., CAAHEP, NATEF, NCLEX competency]\n\nRubric requirements:\n• 5 criteria: (1) Safety & Infection Control, (2) Technical Skill Accuracy, (3) Patient Communication & Therapeutic Interaction, (4) Clinical Documentation, (5) Professional Conduct\n• 4 performance levels: Exemplary (4) / Proficient (3) / Developing (2) / Beginning (1)\n• Each cell: describe specific, observable clinical behaviors\n• Note any \"immediate fail\" behaviors in the safety criterion (e.g., breaks sterile field)\n• Format as a Markdown table\n• Add a \"Faculty Observer Notes\" row at the bottom\n\nAfter the rubric, write a brief scoring guide: what total score earns a Pass/Repeat/Fail.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Scenario: [e.g., medication administration, post-op assessment]
+SLO: "[PASTE SLO TEXT]"
+Standard: [e.g., CAAHEP, NCLEX competency]
+
+Rubric criteria:
+1. Safety & Infection Control
+2. Technical Skill Accuracy
+3. Patient Communication
+4. Clinical Documentation
+5. Professional Conduct
+
+4 levels: Exemplary (4) / Proficient (3) / Developing (2) / Beginning (1)
+Note "immediate fail" behaviors in safety row.
+Add Faculty Observer Notes row.
+Include scoring guide: Pass / Repeat / Fail thresholds.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 4: Business COR -->
+    <div class="prompt-card reveal" data-discipline="business">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-cor">COR</span>
+          <span class="ptag ptag-business">Business</span>
+        </div>
+        <div class="prompt-title">Business Course COR Refresh</div>
+        <div class="prompt-desc">Update a business, accounting, or management COR to reflect current industry tools, platforms, and employer expectations — especially post-AI transformation in business.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Start a fresh chat with the system prompt from Module 1. Then paste your current course description and this prompt together.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `I need to refresh a business course COR to reflect current industry expectations.\n\nCourse: [COURSE NAME, e.g., Introduction to Business, Principles of Accounting, Human Resources Management]\nCurrent catalog description:\n[PASTE CURRENT DESCRIPTION]\n\nWhat has changed since the last revision:\n• New tools/platforms now industry-standard: [e.g., QuickBooks Online, Salesforce, AI-assisted analytics tools]\n• Relevant certifications employers now expect: [e.g., Microsoft Excel MO-201, Salesforce Admin, QuickBooks ProAdvisor]\n• Industry shifts: [e.g., remote work management, ESG reporting, AI in financial analysis]\n\nPlease:\n1. Revise the catalog description (max 100 words, third person, present tense)\n2. Suggest 3 new course objectives that reflect current employer expectations\n3. Identify any outdated terminology in the current description and suggest modern replacements\n4. If this is a transfer course, suggest language that maintains articulation-readiness for CSU/UC transfer\n\nFormat each section separately with clear headings.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME, e.g., Introduction to Business]
+Current catalog description:
+[PASTE CURRENT DESCRIPTION]
+
+What has changed since last revision:
+• New tools: [e.g., QuickBooks Online, Salesforce, AI analytics]
+• New certifications employers expect: [e.g., MO-201, CPA path, QuickBooks]
+• Industry shifts: [e.g., remote work, ESG reporting, AI in analysis]
+
+Please:
+1. Revise catalog description (100 words, third person, present tense)
+2. Suggest 3 new objectives reflecting current employer expectations
+3. Identify outdated terminology and suggest modern replacements
+4. Maintain articulation language for CSU/UC transfer if applicable</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 5: Business SLOs -->
+    <div class="prompt-card reveal" data-discipline="business">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-slo">SLO</span>
+          <span class="ptag ptag-business">Business</span>
+        </div>
+        <div class="prompt-title">Business SLOs + Employer Expectations</div>
+        <div class="prompt-desc">Generate SLOs for business courses that are explicitly mapped to employer skills surveys, industry certification competencies, and current job postings.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Optionally: copy 5-10 skills from a current job posting on LinkedIn or Indeed for the target role and paste them into the "employer signals" section.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Generate 5-6 Student Learning Outcomes for a business course using employer demand signals.\n\nCourse: [COURSE NAME]\nTarget roles this course prepares students for: [e.g., Office Manager, Bookkeeper, Marketing Coordinator, HR Assistant]\n\nEmployer signals (copy from O*NET, job postings, or industry surveys):\n[PASTE 5-10 SKILLS OR TASKS FROM JOB POSTINGS OR O*NET]\n\nIndustry certifications relevant to this course: [e.g., MOS Excel, QuickBooks ProAdvisor, SHRM-CP]\n\nSLO Requirements:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Use Bloom's Taxonomy verbs at [Apply / Analyze] level\n• At least 2 SLOs should reference a specific tool or platform from the employer signals\n• At least 1 SLO should address professional communication or workplace readiness\n• Include one SLO that prepares students for a specific industry certification if applicable\n\nAlso provide: a 2-sentence program review rationale explaining why these SLOs address regional employer demand.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Target roles: [e.g., Office Manager, Bookkeeper, Marketing Coordinator]
+
+Employer signals from O*NET / job postings:
+[PASTE 5-10 SKILLS OR TASKS]
+
+Industry certifications: [e.g., MOS Excel, QuickBooks ProAdvisor]
+
+Generate 5-6 SLOs:
+• At least 2 reference a specific tool/platform
+• At least 1 addresses professional communication
+• Include 1 aligned to an industry certification
+
+Provide a 2-sentence program review rationale for regional employer demand.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 6: Business Rubric -->
+    <div class="prompt-card reveal" data-discipline="business">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#E5A823,#ffe082);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-rubric">Rubric</span>
+          <span class="ptag ptag-business">Business</span>
+        </div>
+        <div class="prompt-title">Business Case Study Rubric</div>
+        <div class="prompt-desc">Generate a rubric for business case analysis, business plan presentations, or professional report writing — with criteria aligned to real workplace standards.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Create a professional rubric for a business course assessment.\n\nCourse: [COURSE NAME]\nAssessment type: [business case analysis / business plan / professional report / presentation]\nSLO: \"[PASTE SLO]\"\nIndustry context: [e.g., small business management, financial services, marketing agency]\n\nRubric specifications:\n• 5 criteria: (1) Problem/Opportunity Analysis, (2) Data Use and Evidence, (3) Recommendations and Feasibility, (4) Professional Written/Oral Communication, (5) Ethical and Equity Considerations\n• 4 levels: Exemplary (4) / Proficient (3) / Developing (2) / Beginning (1)\n• Language should reflect professional workplace standards, not just academic standards\n• Format as Markdown table\n\nAfter the rubric:\n• Write instructor notes for scoring the \"Data Use\" criterion fairly for students without industry access\n• Add a peer review version (students score each other) using simplified language`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Assessment: [business case analysis / business plan / report / presentation]
+SLO: "[PASTE SLO]"
+Industry context: [e.g., small business, financial services, marketing]
+
+5 criteria:
+1. Problem/Opportunity Analysis
+2. Data Use and Evidence
+3. Recommendations and Feasibility
+4. Professional Communication
+5. Ethical and Equity Considerations
+
+4 levels: Exemplary / Proficient / Developing / Beginning
+Include peer-review version in plain language.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 7: Construction COR -->
+    <div class="prompt-card reveal" data-discipline="construction">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-cor">COR</span>
+          <span class="ptag ptag-construction">Construction</span>
+        </div>
+        <div class="prompt-title">Trades / Construction Technology COR</div>
+        <div class="prompt-desc">Draft or refresh a COR for construction technology, electrical, plumbing, HVAC, or welding — incorporating current code editions, safety standards, and apprenticeship alignment.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Always manually verify code edition numbers (NEC, UBC, IBC) — the AI may reference outdated editions. Use the current year's adopted code for California.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Draft a course catalog description and course objectives for a construction/trades course.\n\nCourse: [COURSE NAME, e.g., Residential Electrical Wiring, Introduction to HVAC, Welding Fundamentals]\nTrade/Discipline: [Electrical / Plumbing / HVAC / Carpentry / Welding / Construction Management]\nCurrent industry standard/code: [e.g., 2023 NEC, 2022 California Building Code, AWS D1.1]\nApprenticeship alignment: [e.g., IBEW, UA, ABC — or \"not applicable\"]\nCourse level: [Introductory / Intermediate / Journeyperson prep]\n\nDeliverables:\n1. Catalog description (100 words max, third person, present tense)\n2. 8-10 course objectives using infinitive verb form\n3. Suggested course content outline (4-6 major topic areas)\n\nSpecific requirements:\n• Reference the current code edition in at least one objective\n• Include a safety objective that cites OSHA standards\n• If apprenticeship-aligned, note which apprenticeship hours this course satisfies\n\nIMPORTANT: Flag all code numbers and regulatory references with [VERIFY — check current CA adopted code] — do not assume the current edition.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME, e.g., Residential Electrical Wiring]
+Trade: [Electrical / Plumbing / HVAC / Carpentry / Welding]
+Current standard/code: [e.g., 2023 NEC, 2022 California Building Code]
+Apprenticeship: [e.g., IBEW alignment — or N/A]
+Level: [Introductory / Intermediate]
+
+Deliverables:
+1. Catalog description (100 words, third person, present tense)
+2. 8-10 course objectives (infinitive form)
+3. Content outline (4-6 topic areas)
+
+Include safety objective citing OSHA.
+Flag all code numbers with [VERIFY] — do not assume current edition.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 8: Construction SLOs -->
+    <div class="prompt-card reveal" data-discipline="construction">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-slo">SLO</span>
+          <span class="ptag ptag-construction">Construction</span>
+        </div>
+        <div class="prompt-title">Trades SLOs — OSHA &amp; Apprenticeship Aligned</div>
+        <div class="prompt-desc">Generate SLOs for construction and trades courses that are explicitly mapped to OSHA safety competencies, apprenticeship standards, and O*NET tasks for skilled trades occupations.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Generate Student Learning Outcomes for a construction/trades course aligned to industry and safety standards.\n\nCourse: [COURSE NAME]\nOccupation: [e.g., Electrician, Plumber, HVAC Technician, Welder]\nSOC Code: [e.g., 47-2111 for Electricians]\nApprenticeship standard: [e.g., IBEW Local 11 Level 1 — or \"none\"]\n\nO*NET tasks for this occupation:\n[PASTE O*NET TASKS HERE]\n\nKey OSHA standards for this trade:\n[e.g., OSHA 1926 Subpart K (Electrical), 1926 Subpart P (Excavation) — or ask the AI to suggest]\n\nGenerate 5-6 SLOs that:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Use hands-on Bloom's verbs: Demonstrate, Construct, Perform, Apply, Inspect, Calculate\n• At least 1 SLO addresses workplace safety using the relevant OSHA standard\n• At least 1 SLO references a specific tool, equipment, or code application\n• If apprenticeship-aligned, note which apprenticeship competency each SLO satisfies\n\nProvide a labor market justification paragraph citing O*NET employment outlook data for this occupation.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Occupation: [e.g., Electrician, HVAC Tech, Welder]
+SOC Code: [e.g., 47-2111]
+Apprenticeship: [e.g., IBEW Local 11 Level 1 — or none]
+
+O*NET tasks: [PASTE HERE]
+Key OSHA standards: [e.g., 1926 Subpart K — or ask AI to suggest]
+
+Generate 5-6 SLOs with hands-on verbs:
+Demonstrate, Construct, Perform, Apply, Inspect, Calculate
+• 1 SLO addresses safety (cite OSHA standard)
+• 1 SLO references specific tool/code application
+
+Include labor market justification using O*NET employment outlook.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 9: Construction Rubric -->
+    <div class="prompt-card reveal" data-discipline="construction">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#ff8c00,#ffcc80);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-rubric">Rubric</span>
+          <span class="ptag ptag-construction">Construction</span>
+        </div>
+        <div class="prompt-title">Hands-On Performance Rubric (Trades)</div>
+        <div class="prompt-desc">Build a rubric for evaluating hands-on skill performance in construction and trades courses — including safety compliance, technique, and code accuracy criteria.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Create a hands-on performance rubric for a trades/construction course practical evaluation.\n\nCourse: [COURSE NAME]\nPractical skill being evaluated: [e.g., wiring a 20-amp circuit, running a bead weld on mild steel, installing a compression fitting]\nSLO: \"[PASTE SLO]\"\nCode/standard: [e.g., 2023 NEC Article 210, AWS D1.1]\n\nRubric criteria (5 rows):\n1. Safety Protocol Compliance (PPE, lockout/tagout, housekeeping)\n2. Technical Accuracy (correct measurements, tolerances, code compliance)\n3. Material and Tool Handling\n4. Work Quality and Finish\n5. Efficiency and Workplace Readiness\n\nPerformance levels:\n• Exemplary (4): Journeyperson-level quality with no prompting\n• Proficient (3): Student-level quality meeting all code/safety requirements\n• Developing (2): Meets most requirements with minor errors\n• Beginning (1): Significant errors or safety violation requiring correction\n\nFormat as Markdown table. Add a \"Requires Redo\" flag for safety violations in criterion 1.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Skill: [e.g., wiring a 20-amp circuit, running a weld bead]
+SLO: "[PASTE SLO]"
+Code/standard: [e.g., 2023 NEC Article 210]
+
+5 criteria:
+1. Safety Protocol Compliance (PPE, lockout/tagout)
+2. Technical Accuracy (code compliance, tolerances)
+3. Material and Tool Handling
+4. Work Quality and Finish
+5. Efficiency and Workplace Readiness
+
+Levels: Exemplary / Proficient / Developing / Beginning
+Add "Requires Redo" flag for safety violations in criterion 1.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 10: ICT COR -->
+    <div class="prompt-card reveal" data-discipline="ict">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-cor">COR</span>
+          <span class="ptag ptag-ict">ICT</span>
+        </div>
+        <div class="prompt-title">ICT / Cybersecurity / Networking COR</div>
+        <div class="prompt-desc">Rapidly update an ICT course COR to reflect current technology stacks, cloud platforms, and industry certifications — critical in a field that evolves every 18 months.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">ICT courses go stale fastest. Consider doing this refresh annually — the AI makes it a 30-minute task instead of a 3-hour one.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Update an ICT course COR to reflect current industry technology and certification standards.\n\nCourse: [COURSE NAME, e.g., Network Administration, Introduction to Cybersecurity, Web Development]\nSubdiscipline: [Networking / Cybersecurity / Software Development / Cloud Computing / Data Analytics]\nCurrent catalog description:\n[PASTE CURRENT DESCRIPTION]\n\nTechnology updates to incorporate:\n• New platforms/tools now industry standard: [e.g., AWS/Azure/GCP, Kubernetes, GitHub Actions, Python 3.x, React]\n• Industry certifications this course prepares students for: [e.g., CompTIA A+, Network+, Security+, AWS Cloud Practitioner, Google IT Support Certificate]\n• Emerging areas in this subdiscipline: [e.g., zero-trust security, AI-assisted threat detection, serverless computing]\n\nDeliverables:\n1. Revised catalog description (100 words, third person, present tense)\n2. 8-10 course objectives mentioning current tools and platforms by name\n3. Suggested content update: topics to ADD and topics that are now outdated\n4. A note on which certifications align to each major course topic\n\nDo not invent exam codes or certification version numbers — flag any certification reference with [VERIFY current version].`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME, e.g., Introduction to Cybersecurity]
+Subdiscipline: [Networking / Cybersecurity / Dev / Cloud / Data]
+Current catalog description:
+[PASTE CURRENT DESCRIPTION]
+
+Technology updates to incorporate:
+• New platforms: [e.g., AWS/Azure, Kubernetes, GitHub Actions]
+• Certifications this course aligns to: [e.g., CompTIA Security+]
+• Emerging areas: [e.g., zero-trust, AI threat detection]
+
+Deliverables:
+1. Revised catalog description
+2. 8-10 objectives naming current tools
+3. Topics to ADD + outdated topics to remove
+4. Certification alignment map
+
+Flag all certification references with [VERIFY current version].</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 11: ICT SLOs -->
+    <div class="prompt-card reveal" data-discipline="ict">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-slo">SLO</span>
+          <span class="ptag ptag-ict">ICT</span>
+        </div>
+        <div class="prompt-title">Tech Certification-Aligned SLOs</div>
+        <div class="prompt-desc">Generate SLOs that map directly to CompTIA, AWS, Google, or Cisco certification exam objectives — making your course's workforce value explicit and defensible in program review.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Generate Student Learning Outcomes for an ICT course aligned to industry certification exam objectives.\n\nCourse: [COURSE NAME]\nPrimary certification this course prepares for: [e.g., CompTIA Security+, AWS Cloud Practitioner, Cisco CCNA]\nCertification exam domain/objectives summary:\n[PASTE THE EXAM OBJECTIVES OR DOMAIN LIST FROM THE CERTIFICATION VENDOR WEBSITE]\n\nTarget O*NET occupations:\n[e.g., Information Security Analysts (15-1212), Network and Computer Systems Administrators (15-1244)]\n\nGenerate 6 SLOs that:\n• Begin with \"Upon successful completion of this course, students will be able to...\"\n• Map at least 4 SLOs directly to a named certification exam domain\n• Use technical action verbs: Configure, Implement, Troubleshoot, Analyze, Design, Evaluate\n• Are written at the [Foundation / Associate / Professional] level for this certification\n• Include one SLO addressing security, ethics, or professional responsibility in ICT\n\nProvide a two-column table:\n| SLO | Certification Domain / O*NET Task It Addresses |`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Primary certification: [e.g., CompTIA Security+, AWS Cloud Practitioner]
+Certification exam domains/objectives:
+[PASTE EXAM OBJECTIVES FROM VENDOR WEBSITE]
+
+Target occupations: [e.g., Information Security Analysts 15-1212]
+
+Generate 6 SLOs with technical verbs:
+Configure, Implement, Troubleshoot, Analyze, Design, Evaluate
+• Map 4 SLOs to certification exam domains
+• 1 SLO on security, ethics, or professional responsibility
+
+Output table: SLO | Certification Domain / O*NET Task</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 12: ICT Rubric -->
+    <div class="prompt-card reveal" data-discipline="ict">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#7c6aff,#b0a8ff);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-rubric">Rubric</span>
+          <span class="ptag ptag-ict">ICT</span>
+        </div>
+        <div class="prompt-title">Technical Project / Lab Report Rubric</div>
+        <div class="prompt-desc">Build a rubric for an ICT technical project, Capture the Flag (CTF) challenge, lab report, or portfolio — with criteria aligned to industry-level quality expectations.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Create a technical assessment rubric for an ICT course project.\n\nCourse: [COURSE NAME]\nAssessment type: [network configuration lab / penetration testing report / software project / cloud deployment / portfolio]\nSLO: \"[PASTE SLO]\"\nTools/platforms used: [e.g., Wireshark, Metasploit, AWS Free Tier, GitHub, Python]\n\nRubric criteria (5 rows):\n1. Technical Accuracy & Functionality (does it work correctly?)\n2. Security and Best Practices Compliance\n3. Documentation & Technical Writing (README, lab report, code comments)\n4. Problem-Solving Process (troubleshooting evidence, iteration)\n5. Professional Standards (version control, naming conventions, clean code)\n\nPerformance levels:\n• Exemplary (4): Junior-developer or entry-level analyst quality\n• Proficient (3): Meets all requirements with minor issues\n• Developing (2): Partially meets requirements; functional but with significant gaps\n• Beginning (1): Does not meet requirements; non-functional or major security issues\n\nFormat as Markdown table. Include a \"GitHub/Portfolio Ready?\" indicator in the Exemplary column.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+Assessment: [lab report / network config / software project / CTF]
+SLO: "[PASTE SLO]"
+Tools: [e.g., Wireshark, AWS, Python, GitHub]
+
+5 criteria:
+1. Technical Accuracy & Functionality
+2. Security & Best Practices Compliance
+3. Documentation & Technical Writing
+4. Problem-Solving Process
+5. Professional Standards
+
+Levels: Exemplary (junior-dev quality) / Proficient / Developing / Beginning
+Include "GitHub/Portfolio Ready?" indicator in Exemplary column.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 13: All — Program Review Paragraph -->
+    <div class="prompt-card reveal" data-discipline="all">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#00c896,#7de8d0);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-all">All Disciplines</span>
+          <span class="ptag ptag-slo">Program Review</span>
+        </div>
+        <div class="prompt-title">Program Review Labor Market Narrative</div>
+        <div class="prompt-desc">Generate the labor market analysis paragraph required in program review — using O*NET, BLS, and CA LMI data you provide. Saves 2–3 hours of writing per review cycle.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="prompt-how">Before using this prompt, pull the employment projections from O*NET and the regional wage data from CA LMI. Paste the key numbers in. The AI writes the narrative — you verify the data.</div>
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Write a program review labor market analysis narrative for the following program.\n\nProgram: [PROGRAM NAME]\nCollege: Santa Ana College\nRegion: Orange County / Southern California\n\nLabor market data (paste actual data — do not let the AI invent numbers):\n• O*NET occupation: [OCCUPATION NAME, SOC CODE]\n• O*NET 10-year employment growth projection: [PASTE ACTUAL %]\n• O*NET median annual wage: [PASTE ACTUAL $]\n• CA EDD/LMI projected Orange County job openings (10 yr): [PASTE OR WRITE \"I will add this\"]\n• Key employer sectors hiring in this field locally: [LIST 3-5]\n• Notable regional employers: [e.g., CHOC, St. Joseph Hospital, Hoag for Health programs]\n\nWrite a 250-300 word program review narrative that:\n• Opens with the regional employment outlook\n• Cites specific wage and growth projections (using the data I provided)\n• Connects local employer demand to the program's curriculum\n• References how the program's SLOs align to O*NET occupation tasks\n• Closes with a statement of the program's labor market relevance\n• Uses formal academic prose appropriate for an ACCJC accreditation document\n\nIMPORTANT: Only use the specific numbers I provided. Do not generate or estimate labor market statistics — flag any data gap with [NEEDS DATA].`)">Copy</button>
+          </div>
+          <pre class="sample-text">Program: [PROGRAM NAME]
+Region: Orange County / Southern California
+
+Labor market data (YOU provide — AI does NOT invent numbers):
+• O*NET occupation: [NAME, SOC CODE]
+• 10-year growth projection: [PASTE ACTUAL %]
+• Median annual wage: [PASTE ACTUAL $]
+• CA EDD projected OC job openings: [PASTE]
+• Key employer sectors: [LIST 3-5]
+• Notable regional employers: [LIST]
+
+Write 250-300 word program review narrative:
+• Regional employment outlook
+• Wage and growth projections (from provided data ONLY)
+• Local employer demand + curriculum connection
+• SLO alignment to O*NET tasks
+• Formal academic prose for ACCJC document
+
+Flag any missing data with [NEEDS DATA].</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROMPT 14: All — SLO Self-Assessment for Students -->
+    <div class="prompt-card reveal" data-discipline="all">
+      <div class="prompt-accent" style="background:linear-gradient(90deg,#4fc3f7,#81d4fa);"></div>
+      <div class="prompt-body">
+        <div class="prompt-tags">
+          <span class="ptag ptag-assessment">Assessment</span>
+          <span class="ptag ptag-all">All Disciplines</span>
+        </div>
+        <div class="prompt-title">Student Self-Assessment from SLOs</div>
+        <div class="prompt-desc">Turn your SLOs into a student-facing self-assessment tool. Students rate their own confidence on each SLO — powerful for equity, early intervention, and demonstrating SLO awareness.</div>
+        <button type="button" class="prompt-toggle" aria-expanded="false" onclick="togglePrompt(this)"><span>View Prompt</span> <span class="arrow">↓</span></button>
+        <div class="prompt-content">
+          <div class="sample-header">
+            <span class="sample-label">Prompt</span>
+            <button type="button" class="copy-btn" onclick="copyText(this, `Convert my course SLOs into a student-facing self-assessment tool.\n\nCourse: [COURSE NAME]\nMy SLOs:\n[PASTE YOUR SLOs HERE — one per line]\n\nCreate two versions:\n\n1. PRE-COURSE SELF-ASSESSMENT (to be given Week 1)\nFor each SLO, write a plain-language question students can answer on a 1-4 scale:\n1 = I have no experience with this\n2 = I have heard of this but can't do it yet\n3 = I can do this with help\n4 = I can do this independently\n\nUse plain, jargon-free language. Replace technical terms with brief explanations in parentheses.\n\n2. POST-COURSE REFLECTION (to be given final week)\nSame SLOs, rewritten as reflection prompts:\n\"Before this course, I would have rated my ability to [SLO action] as ___. Now I would rate it as ___ because...\"\n\nFormat both versions as clean, printable forms with space for student name and date.`)">Copy</button>
+          </div>
+          <pre class="sample-text">Course: [COURSE NAME]
+SLOs: [PASTE YOUR SLOs HERE]
+
+Create two versions:
+
+1. PRE-COURSE SELF-ASSESSMENT (Week 1)
+Plain-language question for each SLO on a 1-4 scale:
+1 = No experience
+2 = Heard of it, can't do it
+3 = Can do with help
+4 = Can do independently
+
+Replace jargon with brief plain-language explanations.
+
+2. POST-COURSE REFLECTION (Final week)
+"Before this course, I rated my ability to [SLO] as ___. 
+Now I rate it as ___ because..."
+
+Format as clean, printable forms.</pre>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end prompts-grid -->
+</section>
+
+<!-- ===================== WHAT TO WATCH FOR ===================== -->
+<section id="watchout">
+  <div class="reveal">
+    <p class="section-eyebrow">Critical Thinking Required</p>
+    <h2 class="section-title">What to Watch For</h2>
+    <p class="section-lead">AI is a powerful first-draft tool — but curriculum documents have real accreditation consequences. These are the three areas where AI most commonly fails faculty.</p>
+  </div>
+  <div class="warn-grid">
+
+    <div class="warn-card warn-red reveal">
+      <div class="warn-icon">🔴</div>
+      <div class="warn-title">Hallucinated Facts</div>
+      <div class="warn-desc">AI fabricates specific details with complete confidence. In curriculum work, this means invented regulation numbers, wrong code editions, non-existent certifications, and made-up labor market statistics.</div>
+      <ul class="warn-list">
+        <li>Cites "Title 5, Section 55002.b" — always verify exact section numbers</li>
+        <li>References "ACCJC Standard II.A.6" — look it up yourself before submitting</li>
+        <li>Quotes employment growth rates it invented — only use numbers you pulled from O*NET or BLS directly</li>
+        <li>Mentions a "CalOSHA 1926 standard" — OSHA numbering can be mixed up between Federal/CA</li>
+        <li>Invents a certification (e.g., "CompTIA CyberCore") that doesn't exist</li>
+      </ul>
+      <div class="warn-tip"><strong>Rule:</strong> Any number, code, standard citation, or statistic in AI output must be independently verified before it appears in a curriculum document.</div>
+    </div>
+
+    <div class="warn-card warn-gold reveal">
+      <div class="warn-icon">🟡</div>
+      <div class="warn-title">Accreditation Language Gaps</div>
+      <div class="warn-desc">AI knows general academic writing conventions but does not know your institution's specific COR format requirements, your curriculum committee's preferences, or current ACCJC guidance revisions.</div>
+      <ul class="warn-list">
+        <li>AI may write course objectives in a format your curriculum committee will reject — check your template</li>
+        <li>SLO wording may not match your college's <span class="jargon" data-tip="Your curriculum committee's standardized language and format requirements for COR documents — separate from ACCJC standards.">local COR style guide</span></li>
+        <li>Prerequisite wording must follow <span class="jargon" data-tip="Title 5 California Code of Regulations Section 55003 governs prerequisite and corequisite language at community colleges.">Title 5 §55003</span> exactly — AI often paraphrases incorrectly</li>
+        <li>Transfer articulation language has specific CSU/UC formatting requirements that AI ignores</li>
+        <li>Unit value and hours calculations (lecture/lab ratios) must follow Title 5 — AI doesn't know your course's contact hour formula</li>
+      </ul>
+      <div class="warn-tip"><strong>Always compare:</strong> Paste AI output side-by-side with an approved COR in CurricUNET from the same course family before sending to committee.</div>
+    </div>
+
+    <div class="warn-card warn-blue reveal">
+      <div class="warn-icon">🔵</div>
+      <div class="warn-title">How to Verify — The 4-Step Check</div>
+      <div class="warn-desc">Build this four-step routine into every AI-assisted curriculum session. It takes 10–15 minutes and catches the problems that cause committee rejections and accreditation flags.</div>
+      <ul class="warn-list">
+        <li><strong>Run the AI self-audit prompt</strong> from Module 5 — the AI will flag its own uncertain claims</li>
+        <li><strong>Check all Bloom's verbs</strong> — replace "understand," "know," and "appreciate" with measurable verbs</li>
+        <li><strong>Open CurricUNET</strong> — compare structure, formatting, and prerequisite language to an approved peer COR</li>
+        <li><strong>Verify every number</strong> — confirm labor market data at O*NET, BLS, or CA LMI before it enters any document</li>
+        <li><strong>Get a colleague to read it</strong> — in 5 minutes, an experienced colleague will catch what you and the AI both missed</li>
+      </ul>
+      <div class="warn-tip"><strong>Bottom line:</strong> AI saves you the blank page. You save the document from errors. The curriculum committee approves the finished product — not the AI's draft.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== CHECKLIST ===================== -->
+<section id="checklist">
+  <div class="reveal">
+    <p class="section-eyebrow">Self-Paced Progress</p>
+    <h2 class="section-title">Your Completion Checklist</h2>
+    <p class="section-lead">Check off each item as you go. Your progress is saved locally in your browser — it will still be here if you refresh.</p>
+  </div>
+  <div class="checklist-progress reveal">
+    <div class="checklist-bar-track"><div class="checklist-bar-fill" id="checkBar"></div></div>
+    <span class="checklist-count" id="checkCount">0 / 10</span>
+    <span>completed</span>
+  </div>
+  <div class="checklist-grid" id="checklistGrid">
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Set up an AI tool account</strong><span>ChatGPT, Claude, or Google AI Studio — all have free tiers</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Saved the Starter System Prompt</strong><span>Module 1 — sets up the AI to behave like a curriculum specialist</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Used AI to revise a COR section</strong><span>Module 2 — catalog description, course objectives, or content outline</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Found my course's O*NET occupation</strong><span>Module 3 — search onetonline.org and locate Tasks + SOC code</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Generated SLOs from O*NET data</strong><span>Module 3 — pasted O*NET tasks and produced 5+ measurable SLOs</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Built a 4-level rubric with AI</strong><span>Module 4 — complete rubric with criteria and observable behaviors</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Ran the AI self-audit prompt</strong><span>Module 5 — asked the AI to flag its own uncertain claims</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Tried a discipline-specific prompt</strong><span>Prompt Library — used at least one Health / Business / Construction / ICT prompt</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Verified AI output against CurricUNET</strong><span>Opened an approved COR and compared structure and language to AI draft</span></div>
+    </div>
+    <div class="check-row reveal" tabindex="0" role="checkbox" aria-checked="false" onclick="toggleCheck(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleCheck(this)">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Shared a prompt with a colleague</strong><span>Send one prompt from this library to someone who teaches in your discipline</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p style="margin-bottom:0.4rem;"><strong>Santa Ana College</strong> — AI Curriculum Partner Workshop · Spring 2026</p>
+  <p>Self-paced site built for SAC faculty · Workforce &amp; Curriculum Alignment Initiative · <a href="https://www.sac.edu" style="color:var(--muted);">sac.edu</a></p>
+  <p style="margin-top:0.75rem;font-size:12px;opacity:0.6;">AI-generated curriculum drafts must be reviewed and approved through your institution's official curriculum committee process before submission. This site does not replace CurricUNET or ACCJC compliance review.</p>
+</footer>
+
+<button type="button" class="back-to-top" id="backTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<!-- Tooltip popover -->
+<div class="tag-popover" id="popover" style="display:none;" role="tooltip"></div>
+
+<script>
+  /* ---------- Progress bar ---------- */
+  function updateProgress() {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? Math.round((scrolled / total) * 100) : 0;
+    const bar = document.getElementById('progress');
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', pct);
+    document.getElementById('backTop').classList.toggle('visible', scrolled > 400);
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  /* ---------- Nav active link ---------- */
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = [];
+  navLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) sections.push({ el, a });
+  });
+
+  function updateActiveNav() {
+    const offset = 80;
+    let current = null;
+    for (const { el } of sections) {
+      if (el.getBoundingClientRect().top <= offset) current = el.id;
+    }
+    sections.forEach(({ el, a }) => a.classList.toggle('active', el.id === current));
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+  /* ---------- Mobile nav ---------- */
+  function toggleNav() {
+    const nl = document.getElementById('navLinks');
+    const icon = document.getElementById('nav-icon');
+    const open = nl.classList.toggle('open');
+    if (open) {
+      icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+    } else {
+      icon.innerHTML = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+    }
+  }
+  function closeNav() {
+    const nl = document.getElementById('navLinks');
+    const icon = document.getElementById('nav-icon');
+    nl.classList.remove('open');
+    icon.innerHTML = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+  }
+
+  /* ---------- Card expand (modules + prompts) ---------- */
+  function toggleSteps(btn) {
+    const card = btn.closest('.module-card');
+    const steps = btn.nextElementSibling;
+    const isOpen = steps.classList.contains('open');
+    // close all others
+    document.querySelectorAll('.module-card').forEach(c => {
+      c.classList.remove('expanded');
+      const s = c.querySelector('.card-steps');
+      const b = c.querySelector('.card-toggle');
+      if (s && b) {
+        s.classList.remove('open');
+        b.setAttribute('aria-expanded', 'false');
+        b.querySelector('span.arrow').textContent = '↓';
+        b.querySelector('span:first-child').textContent = 'Try It';
+      }
+    });
+    if (!isOpen) {
+      card.classList.add('expanded');
+      steps.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.querySelector('span.arrow').textContent = '↑';
+      btn.querySelector('span:first-child').textContent = 'Close';
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    }
+  }
+
+  function togglePrompt(btn) {
+    const card = btn.closest('.prompt-card');
+    const content = btn.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+    if (isOpen) {
+      content.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.querySelector('span:first-child').textContent = 'View Prompt';
+      btn.querySelector('span.arrow').textContent = '↓';
+    } else {
+      content.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.querySelector('span:first-child').textContent = 'Hide';
+      btn.querySelector('span.arrow').textContent = '↑';
+    }
+  }
+
+  /* ---------- Discipline filter ---------- */
+  function filterPrompts(disc) {
+    // Update tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.disc === disc);
+    });
+    // Filter cards
+    document.querySelectorAll('.prompt-card').forEach(card => {
+      const match = disc === 'all' || card.dataset.discipline === disc;
+      card.hidden = !match;
+    });
+  }
+
+  /* ---------- Copy buttons ---------- */
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }).catch(() => {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  /* ---------- Checklist ---------- */
+  const CHECKLIST_KEY = 'sac-curriculum-checklist-v1';
+
+  function loadChecklist() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(CHECKLIST_KEY) || '[]');
+      const rows = document.querySelectorAll('#checklistGrid .check-row');
+      rows.forEach((row, i) => {
+        if (saved[i]) {
+          row.classList.add('done');
+          row.setAttribute('aria-checked', 'true');
+        }
+      });
+      updateChecklistBar();
+    } catch(e) {}
+  }
+
+  function saveChecklist() {
+    const rows = document.querySelectorAll('#checklistGrid .check-row');
+    const state = Array.from(rows).map(r => r.classList.contains('done'));
+    localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+  }
+
+  function toggleCheck(row) {
+    row.classList.toggle('done');
+    row.setAttribute('aria-checked', row.classList.contains('done').toString());
+    updateChecklistBar();
+    saveChecklist();
+  }
+
+  function updateChecklistBar() {
+    const rows = document.querySelectorAll('#checklistGrid .check-row');
+    const done = Array.from(rows).filter(r => r.classList.contains('done')).length;
+    const total = rows.length;
+    document.getElementById('checkBar').style.width = (done / total * 100) + '%';
+    document.getElementById('checkCount').textContent = done + ' / ' + total;
+  }
+
+  /* ---------- Jargon tooltips ---------- */
+  const popover = document.getElementById('popover');
+  let activeJargon = null;
+
+  function showPopover(el) {
+    const tip = el.getAttribute('data-tip');
+    if (!tip) return;
+    popover.textContent = tip;
+    popover.style.display = 'block';
+    popover.classList.remove('flip');
+    const rect = el.getBoundingClientRect();
+    const pw = 280;
+    let left = rect.left + rect.width / 2 - pw / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - pw - 8));
+    const arrowX = (rect.left + rect.width / 2 - left);
+    popover.style.setProperty('--arrow-x', arrowX + 'px');
+    popover.style.left = left + 'px';
+    const above = rect.top - 10 - popover.offsetHeight;
+    if (above < 60) {
+      popover.classList.add('flip');
+      popover.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+    } else {
+      popover.style.top = (rect.top + window.scrollY - popover.offsetHeight - 10) + 'px';
+    }
+    activeJargon = el;
+  }
+
+  function hidePopover() {
+    popover.style.display = 'none';
+    activeJargon = null;
+  }
+
+  document.querySelectorAll('.jargon[data-tip]').forEach(el => {
+    el.addEventListener('mouseenter', () => showPopover(el));
+    el.addEventListener('focus', () => showPopover(el));
+    el.addEventListener('mouseleave', hidePopover);
+    el.addEventListener('blur', hidePopover);
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.jargon') && !e.target.closest('#popover')) hidePopover();
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---------- Accessibility panel ---------- */
+  function toggleA11yPanel() {
+    const panel = document.getElementById('a11yPanel');
+    const btn = document.getElementById('a11yToggle');
+    const open = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open.toString());
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.a11y-wrap')) {
+      document.getElementById('a11yPanel').classList.remove('open');
+      document.getElementById('a11yToggle').setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  function setScale(pct) {
+    document.documentElement.style.fontSize = (pct / 100 * 15) + 'px';
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.toggle('active', +b.dataset.size === pct));
+    try { localStorage.setItem('sac-text-scale', pct); } catch(e) {}
+  }
+
+  /* ---------- Theme ---------- */
+  const THEMES = ['dark', 'light', 'high-contrast'];
+  let themeIdx = 0;
+
+  function applyTheme(idx) {
+    document.documentElement.classList.remove('light', 'high-contrast');
+    if (idx === 1) document.documentElement.classList.add('light');
+    if (idx === 2) document.documentElement.classList.add('high-contrast');
+    const icon = document.getElementById('theme-icon');
+    if (idx === 1) icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    else if (idx === 2) icon.innerHTML = '<circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/>';
+    else icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    try { localStorage.setItem('sac-theme', idx); } catch(e) {}
+  }
+
+  function cycleTheme() {
+    themeIdx = (themeIdx + 1) % 3;
+    applyTheme(themeIdx);
+  }
+
+  /* ---------- Init ---------- */
+  (function init() {
+    try {
+      const savedTheme = parseInt(localStorage.getItem('sac-theme') || '0');
+      themeIdx = savedTheme;
+      applyTheme(themeIdx);
+    } catch(e) {}
+    try {
+      const savedScale = parseInt(localStorage.getItem('sac-text-scale') || '100');
+      if (savedScale !== 100) setScale(savedScale);
+    } catch(e) {}
+    loadChecklist();
+  })();
+</script>
+</body>
+</html>
